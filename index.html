@@ -2454,6 +2454,14 @@
       const historyPageItems = totalPages => totalPages <= 5
         ? Array.from({length:totalPages},(_,index) => index + 1)
         : [1,2,3,4,5,'…',totalPages];
+      const formatDurationMinutes = minutes => {
+        if (minutes === null || minutes === undefined) return '--';
+        const wholeMinutes = Math.max(0,Math.round(Number(minutes)));
+        const hours = Math.floor(wholeMinutes / 60);
+        const remainingMinutes = wholeMinutes % 60;
+        return `${String(hours).padStart(2,'0')}H${String(remainingMinutes).padStart(2,'0')}M`;
+      };
+      const runHistoryCellValue = (row,key) => key === 'durationMinutes' ? formatDurationMinutes(row[key]) : row[key];
       const runHistoryGrid = (model,title,columns,rows) => {
         const state = runHistoryState[model];
         const visibleColumns = columns.filter(([key]) => !state.hiddenColumns.has(key));
@@ -2486,7 +2494,7 @@
             <div class="lh-kicker">${title}</div>
             <label class="lh-data-history-page-size"><span>Rows Per Page:</span><select data-run-history-page-size data-run-history-model="${model}">${[15,30,50].map(size => `<option value="${size}" ${state.pageSize === size ? 'selected' : ''}>${size}</option>`).join('')}</select></label>
           </div>
-          <div class="lh-table-wrap lh-data-load-table lh-data-history-table"><table class="lh-table"><thead><tr>${headers}</tr></thead><tbody>${pageRows.map(row => `<tr>${visibleColumns.map(([key]) => `<td>${row[key]}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+          <div class="lh-table-wrap lh-data-load-table lh-data-history-table"><table class="lh-table"><thead><tr>${headers}</tr></thead><tbody>${pageRows.map(row => `<tr>${visibleColumns.map(([key]) => `<td>${runHistoryCellValue(row,key)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
           ${pagination}
         </div>`;
       };
@@ -3273,7 +3281,7 @@
             <div class="lh-kpis">
               <div class="lh-kpi"><div class="label">Status</div><div class="value">Complete</div><div class="sub good">All consequence models processed</div></div>
               <div class="lh-kpi"><div class="label">Scenarios</div><div class="value">8 / 8</div><div class="sub good">Pinhole through rupture</div></div>
-              <div class="lh-kpi"><div class="label">Runtime</div><div class="value">18m 41s</div><div class="sub">Completed 04 Sep 2026</div></div>
+              <div class="lh-kpi"><div class="label">Duration</div><div class="value">${formatDurationMinutes(19)}</div><div class="sub">Completed 04 Sep 2026</div></div>
             </div>
             <div class="lh-checks">
               ${check('', 'Validate configuration', `CoF run details and ${planPhase === '1' ? 'uploaded JSON' : 'guided configuration'} passed validation.`, 'Complete')}
@@ -3285,19 +3293,19 @@
         </div>`;
 
       const cofPhaseOneHistoryRows = [
-        {id:'COF-018',name:'2026 Q3 consequence refresh',reason:'Quarterly consequence-model refresh for the active transmission scope.',file:'CoF_Config_2026_Q3.json',date:'09/04/2026, 4:48 PM',runtime:'18m 41s',user:'Shaki Muttiah',status:'Completed'},
-        {id:'COF-017',name:'Structure valuation update',reason:'Apply corrected residential and commercial structure valuations.',file:'CoF_Structure_Values_v6.json',date:'08/29/2026, 11:03 AM',runtime:'19m 12s',user:'Shaki Muttiah',status:'Completed'},
-        {id:'COF-016',name:'Occupancy reassessment',reason:'Recalculate consequence after updated indoor and outdoor occupancy data.',file:'CoF_Occupancy_v4.json',date:'08/21/2026, 2:17 PM',runtime:'20m 06s',user:'Priya Shah',status:'Completed'},
-        {id:'COF-015',name:'Route 58 structure review',reason:'Assess new high-value and impaired-mobility structures near Route 58.',file:'CoF_Route58_Structures.json',date:'08/09/2026, 9:42 AM',runtime:'17m 55s',user:'Morgan Lee',status:'Completed'},
-        {id:'COF-014',name:'Scenario threshold update',reason:'Apply approved fatality, injury, and property-damage thresholds.',file:'CoF_Thresholds_2026.json',date:'07/31/2026, 3:28 PM',runtime:'18m 09s',user:'Shaki Muttiah',status:'Completed'},
-        {id:'COF-013',name:'Annual baseline run',reason:'Establish the approved 2026 consequence-model baseline.',file:'CoF_Annual_Baseline_2026.json',date:'07/16/2026, 10:36 AM',runtime:'21m 14s',user:'Shaki Muttiah',status:'Completed'},
-        {id:'COF-012',name:'Environmental model test',reason:'Test revised environmental and service-disruption configuration.',file:'CoF_Environmental_Test.json',date:'07/03/2026, 1:19 PM',runtime:'7m 52s',user:'Morgan Lee',status:'Failed'},
-        {id:'COF-011',name:'Spring consequence review',reason:'Scheduled review of all Phase 1 consequence-model inputs.',file:'CoF_Spring_Review_2026.json',date:'06/13/2026, 8:44 AM',runtime:'19m 33s',user:'Priya Shah',status:'Completed'}
+        {id:'COF-018',name:'2026 Q3 consequence refresh',reason:'Quarterly consequence-model refresh for the active transmission scope.',file:'CoF_Config_2026_Q3.json',date:'09/04/2026, 4:48 PM',durationMinutes:19,user:'Shaki Muttiah',status:'Completed'},
+        {id:'COF-017',name:'Structure valuation update',reason:'Apply corrected residential and commercial structure valuations.',file:'CoF_Structure_Values_v6.json',date:'08/29/2026, 11:03 AM',durationMinutes:19,user:'Shaki Muttiah',status:'Completed'},
+        {id:'COF-016',name:'Occupancy reassessment',reason:'Recalculate consequence after updated indoor and outdoor occupancy data.',file:'CoF_Occupancy_v4.json',date:'08/21/2026, 2:17 PM',durationMinutes:20,user:'Priya Shah',status:'Completed'},
+        {id:'COF-015',name:'Route 58 structure review',reason:'Assess new high-value and impaired-mobility structures near Route 58.',file:'CoF_Route58_Structures.json',date:'08/09/2026, 9:42 AM',durationMinutes:18,user:'Morgan Lee',status:'Completed'},
+        {id:'COF-014',name:'Scenario threshold update',reason:'Apply approved fatality, injury, and property-damage thresholds.',file:'CoF_Thresholds_2026.json',date:'07/31/2026, 3:28 PM',durationMinutes:18,user:'Shaki Muttiah',status:'Completed'},
+        {id:'COF-013',name:'Annual baseline run',reason:'Establish the approved 2026 consequence-model baseline.',file:'CoF_Annual_Baseline_2026.json',date:'07/16/2026, 10:36 AM',durationMinutes:21,user:'Shaki Muttiah',status:'Completed'},
+        {id:'COF-012',name:'Environmental model test',reason:'Test revised environmental and service-disruption configuration.',file:'CoF_Environmental_Test.json',date:'07/03/2026, 1:19 PM',durationMinutes:8,user:'Morgan Lee',status:'Failed'},
+        {id:'COF-011',name:'Spring consequence review',reason:'Scheduled review of all Phase 1 consequence-model inputs.',file:'CoF_Spring_Review_2026.json',date:'06/13/2026, 8:44 AM',durationMinutes:20,user:'Priya Shah',status:'Completed'}
       ];
 
       const cofPhaseOneHistory = () => runHistoryGrid('cof','CoF Run History',[
         ['id','Run ID'],['name','CoF Name'],['reason','Reason for CoF'],['file','Configuration JSON'],
-        ['date','Run Date'],['runtime','Runtime'],['user','Ran By'],['status','Status']
+        ['date','Run Date'],['durationMinutes','Duration'],['user','Ran By'],['status','Status']
       ],cofPhaseOneHistoryRows);
 
       const cofRun = () => `
@@ -3836,7 +3844,8 @@
           processedSegments:Math.round(lofSegmentCount * modelProgress)
         };
       };
-      const lofElapsedLabel = elapsedMs => `${Math.floor(elapsedMs / 60000)}m ${String(Math.floor(elapsedMs / 1000) % 60).padStart(2,'0')}s`;
+      const lofDurationMinutes = elapsedMs => Math.max(0,Math.round(elapsedMs / 60000));
+      const lofDurationLabel = elapsedMs => formatDurationMinutes(lofDurationMinutes(elapsedMs));
       const lofSegmentsLabel = segments => segments >= 1000000 ? `${(segments / 1000000).toFixed(1)}M` : segments.toLocaleString();
       const lofStatusRows = snapshot => lofProgressSteps.slice(0,snapshot.visibleStatusCount).map((description,index) => {
         const isCurrent = index === snapshot.visibleStatusCount - 1;
@@ -3921,7 +3930,7 @@
               <div class="lh-kicker">Run Summary</div>
               <div class="lh-kpis">
                 <div class="lh-kpi"><div class="label">Overall progress</div><div class="value" data-lof-overall-progress>${snapshot.overallProgress}%</div><div class="sub">${snapshot.visibleStatusCount} of ${lofProgressSteps.length} status updates</div></div>
-                <div class="lh-kpi"><div class="label">Elapsed time</div><div class="value" data-lof-elapsed>${lofElapsedLabel(snapshot.elapsedMs)}</div><div class="sub">${snapshot.failed ? 'Configuration verification failed' : snapshot.complete ? 'Run completed' : 'Updating every 2 seconds'}</div></div>
+                <div class="lh-kpi"><div class="label">Duration</div><div class="value" data-lof-duration>${lofDurationLabel(snapshot.elapsedMs)}</div><div class="sub">${snapshot.failed ? 'Configuration verification failed' : snapshot.complete ? 'Run completed' : 'Updating by minute'}</div></div>
                 <div class="lh-kpi"><div class="label">Segments processed</div><div class="value" data-lof-segments>${lofSegmentsLabel(snapshot.processedSegments)}</div><div class="sub">of ${lofSegmentCount.toLocaleString()} segments</div></div>
               </div>
             </aside>
@@ -3929,7 +3938,7 @@
               <div class="lh-kicker">LoF Progress</div>
               <div class="lh-transfer-progress-head">
                 <strong>${escapeHtml(lofProgressRun.name)}</strong>
-                <span class="lh-transfer-progress-meta"><small>${lofProgressRun.id} · Started ${transferTimestamp(new Date(lofProgressRun.startedAt))} · Elapsed ${lofElapsedLabel(snapshot.elapsedMs)}</small></span>
+                <span class="lh-transfer-progress-meta"><small>${lofProgressRun.id} · Started ${transferTimestamp(new Date(lofProgressRun.startedAt))} · Duration ${lofDurationLabel(snapshot.elapsedMs)}</small></span>
               </div>
               <div class="lh-progress" aria-label="${snapshot.overallProgress}% of LoF processing complete"><span style="width:${snapshot.overallProgress}%"></span></div>
               <div class="lh-table-wrap lh-transfer-progress-table lh-lof-status-table" data-lof-status-table><table class="lh-table"><thead><tr><th>#</th><th>${transferColumnHeader('Status code')}</th><th>${transferColumnHeader('Status description')}</th><th>${transferColumnHeader('Date created')}</th></tr></thead><tbody>${lofStatusRows(snapshot)}</tbody></table></div>
@@ -4135,14 +4144,14 @@
         </aside>`;
 
       const lofPhaseOneHistoryRows = [
-        {id:'LOF-025',name:'2026 Q3 TIMP refresh',reason:'Quarterly threat model refresh for the active transmission scope.',file:'LoF_Config_2026_Q3.json',date:'09/04/2026, 4:42 PM',runtime:'14m 22s',user:'Shaki Muttiah',status:'Completed'},
-        {id:'LOF-024',name:'ILI reassessment',reason:'Recalculate LoF after the latest ILI inspection data load.',file:'LoF_ILI_Reassessment_v4.json',date:'08/28/2026, 10:18 AM',runtime:'16m 05s',user:'Shaki Muttiah',status:'Completed'},
-        {id:'LOF-023',name:'External corrosion review',reason:'Validate corrosion susceptibility following CP remediation.',file:'LoF_External_Corrosion_v7.json',date:'08/19/2026, 2:31 PM',runtime:'15m 47s',user:'Morgan Lee',status:'Completed'},
-        {id:'LOF-022',name:'Route 58 change review',reason:'Assess new construction activity and route-specific threat changes.',file:'LoF_Route58_Change.json',date:'08/07/2026, 9:06 AM',runtime:'13m 54s',user:'Shaki Muttiah',status:'Completed'},
-        {id:'LOF-021',name:'Flood susceptibility update',reason:'Apply revised flood-zone and water-crossing configuration.',file:'LoF_Flood_2026_v2.json',date:'07/29/2026, 3:14 PM',runtime:'12m 38s',user:'Priya Shah',status:'Completed'},
-        {id:'LOF-020',name:'Annual baseline run',reason:'Establish the approved 2026 baseline for risk-model refinement.',file:'LoF_Annual_Baseline_2026.json',date:'07/15/2026, 11:25 AM',runtime:'17m 11s',user:'Shaki Muttiah',status:'Completed'},
-        {id:'LOF-019',name:'Excavation calibration',reason:'Test updated excavation inspection and damage-prevention factors.',file:'LoF_Excavation_Calibration.json',date:'07/02/2026, 1:48 PM',runtime:'8m 16s',user:'Morgan Lee',status:'Error'},
-        {id:'LOF-018',name:'Spring threat review',reason:'Scheduled review of all Phase 1 threat-model inputs.',file:'LoF_Spring_Review_2026.json',date:'06/12/2026, 8:52 AM',runtime:'14m 03s',user:'Priya Shah',status:'Completed'}
+        {id:'LOF-025',name:'2026 Q3 TIMP refresh',reason:'Quarterly threat model refresh for the active transmission scope.',file:'LoF_Config_2026_Q3.json',date:'09/04/2026, 4:42 PM',durationMinutes:14,user:'Shaki Muttiah',status:'Completed'},
+        {id:'LOF-024',name:'ILI reassessment',reason:'Recalculate LoF after the latest ILI inspection data load.',file:'LoF_ILI_Reassessment_v4.json',date:'08/28/2026, 10:18 AM',durationMinutes:16,user:'Shaki Muttiah',status:'Completed'},
+        {id:'LOF-023',name:'External corrosion review',reason:'Validate corrosion susceptibility following CP remediation.',file:'LoF_External_Corrosion_v7.json',date:'08/19/2026, 2:31 PM',durationMinutes:16,user:'Morgan Lee',status:'Completed'},
+        {id:'LOF-022',name:'Route 58 change review',reason:'Assess new construction activity and route-specific threat changes.',file:'LoF_Route58_Change.json',date:'08/07/2026, 9:06 AM',durationMinutes:14,user:'Shaki Muttiah',status:'Completed'},
+        {id:'LOF-021',name:'Flood susceptibility update',reason:'Apply revised flood-zone and water-crossing configuration.',file:'LoF_Flood_2026_v2.json',date:'07/29/2026, 3:14 PM',durationMinutes:13,user:'Priya Shah',status:'Completed'},
+        {id:'LOF-020',name:'Annual baseline run',reason:'Establish the approved 2026 baseline for risk-model refinement.',file:'LoF_Annual_Baseline_2026.json',date:'07/15/2026, 11:25 AM',durationMinutes:17,user:'Shaki Muttiah',status:'Completed'},
+        {id:'LOF-019',name:'Excavation calibration',reason:'Test updated excavation inspection and damage-prevention factors.',file:'LoF_Excavation_Calibration.json',date:'07/02/2026, 1:48 PM',durationMinutes:8,user:'Morgan Lee',status:'Error'},
+        {id:'LOF-018',name:'Spring threat review',reason:'Scheduled review of all Phase 1 threat-model inputs.',file:'LoF_Spring_Review_2026.json',date:'06/12/2026, 8:52 AM',durationMinutes:14,user:'Priya Shah',status:'Completed'}
       ];
 
       const lofHistoryRows = () => {
@@ -4162,7 +4171,7 @@
           reason:lofProgressRun.reason,
           file:lofProgressRun.configName,
           date:runDate,
-          runtime:status === 'In Progress' ? '--' : lofElapsedLabel(snapshot.elapsedMs),
+          durationMinutes:status === 'In Progress' ? null : lofDurationMinutes(snapshot.elapsedMs),
           user:'Shaki Muttiah',
           status
         },...lofPhaseOneHistoryRows];
@@ -4170,7 +4179,7 @@
 
       const lofPhaseOneHistory = () => runHistoryGrid('lof','LoF Run History',[
         ['id','Run ID'],['name','LoF Name'],['reason','Reason for LoF'],['file','Configuration JSON'],
-        ['date','Run Date'],['runtime','Runtime'],['user','Ran By'],['status','Status']
+        ['date','Run Date'],['durationMinutes','Duration'],['user','Ran By'],['status','Status']
       ],lofHistoryRows());
 
       const lofDataViewResults = () => {
