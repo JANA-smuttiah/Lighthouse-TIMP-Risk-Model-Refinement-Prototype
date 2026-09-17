@@ -51,6 +51,7 @@
 
     .lh-brand, .lh-main-nav, .lh-userbar, .lh-inline, .lh-actions, .lh-tabs,
     .lh-legend, .lh-status-line, .lh-pill-row { display: flex; align-items: center; }
+    #lh-ops-refinement .lh-model-term { text-transform: none; }
     .lh-brand { gap: 10px; font-size: 16px; font-weight: 650; }
     .lh-brand-mark { width: 25px; height: 25px; display: grid; place-items: center; border: 2px solid #53cfb0; border-radius: 50%; color: #53cfb0; font-size: 11px; }
     .lh-main-nav { gap: 4px; }
@@ -2133,6 +2134,33 @@
       const check = (tone, heading, detail, status) => `<div class="lh-check"><span class="lh-check-icon ${tone}">${tone === 'warn' || tone === 'bad' ? '!' : '✓'}</span><span><strong>${heading}</strong><small>${detail}</small></span>${pill(status, tone === 'bad' ? 'bad' : tone === 'warn' ? 'warn' : 'good')}</div>`;
       const card = (heading, sub, body, extra='') => `<section class="lh-card ${extra}"><div class="lh-card-head"><div><h3>${heading}</h3>${sub ? `<p>${sub}</p>` : ''}</div></div>${body}</section>`;
       const escapeHtml = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+      const preserveModelTermCase = container => {
+        const pattern = /\b(?:LoF|CoF)\b/g;
+        const walker = document.createTreeWalker(container,NodeFilter.SHOW_TEXT);
+        const textNodes = [];
+        while (walker.nextNode()) {
+          const node = walker.currentNode;
+          const parent = node.parentElement;
+          if (!parent || parent.closest('script,style,textarea,select,option,.lh-model-term')) continue;
+          pattern.lastIndex = 0;
+          if (pattern.test(node.nodeValue)) textNodes.push(node);
+        }
+        textNodes.forEach(node => {
+          const fragment = document.createDocumentFragment();
+          let lastIndex = 0;
+          pattern.lastIndex = 0;
+          for (const match of node.nodeValue.matchAll(pattern)) {
+            fragment.append(node.nodeValue.slice(lastIndex,match.index));
+            const term = document.createElement('span');
+            term.className = 'lh-model-term';
+            term.textContent = match[0];
+            fragment.append(term);
+            lastIndex = match.index + match[0].length;
+          }
+          fragment.append(node.nodeValue.slice(lastIndex));
+          node.replaceWith(fragment);
+        });
+      };
       const transferControlState = valid => dataTransferValues.checkAttempted ? valid ? 'is-valid' : 'is-invalid' : '';
       const isPhase3 = () => planPhase === '3';
       const lofConfigurationSource = () => planPhase === '1' ? 'uploaded JSON configuration' : 'guided configuration';
@@ -4539,6 +4567,7 @@
         eyebrow.textContent = moduleName === 'data' && viewName === 'compare' ? 'Data Management' : moduleName === 'log' ? 'Model governance · IMF-T-T501 online' : 'Setup';
         primaryAction.textContent = action;
         host.innerHTML = screenBuilders[moduleName][viewName]();
+        preserveModelTermCase(root);
         const resultsNav = host.querySelector('.lh-results-nav');
         const activeResultView = resultsNav?.querySelector('[data-lof-result-view].is-active');
         if (resultsNav && activeResultView) {
