@@ -51,7 +51,7 @@
 
     .lh-brand, .lh-main-nav, .lh-userbar, .lh-inline, .lh-actions, .lh-tabs,
     .lh-legend, .lh-status-line, .lh-pill-row { display: flex; align-items: center; }
-    #lh-ops-refinement .lh-model-term { text-transform: none; }
+    #lh-ops-refinement .lh-model-term { display: inline; padding: 0; border-radius: 0; color: inherit; background: transparent; text-transform: none; }
     .lh-brand { gap: 10px; font-size: 16px; font-weight: 650; }
     .lh-brand-mark { width: 25px; height: 25px; display: grid; place-items: center; border: 2px solid #53cfb0; border-radius: 50%; color: #53cfb0; font-size: 11px; }
     .lh-main-nav { gap: 4px; }
@@ -3321,14 +3321,14 @@
         </div>`;
 
       const cofPhaseOneHistoryRows = [
-        {id:'COF-018',name:'2026 Q3 consequence refresh',reason:'Quarterly consequence-model refresh for the active transmission scope.',file:'CoF_Config_2026_Q3.json',date:'09/04/2026, 4:48 PM',durationMinutes:19,user:'Shaki Muttiah',status:'Completed'},
-        {id:'COF-017',name:'Structure valuation update',reason:'Apply corrected residential and commercial structure valuations.',file:'CoF_Structure_Values_v6.json',date:'08/29/2026, 11:03 AM',durationMinutes:19,user:'Shaki Muttiah',status:'Completed'},
-        {id:'COF-016',name:'Occupancy reassessment',reason:'Recalculate consequence after updated indoor and outdoor occupancy data.',file:'CoF_Occupancy_v4.json',date:'08/21/2026, 2:17 PM',durationMinutes:20,user:'Priya Shah',status:'Completed'},
-        {id:'COF-015',name:'Route 58 structure review',reason:'Assess new high-value and impaired-mobility structures near Route 58.',file:'CoF_Route58_Structures.json',date:'08/09/2026, 9:42 AM',durationMinutes:18,user:'Morgan Lee',status:'Completed'},
-        {id:'COF-014',name:'Scenario threshold update',reason:'Apply approved fatality, injury, and property-damage thresholds.',file:'CoF_Thresholds_2026.json',date:'07/31/2026, 3:28 PM',durationMinutes:18,user:'Shaki Muttiah',status:'Completed'},
-        {id:'COF-013',name:'Annual baseline run',reason:'Establish the approved 2026 consequence-model baseline.',file:'CoF_Annual_Baseline_2026.json',date:'07/16/2026, 10:36 AM',durationMinutes:21,user:'Shaki Muttiah',status:'Completed'},
-        {id:'COF-012',name:'Environmental model test',reason:'Test revised environmental and service-disruption configuration.',file:'CoF_Environmental_Test.json',date:'07/03/2026, 1:19 PM',durationMinutes:8,user:'Morgan Lee',status:'Failed'},
-        {id:'COF-011',name:'Spring consequence review',reason:'Scheduled review of all Phase 1 consequence-model inputs.',file:'CoF_Spring_Review_2026.json',date:'06/13/2026, 8:44 AM',durationMinutes:20,user:'Priya Shah',status:'Completed'}
+        {id:'CoF-018',name:'2026 Q3 consequence refresh',reason:'Quarterly consequence-model refresh for the active transmission scope.',file:'CoF_Config_2026_Q3.json',date:'09/04/2026, 4:48 PM',durationMinutes:19,user:'Shaki Muttiah',status:'Completed'},
+        {id:'CoF-017',name:'Structure valuation update',reason:'Apply corrected residential and commercial structure valuations.',file:'CoF_Structure_Values_v6.json',date:'08/29/2026, 11:03 AM',durationMinutes:19,user:'Shaki Muttiah',status:'Completed'},
+        {id:'CoF-016',name:'Occupancy reassessment',reason:'Recalculate consequence after updated indoor and outdoor occupancy data.',file:'CoF_Occupancy_v4.json',date:'08/21/2026, 2:17 PM',durationMinutes:20,user:'Priya Shah',status:'Completed'},
+        {id:'CoF-015',name:'Route 58 structure review',reason:'Assess new high-value and impaired-mobility structures near Route 58.',file:'CoF_Route58_Structures.json',date:'08/09/2026, 9:42 AM',durationMinutes:18,user:'Morgan Lee',status:'Completed'},
+        {id:'CoF-014',name:'Scenario threshold update',reason:'Apply approved fatality, injury, and property-damage thresholds.',file:'CoF_Thresholds_2026.json',date:'07/31/2026, 3:28 PM',durationMinutes:18,user:'Shaki Muttiah',status:'Completed'},
+        {id:'CoF-013',name:'Annual baseline run',reason:'Establish the approved 2026 consequence-model baseline.',file:'CoF_Annual_Baseline_2026.json',date:'07/16/2026, 10:36 AM',durationMinutes:21,user:'Shaki Muttiah',status:'Completed'},
+        {id:'CoF-012',name:'Environmental model test',reason:'Test revised environmental and service-disruption configuration.',file:'CoF_Environmental_Test.json',date:'07/03/2026, 1:19 PM',durationMinutes:8,user:'Morgan Lee',status:'Failed'},
+        {id:'CoF-011',name:'Spring consequence review',reason:'Scheduled review of all Phase 1 consequence-model inputs.',file:'CoF_Spring_Review_2026.json',date:'06/13/2026, 8:44 AM',durationMinutes:20,user:'Priya Shah',status:'Completed'}
       ];
 
       const cofPhaseOneHistory = () => runHistoryGrid('cof','CoF Run History',[
@@ -3928,7 +3928,7 @@
         lofCheckModalOpen = false;
         lofConfigError = null;
         lofProgressRun = {
-          id:'LOF-026',
+          id:'LoF-026',
           name:lofGeneralValues.name,
           configName:lofConfigUpload.name,
           configText:lofConfigUpload.text,
@@ -4172,14 +4172,14 @@
         </aside>`;
 
       const lofPhaseOneHistoryRows = [
-        {id:'LOF-025',name:'2026 Q3 TIMP refresh',reason:'Quarterly threat model refresh for the active transmission scope.',file:'LoF_Config_2026_Q3.json',date:'09/04/2026, 4:42 PM',durationMinutes:14,user:'Shaki Muttiah',status:'Completed'},
-        {id:'LOF-024',name:'ILI reassessment',reason:'Recalculate LoF after the latest ILI inspection data load.',file:'LoF_ILI_Reassessment_v4.json',date:'08/28/2026, 10:18 AM',durationMinutes:16,user:'Shaki Muttiah',status:'Completed'},
-        {id:'LOF-023',name:'External corrosion review',reason:'Validate corrosion susceptibility following CP remediation.',file:'LoF_External_Corrosion_v7.json',date:'08/19/2026, 2:31 PM',durationMinutes:16,user:'Morgan Lee',status:'Completed'},
-        {id:'LOF-022',name:'Route 58 change review',reason:'Assess new construction activity and route-specific threat changes.',file:'LoF_Route58_Change.json',date:'08/07/2026, 9:06 AM',durationMinutes:14,user:'Shaki Muttiah',status:'Completed'},
-        {id:'LOF-021',name:'Flood susceptibility update',reason:'Apply revised flood-zone and water-crossing configuration.',file:'LoF_Flood_2026_v2.json',date:'07/29/2026, 3:14 PM',durationMinutes:13,user:'Priya Shah',status:'Completed'},
-        {id:'LOF-020',name:'Annual baseline run',reason:'Establish the approved 2026 baseline for risk-model refinement.',file:'LoF_Annual_Baseline_2026.json',date:'07/15/2026, 11:25 AM',durationMinutes:17,user:'Shaki Muttiah',status:'Completed'},
-        {id:'LOF-019',name:'Excavation calibration',reason:'Test updated excavation inspection and damage-prevention factors.',file:'LoF_Excavation_Calibration.json',date:'07/02/2026, 1:48 PM',durationMinutes:8,user:'Morgan Lee',status:'Error'},
-        {id:'LOF-018',name:'Spring threat review',reason:'Scheduled review of all Phase 1 threat-model inputs.',file:'LoF_Spring_Review_2026.json',date:'06/12/2026, 8:52 AM',durationMinutes:14,user:'Priya Shah',status:'Completed'}
+        {id:'LoF-025',name:'2026 Q3 TIMP refresh',reason:'Quarterly threat model refresh for the active transmission scope.',file:'LoF_Config_2026_Q3.json',date:'09/04/2026, 4:42 PM',durationMinutes:14,user:'Shaki Muttiah',status:'Completed'},
+        {id:'LoF-024',name:'ILI reassessment',reason:'Recalculate LoF after the latest ILI inspection data load.',file:'LoF_ILI_Reassessment_v4.json',date:'08/28/2026, 10:18 AM',durationMinutes:16,user:'Shaki Muttiah',status:'Completed'},
+        {id:'LoF-023',name:'External corrosion review',reason:'Validate corrosion susceptibility following CP remediation.',file:'LoF_External_Corrosion_v7.json',date:'08/19/2026, 2:31 PM',durationMinutes:16,user:'Morgan Lee',status:'Completed'},
+        {id:'LoF-022',name:'Route 58 change review',reason:'Assess new construction activity and route-specific threat changes.',file:'LoF_Route58_Change.json',date:'08/07/2026, 9:06 AM',durationMinutes:14,user:'Shaki Muttiah',status:'Completed'},
+        {id:'LoF-021',name:'Flood susceptibility update',reason:'Apply revised flood-zone and water-crossing configuration.',file:'LoF_Flood_2026_v2.json',date:'07/29/2026, 3:14 PM',durationMinutes:13,user:'Priya Shah',status:'Completed'},
+        {id:'LoF-020',name:'Annual baseline run',reason:'Establish the approved 2026 baseline for risk-model refinement.',file:'LoF_Annual_Baseline_2026.json',date:'07/15/2026, 11:25 AM',durationMinutes:17,user:'Shaki Muttiah',status:'Completed'},
+        {id:'LoF-019',name:'Excavation calibration',reason:'Test updated excavation inspection and damage-prevention factors.',file:'LoF_Excavation_Calibration.json',date:'07/02/2026, 1:48 PM',durationMinutes:8,user:'Morgan Lee',status:'Error'},
+        {id:'LoF-018',name:'Spring threat review',reason:'Scheduled review of all Phase 1 threat-model inputs.',file:'LoF_Spring_Review_2026.json',date:'06/12/2026, 8:52 AM',durationMinutes:14,user:'Priya Shah',status:'Completed'}
       ];
 
       const lofHistoryRows = () => {
