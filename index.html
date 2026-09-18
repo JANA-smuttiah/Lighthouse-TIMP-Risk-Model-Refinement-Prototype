@@ -3114,6 +3114,7 @@
         const sortIndicator = transferProgressSort.column === key ? `<span class="lh-data-load-sort-indicator">${transferProgressSort.direction === 'asc' ? '↑' : '↓'}</span>` : '';
         return `<th data-transfer-progress-heading="${key}"><div class="lh-transfer-column-head"><span>${label}${sortIndicator}</span><button class="lh-data-load-menu-trigger" type="button" data-transfer-progress-menu="${key}" aria-label="Open ${label} column menu" aria-expanded="${open}"><span class="lh-data-load-menu-dots" aria-hidden="true"><i></i><i></i><i></i></span></button></div>${open ? `<div class="lh-data-load-column-menu" role="menu">${transferProgressMenuContent()}</div>` : ''}</th>`;
       };
+      const modelStatusColumnHeader = label => `<div class="lh-transfer-column-head"><span>${label}</span><span class="lh-data-load-menu-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>`;
       const inProgressStatus = () => '<span class="lh-in-progress-status">In Progress<span class="lh-in-progress-spinner" aria-hidden="true"></span></span>';
       const statusDisplay = status => ['In Progress','InProgress','In progress'].includes(status) ? inProgressStatus() : status;
       const transferStatusLabel = status => status === 'not-started' ? 'Not started' : status === 'in-progress' ? 'In Progress' : status === 'completed' ? 'Completed' : 'Failed';
@@ -4289,7 +4290,7 @@
               ? 'Started'
               : 'InProgress';
         const createdAt = new Date(cofProgressRun.startedAt + index * cofProgressStepMs);
-        return `<tr data-cof-status-update="${index + 1}"><td>${index + 1}</td><td>${statusDisplay(status)}</td><td class="lh-model-status-description">${escapeHtml(description)}</td><td>${transferTimestamp(createdAt)}</td></tr>`;
+        return `<tr data-cof-status-update="${index + 1}"><td>${index + 1}</td><td class="lh-model-status-description">${escapeHtml(description)}</td><td>${statusDisplay(status)}</td><td>${transferTimestamp(createdAt)}</td></tr>`;
       }).join('');
       const verifyCofProgressConfig = () => {
         if (!cofProgressRun || cofProgressRun.validationStatus !== 'pending' || Date.now() - cofProgressRun.startedAt < cofProgressStepMs * 2) return;
@@ -4373,7 +4374,7 @@
                 <span class="lh-transfer-progress-meta"><small>${cofProgressRun.id} · Started ${transferTimestamp(new Date(cofProgressRun.startedAt))} · Duration ${cofDurationLabel(snapshot.elapsedMs)}</small></span>
               </div>
               <div class="lh-progress" aria-label="${snapshot.overallProgress}% of CoF processing complete"><span style="width:${snapshot.overallProgress}%"></span></div>
-              <div class="lh-table-wrap lh-transfer-progress-table lh-model-status-table" data-cof-status-table><table class="lh-table"><thead><tr><th>#</th><th>${transferColumnHeader('Status code')}</th><th>${transferColumnHeader('Status description')}</th><th>${transferColumnHeader('Date created')}</th></tr></thead><tbody>${cofStatusRows(snapshot)}</tbody></table></div>
+              <div class="lh-table-wrap lh-transfer-progress-table lh-model-status-table" data-cof-status-table><table class="lh-table"><thead><tr><th>#</th><th>${modelStatusColumnHeader('Description')}</th><th>${modelStatusColumnHeader('Status')}</th><th>${modelStatusColumnHeader('Date Created')}</th></tr></thead><tbody>${cofStatusRows(snapshot)}</tbody></table></div>
             </section>
           </div>
           ${cofConfigErrorModal()}
@@ -4968,7 +4969,7 @@
               ? 'Started'
               : 'InProgress';
         const createdAt = new Date(lofProgressRun.startedAt + index * lofProgressStepMs);
-        return `<tr data-lof-status-update="${index + 1}"><td>${index + 1}</td><td>${statusDisplay(status)}</td><td class="lh-model-status-description">${escapeHtml(description)}</td><td>${transferTimestamp(createdAt)}</td></tr>`;
+        return `<tr data-lof-status-update="${index + 1}"><td>${index + 1}</td><td class="lh-model-status-description">${escapeHtml(description)}</td><td>${statusDisplay(status)}</td><td>${transferTimestamp(createdAt)}</td></tr>`;
       }).join('');
       const verifyLofProgressConfig = () => {
         if (!lofProgressRun || lofProgressRun.validationStatus !== 'pending' || Date.now() - lofProgressRun.startedAt < lofProgressStepMs * 2) return;
@@ -5052,7 +5053,7 @@
                 <span class="lh-transfer-progress-meta"><small>${lofProgressRun.id} · Started ${transferTimestamp(new Date(lofProgressRun.startedAt))} · Duration ${lofDurationLabel(snapshot.elapsedMs)}</small></span>
               </div>
               <div class="lh-progress" aria-label="${snapshot.overallProgress}% of LoF processing complete"><span style="width:${snapshot.overallProgress}%"></span></div>
-              <div class="lh-table-wrap lh-transfer-progress-table lh-model-status-table" data-lof-status-table><table class="lh-table"><thead><tr><th>#</th><th>${transferColumnHeader('Status code')}</th><th>${transferColumnHeader('Status description')}</th><th>${transferColumnHeader('Date created')}</th></tr></thead><tbody>${lofStatusRows(snapshot)}</tbody></table></div>
+              <div class="lh-table-wrap lh-transfer-progress-table lh-model-status-table" data-lof-status-table><table class="lh-table"><thead><tr><th>#</th><th>${modelStatusColumnHeader('Description')}</th><th>${modelStatusColumnHeader('Status')}</th><th>${modelStatusColumnHeader('Date Created')}</th></tr></thead><tbody>${lofStatusRows(snapshot)}</tbody></table></div>
             </section>
           </div>
           ${lofConfigErrorModal()}
