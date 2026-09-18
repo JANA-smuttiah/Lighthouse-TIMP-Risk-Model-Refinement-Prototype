@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lighthouse TIMP | Setup</title><link rel="icon" href="data:,"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lighthouse TIMP | Configuration</title><link rel="icon" href="data:,"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
   :root {
     --background: #f2f3f4;
     --foreground: #231f20;
@@ -36,7 +36,7 @@
     #lh-ops-refinement button,
     #lh-ops-refinement select,
     #lh-ops-refinement input,
-    #lh-ops-refinement textarea { font: inherit; }
+    #lh-ops-refinement textarea { font-family: inherit; }
 
     .lh-topbar {
       height: 56px;
@@ -173,8 +173,21 @@
     .lh-run-config-upload .lh-upload-card small { margin-top: 5px; font-size: 11px; }
     .lh-run-config-upload .lh-upload-card .lh-inline { margin-top: 16px; }
     .lh-run-config-action { display: flex; justify-content: flex-end; margin-top: 12px; }
+    .lh-run-config-action > div { display: flex; align-items: flex-end; flex-direction: column; }
     #lh-ops-refinement .lh-run-config-action .lh-button { min-width: 72px; width: auto; border-color: var(--lh-navy); border-radius: 3px; color: #fff; background: var(--lh-navy); text-transform: none; }
     #lh-ops-refinement .lh-run-config-action .lh-button:hover { border-color: #294977; color: #fff; background: #294977; }
+    #lh-ops-refinement .lh-run-config-action .lh-button:disabled { border-color: #a7a9ac; color: #fff; cursor: not-allowed; background: #a7a9ac; }
+    .lh-cof-preparation { margin-bottom: 14px; }
+    .lh-cof-preparation:not(.is-running) { padding-bottom: 0; }
+    .lh-cof-preparation:not(.is-running) .lh-card-head { margin-bottom: 0; border-bottom: 0; }
+    .lh-cof-config-layout { min-height: 0; }
+    .lh-cof-preparation-progress { margin-top: 12px; }
+    .lh-cof-preparation-progress .lh-progress { margin-top: 7px; }
+    .lh-cof-preparation .lh-card-head { align-items: center; }
+    #lh-ops-refinement .lh-cof-preparation .lh-card-head .lh-button { flex: 0 0 auto; border-color: var(--lh-navy); color: #fff; background: var(--lh-navy); }
+    #lh-ops-refinement .lh-cof-preparation .lh-card-head .lh-button:hover { border-color: #294977; color: #fff; background: #294977; }
+    #lh-ops-refinement .lh-cof-preparation .lh-card-head .lh-button:disabled { border-color: #a7a9ac; color: #fff; cursor: not-allowed; background: #a7a9ac; }
+    .lh-cof-run-requirement { display: block; margin-top: 6px; color: var(--lh-muted); font-size: 10px; text-align: right; }
     .lh-guided-config-layout .lh-run-config-upload > .lh-kicker { margin-bottom: 14px; }
     .lh-guided-config-layout .lh-config-accordion { gap: 4px; }
     .lh-guided-config-layout .lh-config-accordion .lh-factor-toggle { min-height: 32px; grid-template-columns: 16px minmax(0, 1fr); gap: 6px; padding: 6px 9px; }
@@ -243,9 +256,9 @@
     .lh-data-progress-summary .lh-kpi .value { margin-top: 10px; font-size: 28px; font-weight: 500; }
     .lh-data-progress-summary .lh-kpi:first-child .value { color: #12a83a; }
     .lh-data-progress-summary .lh-kpi:last-child .value { color: #d7193f; }
-    .lh-data-progress-summary.lh-lof-progress-summary .lh-kpis { grid-template-columns: 1fr; }
-    .lh-data-progress-summary.lh-lof-progress-summary .lh-kpi .value { color: #231f20; }
-    .lh-data-progress-summary.lh-lof-progress-summary .lh-kpi:first-child .value { color: var(--lh-blue-dark); }
+    .lh-data-progress-summary.lh-model-progress-summary .lh-kpis { grid-template-columns: 1fr; }
+    .lh-data-progress-summary.lh-model-progress-summary .lh-kpi .value { color: #231f20; }
+    .lh-data-progress-summary.lh-model-progress-summary .lh-kpi:first-child .value { color: var(--lh-blue-dark); }
     .lh-data-progress-workspace { min-width: 0; padding: 20px clamp(28px, 3vw, 44px) 32px; background: #fff; }
     .lh-data-progress-workspace > .lh-kicker { margin-bottom: 28px; }
     .lh-transfer-progress-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 20px; margin-bottom: 14px; }
@@ -257,9 +270,9 @@
     .lh-transfer-progress-table .lh-table th { position: sticky; top: 0; z-index: 1; padding: 11px 12px; }
     .lh-transfer-progress-table .lh-table td { padding: 11px 12px; }
     .lh-transfer-progress-table .lh-transfer-row.is-active { background: #fff; }
-    .lh-lof-status-table { max-height: 500px; }
-    .lh-lof-status-table .lh-table { min-width: 850px; }
-    .lh-lof-status-description { min-width: 430px; line-height: 1.4; }
+    .lh-model-status-table { max-height: 500px; }
+    .lh-model-status-table .lh-table { min-width: 850px; }
+    .lh-model-status-description { min-width: 430px; line-height: 1.4; }
     .lh-transfer-column-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .lh-transfer-column-head .lh-data-load-menu-dots { color: #808285; }
     .lh-transfer-status { color: #414042; font-weight: 400; }
@@ -1107,6 +1120,7 @@
 
     .lh-data-view-route .lh-tabs {
       min-height: 40px;
+      gap: 12px;
       padding: 0 7vw;
       border-top: 0;
       border-bottom-width: 1px;
@@ -1461,25 +1475,97 @@
     }
 
     .lh-banner {
-      min-height: 42px;
-      padding: 9px 12px;
-      border: 0;
-      border-left: 4px solid var(--lh-blue);
-      border-radius: 2px;
-      color: #34476d;
-      background: #ebf1ff;
+      --lh-alert-color: #3f80c7;
+      min-height: 40px;
+      padding: 10px 16px;
+      border: 1px solid var(--lh-alert-color);
+      border-radius: 4px;
+      color: var(--lh-alert-color);
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(35, 31, 32, .16);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.35;
     }
 
     .lh-banner.warn {
-      border-color: var(--lh-amber);
-      color: #6d531f;
-      background: #fff7eb;
+      --lh-alert-color: #ff821c;
     }
 
     .lh-banner.bad {
-      border-color: var(--lh-pink);
-      color: #83374e;
-      background: #fff4f7;
+      --lh-alert-color: #df1838;
+    }
+
+    .lh-banner > :first-child {
+      display: inline-grid;
+      width: 16px;
+      height: 16px;
+      place-items: center;
+      align-self: start;
+      margin-top: 1px;
+      color: transparent;
+      font-size: 0;
+    }
+
+    .lh-banner > :first-child::before {
+      content: "i";
+      display: grid;
+      width: 12px;
+      height: 12px;
+      place-items: center;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      color: var(--lh-alert-color);
+      font-size: 8px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .lh-banner.warn > :first-child::before {
+      content: "△";
+      width: 12px;
+      height: 12px;
+      padding: 0;
+      border: 0;
+      clip-path: none;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .lh-banner.bad > :first-child::before {
+      content: "!";
+    }
+
+    .lh-banner strong {
+      color: inherit;
+      font-weight: 600;
+    }
+
+    .lh-banner.filled {
+      color: #fff;
+      background: var(--lh-alert-color);
+    }
+
+    .lh-banner.filled > :first-child::before {
+      color: #fff;
+      border-color: #fff;
+    }
+
+    .lh-banner .lh-alert-close {
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      border: 0;
+      color: inherit;
+      background: transparent;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .lh-banner.filled .lh-alert-close {
+      color: #fff;
     }
 
     .lh-pill {
@@ -1768,13 +1854,59 @@
     }
 
     .lh-toast {
-      padding: 12px 14px;
-      border: 0;
-      border-left: 4px solid var(--lh-blue);
-      border-radius: 2px;
-      color: #34476d;
+      --lh-toast-color: #3f80c7;
+      display: grid;
+      grid-template-columns: 18px minmax(0, 1fr) 24px;
+      align-items: start;
+      gap: 12px;
+      width: min(450px, calc(100vw - 32px));
+      max-width: 450px;
+      min-height: 48px;
+      padding: 14px 16px;
+      border: 1px solid var(--lh-toast-color);
+      border-radius: 4px;
+      color: #231f20;
       background: #fff;
-      box-shadow: 0 4px 16px rgba(35, 31, 32, .3);
+      box-shadow: 0 4px 10px rgba(35, 31, 32, .16);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .lh-toast.is-warning { --lh-toast-color: #ff821c; }
+    .lh-toast.is-error { --lh-toast-color: #df1838; }
+    .lh-toast-icon {
+      display: grid;
+      width: 16px;
+      height: 16px;
+      place-items: center;
+      margin-top: 2px;
+      border: 1px solid var(--lh-toast-color);
+      border-radius: 50%;
+      color: var(--lh-toast-color);
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .lh-toast.is-warning .lh-toast-icon {
+      border: 0;
+      border-radius: 0;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .lh-toast-message { min-width: 0; }
+    .lh-toast-close {
+      width: 24px;
+      height: 24px;
+      margin: -4px -5px 0 0;
+      padding: 0;
+      border: 0;
+      color: #58595b;
+      background: transparent;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1;
+      cursor: pointer;
     }
 
     @media (max-width: 1100px) {
@@ -1920,14 +2052,697 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* JANA Platform UI v1.42.4 alignment (dev @ 19e1f4b). */
+    #lh-ops-refinement {
+      --lh-navy: #1f355e;
+      --lh-navy-hover: #192946;
+      --lh-blue: #82acff;
+      --lh-blue-dark: #6686c7;
+      --lh-cyan: #4193c4;
+      --lh-green: #55c390;
+      --lh-safe: #14b025;
+      --lh-amber: #f68121;
+      --lh-red: #d01f31;
+      --lh-pink: #d01f31;
+      --lh-ink: #231f20;
+      --lh-muted: #808285;
+      --lh-bg: #f2f3f4;
+      --lh-panel: #fff;
+      --lh-soft: #e4e5e6;
+      --lh-border: #d1d3d4;
+      color: #231f20;
+      font-family: "Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .lh-planbar {
+      padding-right: 16px;
+      padding-left: 32px;
+      border-bottom-color: #d1d3d4;
+      color: #808285;
+      background: #f2f3f4;
+      font-size: 12px;
+    }
+
+    .lh-planbar-label strong { color: #231f20; font-weight: 600; }
+    .lh-planbar-options { border-color: #d1d3d4; border-radius: 4px; }
+    .lh-planbar-button { border-radius: 2px; color: #808285; font-size: 12px; font-weight: 500; }
+    .lh-planbar-button.is-active { color: #fff; background: #1f355e; }
+
+    .lh-topbar {
+      height: 56px;
+      gap: 24px;
+      padding-right: 16px;
+      padding-left: 32px;
+      background: #1f355e;
+    }
+
+    .lh-brand { height: 56px; font-size: 20px; font-weight: 500; }
+    .lh-brand svg { color: #82acff; }
+    .lh-main-nav { gap: 4px; }
+    .lh-main-nav > span,
+    .lh-refinement-trigger,
+    .lh-data-management-trigger {
+      min-height: 32px;
+      align-self: center;
+      padding: 0 12px;
+      border-radius: 4px;
+      color: rgba(255,255,255,.7);
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 1;
+    }
+
+    .lh-main-nav > span:hover,
+    .lh-refinement-trigger:hover,
+    .lh-data-management-trigger:hover {
+      color: #fff;
+      background: rgba(255,255,255,.05);
+    }
+
+    .lh-main-nav > span.is-active,
+    .lh-refinement-trigger.is-active,
+    .lh-data-management-trigger.is-active,
+    .lh-data-management-nav.is-open .lh-data-management-trigger {
+      color: #fff;
+      background: rgba(255,255,255,.1);
+      font-weight: 500;
+    }
+
+    .lh-scope-button,
+    .lh-profile-trigger {
+      min-height: 32px;
+      border-radius: 4px;
+      color: rgba(255,255,255,.7);
+      background: transparent;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .lh-scope-button:hover,
+    .lh-profile-trigger:hover,
+    .lh-profile.is-open .lh-profile-trigger {
+      color: #fff;
+      background: rgba(255,255,255,.05);
+    }
+
+    .lh-profile-identity strong { color: #fff; font-size: 12px; font-weight: 500; }
+    .lh-profile-identity small { color: rgba(255,255,255,.7); font-size: 10px; }
+
+    .lh-refinement-menu,
+    .lh-data-management-menu,
+    .lh-profile-menu {
+      padding: 8px 0;
+      border: 0;
+      border-radius: 4px;
+      box-shadow: 0 4px 16px rgba(35,31,32,.3);
+    }
+
+    .lh-refinement-option,
+    .lh-data-management-option,
+    .lh-profile-option {
+      min-height: 32px;
+      padding: 6px 16px;
+      border: 0;
+      color: #231f20;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .lh-refinement-option:hover,
+    .lh-refinement-option:focus-visible,
+    .lh-data-management-option:hover,
+    .lh-data-management-option:focus-visible,
+    .lh-profile-option:hover,
+    .lh-profile-option:focus-visible {
+      color: #231f20;
+      background: #f2f3f4;
+    }
+
+    .lh-refinement-option.is-active,
+    .lh-data-management-option.is-active {
+      color: #231f20;
+      background: #ebf1ff;
+      font-weight: 400;
+    }
+
+    .lh-page-head {
+      min-height: 80px;
+      padding: 16px 32px;
+      background: #fff;
+    }
+
+    .lh-page-head h1 { margin-top: 4px; font-size: 20px; font-weight: 600; }
+    .lh-page-head p { color: #808285; font-size: 14px; }
+    .lh-eyebrow { color: #808285; font-size: 12px; font-weight: 500; }
+    .lh-field-label { color: #231f20; font-size: 14px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+    .lh-kicker { color: #808285; font-size: 12px; font-weight: 500; letter-spacing: 0; text-transform: none; }
+    #lh-screen-host { width: min(100%, 1676px); margin: 0 auto; padding: 32px; }
+    #lh-ops-refinement.lh-data-transfer-route #lh-screen-host {
+      width: 100%;
+      max-width: none;
+      padding: 8px 0 0;
+    }
+    #lh-ops-refinement.lh-data-history-route #lh-screen-host {
+      padding: 0 32px 32px;
+    }
+    #lh-ops-refinement .lh-data-load-history {
+      gap: 0;
+    }
+    #lh-ops-refinement .lh-data-load-history-toolbar {
+      min-height: 80px;
+    }
+
+    .lh-button,
+    #lh-ops-refinement .lh-data-transfer-check,
+    #lh-ops-refinement .lh-run-config-action .lh-button,
+    #lh-ops-refinement .lh-cof-preparation .lh-card-head .lh-button {
+      min-height: 40px;
+      padding: 8px 24px;
+      border: 2px solid #1f355e;
+      border-radius: 4px;
+      color: #1f355e;
+      background: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: 20px;
+      text-transform: none;
+    }
+
+    .lh-button:hover,
+    #lh-ops-refinement .lh-data-transfer-check:hover,
+    #lh-ops-refinement .lh-run-config-action .lh-button:hover,
+    #lh-ops-refinement .lh-cof-preparation .lh-card-head .lh-button:hover {
+      border-color: #1f355e;
+      color: #fff;
+      background: #1f355e;
+    }
+
+    .lh-button.primary,
+    #lh-ops-refinement .lh-data-transfer-check,
+    #lh-ops-refinement .lh-run-config-action .lh-button,
+    #lh-ops-refinement .lh-cof-preparation .lh-card-head .lh-button {
+      border-color: transparent;
+      color: #fff;
+      background: #1f355e;
+    }
+
+    .lh-button.primary:hover,
+    #lh-ops-refinement .lh-data-transfer-check:hover,
+    #lh-ops-refinement .lh-run-config-action .lh-button:hover,
+    #lh-ops-refinement .lh-cof-preparation .lh-card-head .lh-button:hover {
+      border-color: transparent;
+      color: #fff;
+      background: #192946;
+    }
+
+    .lh-button:active,
+    .lh-button.primary:active { background: #231f20; }
+    .lh-button:disabled,
+    #lh-ops-refinement .lh-data-transfer-check:disabled,
+    #lh-ops-refinement .lh-run-config-action .lh-button:disabled,
+    #lh-ops-refinement .lh-cof-preparation .lh-card-head .lh-button:disabled {
+      border-color: transparent;
+      color: #58595b;
+      background: #d1d3d4;
+      cursor: not-allowed;
+      opacity: .7;
+    }
+
+    .lh-button.small { min-height: 32px; padding: 4px 16px; font-size: 14px; }
+    .lh-button.danger { border-color: #d01f31; color: #d01f31; background: #fff; }
+    .lh-button.danger:hover { border-color: #d01f31; color: #fff; background: #d01f31; }
+
+    .lh-tabs {
+      min-height: 40px;
+      gap: 0;
+      padding: 0 32px;
+      border-top: 0;
+      border-bottom: 1px solid #d1d3d4;
+      background: #fff;
+    }
+
+    .lh-tab {
+      min-height: 40px;
+      padding: 0 16px;
+      border-radius: 0;
+      color: #a7a9ac;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .lh-tab:hover { color: #808285; background: #f2f3f4; }
+    .lh-tab.is-active {
+      color: #82acff;
+      background: #fff;
+      box-shadow: inset 0 -2px 0 #82acff;
+      font-weight: 500;
+    }
+    .lh-tab[disabled] { color: #a7a9ac; opacity: .7; }
+
+    .lh-screen,
+    .lh-grid { gap: 16px; }
+
+    .lh-card {
+      padding: 0 24px 24px;
+      border: 0;
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(35,31,32,.15);
+    }
+
+    .lh-card.compact { padding: 0 16px 16px; }
+    .lh-card-head {
+      min-height: 48px;
+      margin: 0 -24px 24px;
+      padding: 0 24px;
+      border-bottom: 1px solid #d1d3d4;
+    }
+    .lh-card.compact .lh-card-head { margin-right: -16px; margin-left: -16px; padding-right: 16px; padding-left: 16px; }
+    .lh-card-head h3 { color: #231f20; font-size: 14px; font-weight: 700; }
+    .lh-card-head p { color: #808285; font-size: 12px; }
+
+    .lh-cof-preparation:not(.is-running) { padding-bottom: 0; }
+    .lh-cof-preparation:not(.is-running) .lh-card-head { margin-bottom: 0; border-bottom: 0; }
+
+    .lh-input,
+    .lh-select {
+      min-height: 40px;
+      padding: 8px 12px;
+      border: 1px solid #d1d3d4;
+      border-radius: 2px;
+      color: #231f20;
+      background: #fff;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    textarea.lh-input { min-height: 80px; padding: 12px 16px; resize: none; }
+    .lh-input::placeholder { color: #808285; opacity: 1; }
+    .lh-input:hover,
+    .lh-select:hover { border-color: #a7a9ac; }
+    .lh-input:focus,
+    .lh-select:focus {
+      border-color: #82acff;
+      outline: 0;
+      box-shadow: none;
+    }
+    .lh-input:disabled,
+    .lh-select:disabled,
+    .lh-readonly-input { color: #808285; background: #f2f3f4; }
+    .lh-input.is-valid,
+    .lh-select.is-valid { border-color: #14b025; box-shadow: none; }
+    .lh-input.is-invalid,
+    .lh-select.is-invalid { border-color: #d01f31; box-shadow: none; }
+    .lh-help { color: #808285; font-size: 12px; }
+
+    .lh-table-wrap {
+      border: 0;
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(35,31,32,.2);
+    }
+    .lh-table { font-size: 14px; }
+    .lh-table th {
+      height: 48px;
+      padding: 0 16px;
+      border-bottom: 1px solid #d1d3d4;
+      color: #231f20;
+      background: #f2f3f4;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .lh-table td {
+      height: 48px;
+      padding: 0 16px;
+      border-top: 1px solid #d1d3d4;
+    }
+    .lh-table tbody tr:hover { background: #f2f3f4; }
+
+    .lh-pill {
+      min-height: 28px;
+      max-width: 160px;
+      padding: 4px 8px;
+      border: 1px solid #c7daff;
+      border-radius: 4px;
+      color: #231f20;
+      background: #ebf1ff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .lh-pill.good { border-color: #aae1c8; color: #231f20; background: #eaf8f1; }
+    .lh-pill.warn { border-color: #f68121; color: #231f20; background: #fff3e9; }
+    .lh-pill.bad { border-color: #d01f31; color: #231f20; background: #fcebed; }
+    .lh-pill.info { border-color: #c7daff; color: #231f20; background: #ebf1ff; }
+
+    .lh-data-load-layout,
+    .lh-run-config-layout {
+      border-color: #d1d3d4;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(35,31,32,.15);
+    }
+    .lh-data-load-layout {
+      width: 100%;
+      grid-template-columns: minmax(360px, 33.333%) minmax(0, 66.667%);
+      min-height: calc(100vh - 220px);
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      box-shadow: none;
+    }
+    .lh-data-load-config,
+    .lh-run-config-info { padding: 24px; background: #f2f3f4; }
+    .lh-data-load-selection,
+    .lh-run-config-upload { padding: 24px; border-left-color: #d1d3d4; }
+    .lh-data-load-config {
+      padding: 16px 40px 24px 32px;
+      background: #f2f3f4;
+    }
+    .lh-data-load-selection {
+      min-height: inherit;
+      padding: 16px 40px 24px;
+      border-left: 1px solid #d1d3d4;
+      background: #fff;
+    }
+    .lh-run-config-upload .lh-upload-card,
+    .lh-upload-card {
+      border-color: #d1d3d4;
+      border-radius: 2px;
+      background: #fff;
+    }
+    .lh-run-config-upload .lh-upload-card.current,
+    .lh-upload-card.current { border-color: #14b025; background: #fff; }
+    .lh-run-config-upload .lh-upload-card.is-invalid,
+    .lh-upload-card.is-invalid { border-color: #d01f31; background: #fff; }
+
+    .lh-factor-item,
+    .lh-config-section,
+    .lh-check,
+    .lh-run-step,
+    .lh-scenario {
+      border-color: #d1d3d4;
+      border-radius: 4px;
+      background: #fff;
+    }
+    .lh-factor-item.is-open,
+    .lh-scenario.is-active,
+    .lh-scope-option.is-active {
+      border-color: #82acff;
+      background: #ebf1ff;
+      box-shadow: none;
+    }
+    .lh-factor-item.is-open .lh-factor-toggle { background: #ebf1ff; }
+
+    .lh-kpi {
+      padding: 16px;
+      border: 0;
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(35,31,32,.15);
+    }
+    .lh-kpi .label { color: #808285; font-size: 12px; font-weight: 500; }
+    .lh-kpi .value { color: #231f20; font-size: 20px; font-weight: 600; }
+    .lh-kpi .sub { color: #808285; font-size: 12px; }
+    #lh-ops-refinement.lh-data-progress-route .lh-data-progress-summary .lh-kpi .sub,
+    #lh-ops-refinement.lh-data-progress-route .lh-data-progress-summary .lh-kpi .sub.good,
+    #lh-ops-refinement.lh-data-progress-route .lh-data-progress-summary .lh-kpi .sub.bad {
+      color: #231f20;
+    }
+    .lh-in-progress-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #231f20;
+      white-space: nowrap;
+    }
+    .lh-in-progress-spinner {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      flex: 0 0 20px;
+      border: 3px solid #82acff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: lh-spin .8s linear infinite;
+    }
+    @keyframes lh-spin {
+      to { transform: rotate(360deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .lh-in-progress-spinner { animation-duration: 1.8s; }
+    }
+
+    .lh-modal { border-radius: 4px; box-shadow: 0 4px 16px rgba(35,31,32,.3); }
+    .lh-modal-head { min-height: 48px; padding: 0 24px; color: #231f20; background: #fff; border-bottom: 1px solid #d1d3d4; }
+    .lh-modal-head h2 { font-size: 14px; font-weight: 700; }
+    .lh-modal-close { color: #231f20; }
+    .lh-modal-close:hover,
+    .lh-modal-close:focus-visible { color: #1f355e; background: #f2f3f4; outline: none; }
+    .lh-modal-body { padding: 24px; }
+    .lh-modal-footer { padding: 16px 24px; border-top: 1px solid #d1d3d4; background: #fff; }
+
+    #lh-ops-refinement .lh-modal[data-transfer-modal] {
+      width: min(496px, calc(100vw - 48px));
+      border: 0;
+      border-radius: 4px;
+      box-shadow: 0 4px 16px rgba(35,31,32,.3);
+    }
+    #lh-ops-refinement .lh-modal[data-transfer-modal] .lh-modal-head {
+      min-height: 60px;
+      padding: 0 24px;
+    }
+    #lh-ops-refinement .lh-modal[data-transfer-modal] .lh-modal-head h2 {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 24px;
+    }
+    #lh-ops-refinement .lh-modal[data-transfer-modal] .lh-modal-close {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      color: transparent;
+      font-size: 0;
+    }
+    #lh-ops-refinement .lh-modal[data-transfer-modal] .lh-modal-close::before,
+    #lh-ops-refinement .lh-modal[data-transfer-modal] .lh-modal-close::after {
+      position: absolute;
+      top: 19px;
+      left: 11px;
+      width: 18px;
+      height: 2px;
+      border-radius: 1px;
+      background: #231f20;
+      content: "";
+    }
+    #lh-ops-refinement .lh-modal[data-transfer-modal] .lh-modal-close::before {
+      transform: rotate(45deg);
+    }
+    #lh-ops-refinement .lh-modal[data-transfer-modal] .lh-modal-close::after {
+      transform: rotate(-45deg);
+    }
+    #lh-ops-refinement .lh-modal[data-transfer-modal] .lh-modal-body { padding: 24px; }
+    #lh-ops-refinement .lh-modal[data-transfer-modal] .lh-value-row {
+      grid-template-columns: minmax(180px, .8fr) minmax(0, 1.2fr);
+      min-height: 44px;
+      padding: 10px 6px;
+      color: #231f20;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    #lh-ops-refinement .lh-modal[data-transfer-modal] .lh-value-row > span:first-child {
+      color: #231f20;
+      font-weight: 500;
+    }
+    #lh-ops-refinement .lh-modal[data-transfer-modal] .lh-value-row strong {
+      color: #58595b;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    #lh-ops-refinement .lh-modal[data-transfer-modal] .lh-modal-footer { padding: 8px 16px; }
+    #lh-ops-refinement .lh-modal[data-transfer-modal] .lh-modal-footer [data-transfer-modal-close] {
+      min-height: 40px;
+      padding: 8px 16px;
+      border-color: transparent;
+      color: #1f355e;
+      background: transparent;
+    }
+    #lh-ops-refinement .lh-modal[data-transfer-modal] .lh-modal-footer [data-transfer-modal-close]:hover {
+      border-color: transparent;
+      color: #1f355e;
+      background: #f2f3f4;
+    }
+
+    .lh-data-load-column-menu { padding: 8px 0; border-radius: 4px; color: #231f20; background: #fff; box-shadow: 0 4px 16px rgba(35,31,32,.3); }
+    .lh-data-load-column-menu button,
+    .lh-data-load-column-option { min-height: 32px; padding: 6px 16px; font-size: 14px; }
+    .lh-data-load-column-menu button:hover,
+    .lh-data-load-column-option:hover { background: #f2f3f4; }
+
+    #lh-ops-refinement .lh-button {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+    }
+    #lh-ops-refinement .lh-button.small { font-size: 14px; font-weight: 600; }
+    #lh-ops-refinement .lh-tab { font-size: 14px; font-weight: 500; }
+    #lh-ops-refinement .lh-tab.is-active { font-weight: 500; }
+    #lh-ops-refinement .lh-tab { text-transform: uppercase; }
+    #lh-ops-refinement.lh-data-transfer-route .lh-data-load-layout .lh-kicker {
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    #lh-ops-refinement.lh-data-progress-route .lh-data-progress-page .lh-kicker {
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    .lh-data-view-route .lh-page-head {
+      min-height: 80px;
+      padding: 16px 32px;
+    }
+    .lh-data-view-route .lh-page-head h1 { margin-top: 4px; font-size: 20px; line-height: 1.5; }
+    .lh-data-view-route .lh-tabs { min-height: 40px; padding: 0 32px; }
+    .lh-data-view-route #lh-screen-host { padding: 32px; }
+
+    .lh-data-view-group { margin-top: 32px; }
+    .lh-data-view-group-title { font-size: 20px; font-weight: 500; }
+    .lh-data-view-card-grid { gap: 16px; padding-top: 24px; }
+    .lh-data-view-card {
+      height: 48px;
+      padding: 0 16px;
+      border-radius: 4px;
+      color: #231f20;
+      box-shadow: 0 2px 4px rgba(35,31,32,.15);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .lh-data-view-card:hover,
+    .lh-data-view-card:focus-visible {
+      color: #231f20;
+      background: #f2f3f4;
+      box-shadow: 0 2px 4px rgba(35,31,32,.15);
+    }
+
+    .lh-data-load-table .lh-table { font-size: 14px; }
+    .lh-data-load-table .lh-table th,
+    .lh-transfer-progress-table .lh-table th {
+      height: 48px;
+      padding: 0;
+      color: #231f20;
+      background: #f2f3f4;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .lh-data-load-table .lh-table td,
+    .lh-transfer-progress-table .lh-table td {
+      height: 48px;
+      padding: 0 16px;
+      background: #fff;
+    }
+    .lh-data-load-table .lh-table tbody tr:hover td { background: #f2f3f4; }
+    .lh-data-load-head-cell { height: 48px; padding-left: 16px; }
+    .lh-data-load-menu-trigger { height: 48px; }
+    .lh-transfer-progress-table .lh-transfer-column-head {
+      width: 100%;
+      height: 48px;
+      padding: 0 16px;
+    }
+    .lh-transfer-progress-table th[data-transfer-progress-heading] {
+      position: relative;
+    }
+    .lh-transfer-progress-table .lh-transfer-column-head .lh-data-load-menu-dots {
+      margin-left: 16px;
+    }
+    .lh-transfer-progress-table .lh-table th:first-child {
+      padding: 0 16px;
+    }
+    .lh-transfer-progress-table .lh-table {
+      min-width: 900px;
+      table-layout: fixed;
+    }
+    .lh-transfer-progress-table .lh-table th:nth-child(1) { width: 6%; }
+    .lh-transfer-progress-table .lh-table th:nth-child(2) { width: 25%; }
+    .lh-transfer-progress-table .lh-table th:nth-child(3) { width: 27%; }
+    .lh-transfer-progress-table .lh-table th:nth-child(4) { width: 22%; }
+    .lh-transfer-progress-table .lh-table th:nth-child(5) { width: 15%; }
+    .lh-transfer-progress-table .lh-table th:nth-child(6) { width: 5%; }
+    .lh-transfer-progress-table .lh-table td {
+      font-weight: 400;
+    }
+
+    .lh-data-history-page-size select {
+      height: 40px;
+      padding: 8px 12px;
+      border-color: #d1d3d4;
+      border-radius: 2px;
+      color: #231f20;
+      font-size: 14px;
+    }
+    #lh-ops-refinement .lh-data-history-page-size { color: #231f20; font-size: 14px; font-weight: 600; }
+    #lh-ops-refinement.lh-data-transfer-route .lh-data-selection-head {
+      min-height: 32px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    #lh-ops-refinement.lh-data-transfer-route .lh-scope-options {
+      height: 32px;
+      border-radius: 4px;
+    }
+    #lh-ops-refinement.lh-data-transfer-route .lh-scope-option {
+      height: 32px;
+      min-height: 32px;
+      padding: 0 12px;
+      color: #231f20;
+      background: #ebf1ff;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    #lh-ops-refinement.lh-data-transfer-route .lh-scope-option.is-active {
+      color: #231f20;
+      background: #ebf1ff;
+    }
+    #lh-ops-refinement.lh-data-transfer-route .lh-data-load-table[data-data-load-scope="full"] .lh-table {
+      table-layout: fixed;
+    }
+    #lh-ops-refinement.lh-data-transfer-route .lh-data-load-table[data-data-load-scope="full"] th:nth-child(1) { width: 22%; }
+    #lh-ops-refinement.lh-data-transfer-route .lh-data-load-table[data-data-load-scope="full"] th:nth-child(2) { width: 26%; }
+    #lh-ops-refinement.lh-data-transfer-route .lh-data-load-table[data-data-load-scope="full"] th:nth-child(3) { width: 29%; }
+    #lh-ops-refinement.lh-data-transfer-route .lh-data-load-table[data-data-load-scope="full"] th:nth-child(4) { width: 23%; }
+
+    #lh-ops-refinement button:focus-visible,
+    #lh-ops-refinement select:focus-visible,
+    #lh-ops-refinement input:focus-visible,
+    #lh-ops-refinement textarea:focus-visible {
+      outline: 1px solid #fff;
+      outline-offset: -3px;
+      box-shadow: 0 0 0 2px #82acff;
+    }
+
+    @media (max-width: 720px) {
+      .lh-planbar,
+      .lh-topbar { padding-right: 16px; padding-left: 16px; }
+      .lh-page-head,
+      #lh-screen-host { padding-right: 24px; padding-left: 24px; }
+      .lh-tabs { padding-right: 8px; padding-left: 8px; overflow-x: auto; }
+    }
   </style>
 
   <div class="lh-planbar" aria-label="Prototype delivery phase">
-    <div class="lh-planbar-label"><strong>Setup</strong><span>Prototype delivery phase</span></div>
+    <div class="lh-planbar-label"><strong>Configuration</strong><span>Prototype delivery phase</span></div>
     <div class="lh-planbar-options">
-      <button class="lh-planbar-button is-active" type="button" data-global-phase="1">Phase 1</button>
-      <button class="lh-planbar-button" type="button" data-global-phase="2">Phase 2</button>
-      <button class="lh-planbar-button" type="button" data-global-phase="3">Phase 3</button>
+      <button class="lh-planbar-button is-active" type="button" data-global-phase="1">F27Q2</button>
+      <button class="lh-planbar-button" type="button" data-global-phase="2">F27Q3</button>
+      <button class="lh-planbar-button" type="button" data-global-phase="3">Future Scope</button>
     </div>
   </div>
   <header class="lh-topbar">
@@ -1942,8 +2757,8 @@
     </a>
     <nav class="lh-main-nav" aria-label="Primary navigation">
       <div class="lh-refinement-nav" id="lh-refinement-nav">
-        <button class="lh-refinement-trigger is-active" id="lh-refinement-trigger" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="lh-refinement-menu">Setup</button>
-        <div class="lh-refinement-menu" id="lh-refinement-menu" role="menu" aria-label="Setup pages">
+        <button class="lh-refinement-trigger is-active" id="lh-refinement-trigger" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="lh-refinement-menu">Configuration</button>
+        <div class="lh-refinement-menu" id="lh-refinement-menu" role="menu" aria-label="Configuration pages">
           <button class="lh-refinement-option is-active" type="button" role="menuitem" data-module="data">Data Load</button>
           <button class="lh-refinement-option" type="button" role="menuitem" data-module="lof">LoF Run</button>
           <button class="lh-refinement-option" type="button" role="menuitem" data-module="cof">CoF Run</button>
@@ -1985,7 +2800,7 @@
   <div class="lh-shell">
     <main class="lh-main">
       <div class="lh-page-head">
-        <div><div class="lh-eyebrow" id="lh-eyebrow">Setup</div><h1 id="lh-page-title">Data Load</h1><p id="lh-page-subtitle" hidden></p></div>
+        <div><div class="lh-eyebrow" id="lh-eyebrow">Configuration</div><h1 id="lh-page-title">Data Load</h1><p id="lh-page-subtitle" hidden></p></div>
         <div class="lh-page-tools">
           <div class="lh-actions"><button class="lh-button" type="button" data-page-action="save" data-toast="View saved for the Operations team.">Save view</button><button class="lh-button" type="button" data-page-action="export" data-toast="Export package prepared with tables, charts, and issue references.">Export</button><button class="lh-button primary" type="button" id="lh-primary-action">Start data transfer</button></div>
         </div>
@@ -2006,7 +2821,7 @@
       <div id="lh-screen-host"></div>
     </main>
   </div>
-  <div class="lh-toast" id="lh-toast"></div>
+  <div class="lh-toast" id="lh-toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
   <script>
     (() => {
@@ -2088,6 +2903,10 @@
       let dataLoadColumnChooserOpen = false;
       let dataLoadSort = {column:'',direction:''};
       const dataLoadHiddenColumns = new Set();
+      let transferProgressColumnMenu = '';
+      let transferProgressColumnChooserOpen = false;
+      let transferProgressSort = {column:'',direction:''};
+      const transferProgressHiddenColumns = new Set();
       let dataHistoryColumnMenu = '';
       let dataHistoryColumnChooserOpen = false;
       let dataHistorySort = {column:'',direction:''};
@@ -2112,8 +2931,16 @@
       let cofCheckModalOpen = false;
       let cofConfigCheckAttempted = false;
       let cofConfigUpload = {name:'',size:0,status:'',error:''};
+      let cofConfigError = null;
       let cofGuidedConfigUpload = {name:'',status:'',error:''};
       const cofGeneralValues = {name:'',reason:''};
+      let cofProgressRun = null;
+      const cofDataPreparationByPhase = Object.fromEntries(['1','2','3'].map(phase => [phase,{
+        status:'not-started',
+        startedAt:0,
+        completedAt:0,
+        timerId:null
+      }]));
       let selectedCofConfigScenario = 'RI';
       let riskConfigUpload = {name:'',size:0,status:'',error:''};
       const cofScenarioConfigNames = {PLI:'Pinhole · ignition',PLNI:'Pinhole · no ignition',MLI:'Medium leak · ignition',MLNI:'Medium leak · no ignition',LLI:'Large leak · ignition',LLNI:'Large leak · no ignition',RI:'Rupture · ignition',RNI:'Rupture · no ignition'};
@@ -2175,10 +3002,10 @@
       const dataTransferReadiness = () => {
         const summary = dataTransferSummary();
         return `
-          <div class="lh-value-row"><span>Transfer name</span><strong>${escapeHtml(dataTransferValues.name)}</strong><span></span></div>
+          <div class="lh-value-row"><span>Transfer Name</span><strong>${escapeHtml(dataTransferValues.name)}</strong><span></span></div>
           <div class="lh-value-row"><span>Scope</span><strong>${summary.scope}</strong><span></span></div>
-          <div class="lh-value-row"><span>Estimated rows</span><strong>${summary.rows}</strong><span></span></div>
-          <div class="lh-value-row"><span>Estimated runtime</span><strong>${summary.runtime}</strong><span></span></div>`;
+          <div class="lh-value-row"><span>Estimated Rows</span><strong>${summary.rows}</strong><span></span></div>
+          <div class="lh-value-row"><span>Estimated Runtime</span><strong>${summary.runtime}</strong><span></span></div>`;
       };
       const dataTransferModal = () => !dataTransferModalOpen ? '' : `
         <div class="lh-modal-backdrop" data-transfer-modal-backdrop>
@@ -2220,7 +3047,7 @@
         const rows = scope === 'tables'
           ? transferTables.map(([name,group]) => ({key:name,name,group,transferred:'07/12/2021, 10:32 AM',lastRanBy:'Shaki Muttiah'}))
           : dataTransferGroups.map(([key,name,source,transferred,lastRanBy]) => ({key,name,source,transferred,lastRanBy}));
-        return `<div class="lh-table-wrap lh-data-load-table ${scope === 'tables' ? 'lh-scroll-table' : ''}"><table class="lh-table"><thead><tr>${selectable ? '<th class="lh-check-cell">Load</th>' : ''}${visibleColumns.map(([key,label]) => dataLoadHeader(key,label,columns)).join('')}</tr></thead><tbody>${sortDataLoadRows(rows).map(row => `<tr>${selectable ? `<td class="lh-check-cell"><input type="checkbox" ${scope === 'tables' ? `data-transfer-table="${row.key}"` : `data-transfer-group="${row.key}"`} ${(scope === 'tables' ? dataTransferValues.selectedTables : dataTransferValues.selectedGroups).includes(row.key) ? 'checked' : ''} aria-label="Load ${row.name.toLowerCase()}"/></td>` : ''}${visibleColumns.map(([key]) => `<td>${row[key]}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+        return `<div class="lh-table-wrap lh-data-load-table ${scope === 'tables' ? 'lh-scroll-table' : ''}" data-data-load-scope="${scope}"><table class="lh-table"><thead><tr>${selectable ? '<th class="lh-check-cell">Load</th>' : ''}${visibleColumns.map(([key,label]) => dataLoadHeader(key,label,columns)).join('')}</tr></thead><tbody>${sortDataLoadRows(rows).map(row => `<tr>${selectable ? `<td class="lh-check-cell"><input type="checkbox" ${scope === 'tables' ? `data-transfer-table="${row.key}"` : `data-transfer-group="${row.key}"`} ${(scope === 'tables' ? dataTransferValues.selectedTables : dataTransferValues.selectedGroups).includes(row.key) ? 'checked' : ''} aria-label="Load ${row.name.toLowerCase()}"/></td>` : ''}${visibleColumns.map(([key]) => `<td>${row[key]}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
       };
       const dataSelection = () => {
         const phaseThree = isPhase3();
@@ -2270,9 +3097,28 @@
         const seconds = Math.max(0,Math.round((end - dataTransferRun.startedAt) / 1000));
         return seconds < 60 ? `${seconds} sec` : `${Math.floor(seconds / 60)} min ${seconds % 60} sec`;
       };
-      const transferColumnHeader = label => `<span class="lh-transfer-column-head"><span>${label}</span><span class="lh-data-load-menu-dots" aria-hidden="true"><i></i><i></i><i></i></span></span>`;
+      const transferProgressColumns = [
+        ['name','Table'],
+        ['group','Data Group'],
+        ['status','Status'],
+        ['runtime','Runtime']
+      ];
+      const visibleTransferProgressColumn = key => !transferProgressHiddenColumns.has(key);
+      const transferProgressMenuContent = () => `
+        <button type="button" data-transfer-progress-sort="asc"><span class="lh-data-load-menu-icon">↑</span><span>Sort Ascending</span></button>
+        <button type="button" data-transfer-progress-sort="desc"><span class="lh-data-load-menu-icon">↓</span><span>Sort Descending</span></button>
+        <button type="button" data-transfer-progress-choose-columns><span class="lh-data-load-menu-icon">▥</span><span>Choose Columns</span></button>
+        ${transferProgressColumnChooserOpen ? `<div class="lh-data-load-column-options">${transferProgressColumns.map(([key,label]) => `<label class="lh-data-load-column-option"><input type="checkbox" data-transfer-progress-column="${key}" ${visibleTransferProgressColumn(key) ? 'checked' : ''}/><span>${label}</span></label>`).join('')}</div>` : ''}`;
+      const transferColumnHeader = (key,label) => {
+        const open = transferProgressColumnMenu === key;
+        const sortIndicator = transferProgressSort.column === key ? `<span class="lh-data-load-sort-indicator">${transferProgressSort.direction === 'asc' ? '↑' : '↓'}</span>` : '';
+        return `<th data-transfer-progress-heading="${key}"><div class="lh-transfer-column-head"><span>${label}${sortIndicator}</span><button class="lh-data-load-menu-trigger" type="button" data-transfer-progress-menu="${key}" aria-label="Open ${label} column menu" aria-expanded="${open}"><span class="lh-data-load-menu-dots" aria-hidden="true"><i></i><i></i><i></i></span></button></div>${open ? `<div class="lh-data-load-column-menu" role="menu">${transferProgressMenuContent()}</div>` : ''}</th>`;
+      };
+      const inProgressStatus = () => '<span class="lh-in-progress-status">In Progress<span class="lh-in-progress-spinner" aria-hidden="true"></span></span>';
+      const statusDisplay = status => ['In Progress','InProgress','In progress'].includes(status) ? inProgressStatus() : status;
+      const transferStatusLabel = status => status === 'not-started' ? 'Not started' : status === 'in-progress' ? 'In Progress' : status === 'completed' ? 'Completed' : 'Failed';
       const transferStatus = status => {
-        const label = status === 'not-started' ? 'Not started' : status === 'in-progress' ? 'In progress' : status === 'completed' ? 'Completed' : 'Failed';
+        const label = status === 'in-progress' ? inProgressStatus() : transferStatusLabel(status);
         return `<span class="lh-transfer-status">${label}</span>`;
       };
       const transferProgressContent = () => {
@@ -2286,6 +3132,22 @@
         },{'not-started':0,'in-progress':0,completed:0,failed:0});
         const finished = counts.completed + counts.failed;
         const progress = Math.round(finished / dataTransferRun.tables.length * 100);
+        const visibleColumns = transferProgressColumns.filter(([key]) => visibleTransferProgressColumn(key));
+        const columnWeights = {name:25,group:27,status:22,runtime:15};
+        const visibleWeight = visibleColumns.reduce((total,[key]) => total + columnWeights[key],0);
+        const progressColgroup = `<colgroup><col style="width:6%">${visibleColumns.map(([key]) => `<col style="width:${columnWeights[key] / visibleWeight * 89}%">`).join('')}<col style="width:5%"></colgroup>`;
+        const progressRows = dataTransferRun.tables
+          .map((table,index) => ({table,index}))
+          .filter(({table}) => table.status !== 'not-started')
+          .sort((a,b) => {
+            if (!transferProgressSort.column) return a.index - b.index;
+            const key = transferProgressSort.column;
+            const value = ({table}) => key === 'runtime'
+              ? table.status === 'in-progress' ? Number.POSITIVE_INFINITY : Number.parseFloat(table.duration) || 0
+              : key === 'status' ? transferStatusLabel(table.status) : table[key];
+            const direction = transferProgressSort.direction === 'desc' ? -1 : 1;
+            return String(value(a)).localeCompare(String(value(b)),undefined,{numeric:true}) * direction;
+          });
         const selected = dataTransferRun.tables[selectedTransferFailure];
         const errorDetail = selected?.status === 'failed' ? `
           <section class="lh-card lh-transfer-error" role="region" aria-live="polite">
@@ -2310,8 +3172,8 @@
               <span class="lh-transfer-progress-meta"><small>${dataTransferRun.id} · Started ${transferTimestamp(dataTransferRun.startedAt)} · Elapsed ${transferElapsed()}</small></span>
             </div>
             <div class="lh-progress" aria-label="${progress}% of tables finished"><span style="width:${progress}%"></span></div>
-            <div class="lh-table-wrap lh-transfer-progress-table"><table class="lh-table"><thead><tr><th>#</th><th>${transferColumnHeader('Table')}</th><th>${transferColumnHeader('Data group')}</th><th>${transferColumnHeader('Status')}</th><th>${transferColumnHeader('Runtime')}</th><th class="lh-transfer-result-cell" aria-label="Result"></th></tr></thead><tbody>
-              ${dataTransferRun.tables.map((table,index) => ({table,index})).filter(({table}) => table.status !== 'not-started').map(({table,index}) => `<tr class="lh-transfer-row ${table.status === 'in-progress' ? 'is-active' : ''}" data-transfer-table-row="${index}"><td>${index + 1}</td><td class="strong">${escapeHtml(table.name)}</td><td>${table.group}</td><td>${transferStatus(table.status)}</td><td>${table.duration || '—'}</td><td class="lh-transfer-result-cell">${table.status === 'failed' ? `<button class="lh-transfer-failure-button" type="button" data-transfer-failure="${index}" aria-label="View failure details for ${escapeHtml(table.name)}" aria-expanded="${selectedTransferFailure === index}">!</button>` : ''}</td></tr>`).join('')}
+            <div class="lh-table-wrap lh-transfer-progress-table"><table class="lh-table">${progressColgroup}<thead><tr><th>#</th>${visibleColumns.map(([key,label]) => transferColumnHeader(key,label)).join('')}<th class="lh-transfer-result-cell" aria-label="Result"></th></tr></thead><tbody>
+              ${progressRows.map(({table,index}) => `<tr class="lh-transfer-row ${table.status === 'in-progress' ? 'is-active' : ''}" data-transfer-table-row="${index}"><td>${index + 1}</td>${visibleColumns.map(([key]) => `<td>${key === 'name' ? escapeHtml(table.name) : key === 'group' ? table.group : key === 'status' ? transferStatus(table.status) : table.status === 'in-progress' ? 'Calculating...' : table.duration || '—'}</td>`).join('')}<td class="lh-transfer-result-cell">${table.status === 'failed' ? `<button class="lh-transfer-failure-button" type="button" data-transfer-failure="${index}" aria-label="View failure details for ${escapeHtml(table.name)}" aria-expanded="${selectedTransferFailure === index}">!</button>` : ''}</td></tr>`).join('')}
             </tbody></table></div>
             ${errorDetail}
           </section>
@@ -2342,6 +3204,10 @@
       }
       function startDataTransfer() {
         if (dataTransferRun?.timerId) clearInterval(dataTransferRun.timerId);
+        Object.values(cofDataPreparationByPhase).forEach(preparation => {
+          if (preparation.timerId) clearInterval(preparation.timerId);
+          Object.assign(preparation,{status:'not-started',startedAt:0,completedAt:0,timerId:null});
+        });
         dataTransferModalOpen = false;
         const selectedTransferTables = !isPhase3() || dataTransferValues.scope === 'full'
           ? transferTables
@@ -2470,12 +3336,12 @@
         if (dataHistoryPage > totalPages) dataHistoryPage = totalPages;
         const pageRows = sortedRows.slice((dataHistoryPage - 1) * dataHistoryPageSize,dataHistoryPage * dataHistoryPageSize);
         return `
-          <div class="lh-data-history">
-            <div class="lh-data-history-toolbar">
-              <div class="lh-kicker">Data Load History</div>
+          <div class="lh-data-history lh-data-load-history">
+            <div class="lh-data-history-toolbar lh-data-load-history-toolbar">
+              <div class="lh-kicker">DATA LOAD HISTORY</div>
               <label class="lh-data-history-page-size"><span>Rows Per Page:</span><select data-data-history-page-size>${[15,30,50].map(size => `<option value="${size}" ${dataHistoryPageSize === size ? 'selected' : ''}>${size}</option>`).join('')}</select></label>
             </div>
-            <div class="lh-table-wrap lh-data-load-table lh-data-history-table"><table class="lh-table"><thead><tr>${visibleColumns.map(([key,label]) => dataHistoryHeader(key,label)).join('')}</tr></thead><tbody>${pageRows.map(row => `<tr>${visibleColumns.map(([key]) => `<td>${row[key]}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+            <div class="lh-table-wrap lh-data-load-table lh-data-history-table"><table class="lh-table"><thead><tr>${visibleColumns.map(([key,label]) => dataHistoryHeader(key,label)).join('')}</tr></thead><tbody>${pageRows.map(row => `<tr>${visibleColumns.map(([key]) => `<td>${key === 'status' ? statusDisplay(row[key]) : row[key]}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
             ${dataHistoryPagination(totalPages)}
           </div>`;
       };
@@ -2489,7 +3355,7 @@
         const remainingMinutes = wholeMinutes % 60;
         return `${String(hours).padStart(2,'0')}H${String(remainingMinutes).padStart(2,'0')}M`;
       };
-      const runHistoryCellValue = (row,key) => key === 'durationMinutes' ? formatDurationMinutes(row[key]) : row[key];
+      const runHistoryCellValue = (row,key) => key === 'durationMinutes' ? formatDurationMinutes(row[key]) : key === 'status' ? statusDisplay(row[key]) : row[key];
       const runHistoryGrid = (model,title,columns,rows) => {
         const state = runHistoryState[model];
         const visibleColumns = columns.filter(([key]) => !state.hiddenColumns.has(key));
@@ -3195,6 +4061,18 @@
         });
         Object.entries(nextValues).forEach(([scenario,values]) => Object.assign(cofScenarioConfigValues[scenario],values));
       };
+      const validatePhaseOneCofConfig = config => {
+        const cofConfig = isJsonObject(config?.cof) ? config.cof : config;
+        if (!isJsonObject(cofConfig)) throw new Error('The CoF configuration must be a JSON object.');
+        Object.keys(cofScenarioConfigNames).forEach(scenario => {
+          const values = cofConfig[scenario];
+          if (!isJsonObject(values)) throw new Error(`The "${scenario}" scenario object is required.`);
+          configNumberValue(values.impact_radius_ft,`"${scenario}.impact_radius_ft"`);
+          configNumberValue(values.fatality_weight,`"${scenario}.fatality_weight"`);
+          configNumberValue(values.injury_weight,`"${scenario}.injury_weight"`);
+          configNumberValue(values.property_damage_weight,`"${scenario}.property_damage_weight"`);
+        });
+      };
       const cofGuidedConfigUploadControl = () => `
         <div class="lh-guided-config-upload">
           <button class="lh-button" type="button" data-cof-guided-config-upload-trigger>Upload CoF config</button>
@@ -3225,11 +4103,11 @@
           <div class="lh-upload-card ${cofConfigUpload.status === 'valid' ? 'current' : cofConfigCheckAttempted ? 'is-invalid' : ''}">
             <div class="lh-kicker">Required configuration file</div>
             <strong>${cofConfigUpload.name ? escapeHtml(cofConfigUpload.name) : 'No JSON file selected'}</strong>
-            <small>${cofConfigUpload.status === 'valid' ? `Valid JSON · ${Math.max(1,Math.ceil(cofConfigUpload.size / 1024))} KB` : cofConfigUpload.error ? escapeHtml(cofConfigUpload.error) : 'Choose one .json file containing the full CoF consequence configuration.'}</small>
+            <small>${cofConfigUpload.status === 'valid' ? `.json file · ${Math.max(1,Math.ceil(cofConfigUpload.size / 1024))} KB` : cofConfigUpload.error ? escapeHtml(cofConfigUpload.error) : 'Choose one .json file containing the full CoF consequence configuration.'}</small>
             <div class="lh-inline">
               <button class="lh-button ${cofConfigCheckAttempted && cofConfigUpload.status !== 'valid' ? 'danger' : ''}" type="button" data-cof-config-upload-trigger>${cofConfigUpload.name ? 'Replace JSON file' : 'Choose JSON file'}</button>
               <input class="lh-file-input" type="file" accept=".json,application/json" data-cof-config-upload/>
-              ${cofConfigUpload.status === 'valid' ? pill('Validated','good') : pill('Required',cofConfigCheckAttempted ? 'bad' : 'info')}
+              ${cofConfigUpload.status === 'valid' ? pill('.json confirmed','good') : pill('Required',cofConfigCheckAttempted ? 'bad' : 'info')}
             </div>
           </div>
         </section>`;
@@ -3244,17 +4122,82 @@
                 <div class="lh-value-row"><span>CoF Name</span><strong>${escapeHtml(cofGeneralValues.name)}</strong>${pill('Ready','good')}</div>
                 <div class="lh-value-row"><span>Reason</span><strong>${escapeHtml(cofGeneralValues.reason)}</strong>${pill('Ready','good')}</div>
                 ${planPhase === '1'
-                  ? `<div class="lh-value-row"><span>File</span><strong>${escapeHtml(cofConfigUpload.name)}</strong>${pill('Valid JSON','good')}</div>`
+                  ? `<div class="lh-value-row"><span>File</span><strong>${escapeHtml(cofConfigUpload.name)}</strong>${pill('.json confirmed','good')}</div>`
                   : `<div class="lh-value-row"><span>Configuration</span><strong>8 consequence scenarios</strong>${pill('Guided','good')}</div>`}
               </section>
             </div>
             <footer class="lh-modal-footer"><button class="lh-button" type="button" data-cof-modal-close>Cancel</button><button class="lh-button primary" type="button" data-cof-start>Start CoF run</button></footer>
           </section>
         </div>`;
+      const cofDataPreparationDurationMs = 15000;
+      const cofDataPreparation = () => cofDataPreparationByPhase[planPhase];
+      const cofDataLoadComplete = () => !dataTransferRun || Boolean(
+        dataTransferRun.finishedAt && dataTransferRun.tables.every(table => table.status === 'completed')
+      );
+      const cofDataPreparationComplete = () => cofDataPreparation().status === 'completed';
+      const cofDataPreparationSnapshot = () => {
+        const preparation = cofDataPreparation();
+        const elapsedMs = preparation.status === 'not-started'
+          ? 0
+          : preparation.status === 'completed'
+            ? cofDataPreparationDurationMs
+            : Math.min(cofDataPreparationDurationMs,Math.max(0,Date.now() - preparation.startedAt));
+        return {preparation,progress:Math.floor(elapsedMs / cofDataPreparationDurationMs * 100)};
+      };
+      function updateCofDataPreparation(phase) {
+        const preparation = cofDataPreparationByPhase[phase];
+        if (!preparation || preparation.status !== 'in-progress') return;
+        if (Date.now() - preparation.startedAt >= cofDataPreparationDurationMs) {
+          preparation.status = 'completed';
+          preparation.completedAt = Date.now();
+          clearInterval(preparation.timerId);
+          preparation.timerId = null;
+        }
+        if (moduleName === 'cof' && viewName === 'run' && planPhase === phase) render();
+      }
+      function startCofDataPreparation() {
+        if (!cofDataLoadComplete()) {
+          showToast('Complete Data Load before starting CoF Data Preparation.');
+          return;
+        }
+        const phase = planPhase;
+        const preparation = cofDataPreparationByPhase[phase];
+        if (preparation.status === 'in-progress') return;
+        Object.assign(preparation,{status:'in-progress',startedAt:Date.now(),completedAt:0});
+        preparation.timerId = setInterval(() => updateCofDataPreparation(phase),250);
+        render();
+        showToast('CoF Data Preparation started. CoF will be available when preparation completes.');
+      }
+      const cofDataPreparationSection = () => {
+        const dataLoadComplete = cofDataLoadComplete();
+        const {preparation,progress} = cofDataPreparationSnapshot();
+        const inProgress = preparation.status === 'in-progress';
+        const complete = preparation.status === 'completed';
+        const actionLabel = complete ? 'Rerun Data Preparation' : inProgress ? 'Preparing Data…' : 'Start Data Preparation';
+        return `<section class="lh-card lh-cof-preparation ${inProgress ? 'is-running' : ''}">
+          <div class="lh-card-head">
+            <div><h3>CoF Data Preparation</h3><p>Please ensure LRS &amp; DS has ran before running data preparation.</p></div>
+            <button class="lh-button" type="button" data-cof-data-preparation ${!dataLoadComplete || inProgress ? 'disabled' : ''}>${actionLabel}</button>
+          </div>
+          ${inProgress ? `<div class="lh-cof-preparation-progress"><small>${progress}% complete</small><div class="lh-progress" aria-label="${progress}% of CoF Data Preparation complete"><span style="width:${progress}%"></span></div></div>` : ''}
+        </section>`;
+      };
+      const cofRunRequirement = () => cofDataPreparationComplete() ? '' : '<small class="lh-cof-run-requirement">Data Prepartion Missing</small>';
+      const cofConfigErrorModal = () => !cofConfigError ? '' : `
+        <div class="lh-modal-backdrop" data-cof-config-error-backdrop>
+          <section class="lh-modal" role="alertdialog" aria-modal="true" aria-labelledby="lh-cof-config-error-title" aria-describedby="lh-cof-config-error-message" data-cof-config-error-modal>
+            <header class="lh-modal-head"><h2 id="lh-cof-config-error-title">CoF configuration file error</h2><button class="lh-modal-close" type="button" aria-label="Close CoF configuration file error" data-cof-config-error-close>×</button></header>
+            <div class="lh-modal-body">
+              <div class="lh-banner bad"><span>!</span><span id="lh-cof-config-error-message"><strong>${escapeHtml(cofConfigError.name)} could not be verified.</strong> ${escapeHtml(cofConfigError.message)}</span></div>
+            </div>
+            <footer class="lh-modal-footer"><button class="lh-button primary" type="button" data-cof-config-error-close>Close</button></footer>
+          </section>
+        </div>`;
 
       const cofConfigureOnline = () => planPhase === '1' ? `
         <div class="lh-screen">
-          <section class="lh-run-config-layout">
+          ${cofDataPreparationSection()}
+          <section class="lh-run-config-layout lh-cof-config-layout">
             <div class="lh-run-config-info">
               <div class="lh-kicker">Configuration</div>
               <div class="lh-fields">
@@ -3265,13 +4208,15 @@
             <div class="lh-run-config-upload">
               <div class="lh-kicker">Configuration File</div>
               ${cofPhaseOneConfigUpload()}
-              <div class="lh-run-config-action"><button class="lh-button" type="button" data-cof-check>Run CoF</button></div>
+              <div class="lh-run-config-action"><div><button class="lh-button" type="button" data-cof-check ${cofDataPreparationComplete() ? '' : 'disabled'}>Run CoF</button>${cofRunRequirement()}</div></div>
             </div>
           </section>
           ${cofPhaseOneCheckModal()}
+          ${cofConfigErrorModal()}
         </div>` : planPhase === '2' ? `
         <div class="lh-screen">
-          <section class="lh-run-config-layout lh-guided-config-layout">
+          ${cofDataPreparationSection()}
+          <section class="lh-run-config-layout lh-guided-config-layout lh-cof-config-layout">
             <div class="lh-run-config-info">
               <div class="lh-kicker">Configuration</div>
               <div class="lh-fields">
@@ -3283,12 +4228,14 @@
               <div class="lh-kicker">CoF Scenario Configuration</div>
               ${cofScenarioConfigAccordion()}
               ${cofGuidedConfigUploadControl()}
-              <div class="lh-run-config-action"><button class="lh-button" type="button" data-cof-check>Run CoF</button></div>
+              <div class="lh-run-config-action"><div><button class="lh-button" type="button" data-cof-check ${cofDataPreparationComplete() ? '' : 'disabled'}>Run CoF</button>${cofRunRequirement()}</div></div>
             </div>
           </section>
           ${cofPhaseOneCheckModal()}
+          ${cofConfigErrorModal()}
         </div>` : `
         <div class="lh-screen">
+          ${cofDataPreparationSection()}
           ${card('General Configuration','',`
             <div class="lh-fields">
               <label class="lh-field lh-field-full"><span class="lh-field-label">CoF Name</span><input class="lh-input ${cofConfigCheckAttempted ? lofConfigValueMissing(cofGeneralValues.name) ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a name for this CoF run" ${cofConfigCheckAttempted && lofConfigValueMissing(cofGeneralValues.name) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Used to identify this CoF run in history</span></label>
@@ -3299,26 +4246,139 @@
             ${cofScenarioConfigAccordion()}
             ${cofGuidedConfigUploadControl()}
           `)}
-          <button class="lh-button primary" style="width:100%" type="button" data-cof-check>Run CoF</button>
+          <div class="lh-run-config-action"><div><button class="lh-button" type="button" data-cof-check ${cofDataPreparationComplete() ? '' : 'disabled'}>Run CoF</button>${cofRunRequirement()}</div></div>
           ${cofPhaseOneCheckModal()}
+          ${cofConfigErrorModal()}
         </div>`;
 
-      const cofPhaseOneProgress = () => `
-        <div class="lh-screen">
-          ${card('CoF Run Progress',`COF-018 · Phase ${planPhase} ${planPhase === '1' ? 'JSON' : 'guided'} configuration`,`
-            <div class="lh-kpis">
-              <div class="lh-kpi"><div class="label">Status</div><div class="value">Complete</div><div class="sub good">All consequence models processed</div></div>
-              <div class="lh-kpi"><div class="label">Scenarios</div><div class="value">8 / 8</div><div class="sub good">Pinhole through rupture</div></div>
-              <div class="lh-kpi"><div class="label">Duration</div><div class="value">${formatDurationMinutes(19)}</div><div class="sub">Completed 04 Sep 2026</div></div>
+      const cofProgressStepMs = 2000;
+      const cofScenarioCount = Object.keys(cofScenarioConfigNames).length;
+      const cofProgressSteps = [
+        'Clear previous CoF data',
+        'Verify CoF feature is enabled',
+        'Validate JSON configuration',
+        'Process CoF Models'
+      ];
+      const cofRunDurationMs = cofProgressSteps.length * cofProgressStepMs;
+      const cofRunSnapshot = () => {
+        const elapsedMs = cofProgressRun ? Math.min(cofRunDurationMs,Math.max(0,Date.now() - cofProgressRun.startedAt)) : 0;
+        const failed = cofProgressRun?.validationStatus === 'failed';
+        const complete = Boolean(cofProgressRun) && !failed && elapsedMs >= cofRunDurationMs;
+        const visibleStatusCount = cofProgressRun ? failed ? 3 : Math.min(cofProgressSteps.length,Math.floor(elapsedMs / cofProgressStepMs) + 1) : 0;
+        const overallProgress = failed ? 50 : complete ? 100 : Math.min(99,Math.floor(elapsedMs / cofRunDurationMs * 100));
+        const modelElapsedMs = Math.max(0,elapsedMs - cofProgressStepMs * 3);
+        const modelProgress = Math.min(1,modelElapsedMs / cofProgressStepMs);
+        return {
+          elapsedMs,
+          failed,
+          complete,
+          visibleStatusCount,
+          overallProgress,
+          processedScenarios:Math.round(cofScenarioCount * modelProgress)
+        };
+      };
+      const cofDurationMinutes = elapsedMs => Math.max(0,Math.round(elapsedMs / 60000));
+      const cofDurationLabel = elapsedMs => formatDurationMinutes(cofDurationMinutes(elapsedMs));
+      const cofStatusRows = snapshot => cofProgressSteps.slice(0,snapshot.visibleStatusCount).map((description,index) => {
+        const isCurrent = index === snapshot.visibleStatusCount - 1;
+        const status = snapshot.failed && index === 2
+          ? 'Error'
+          : snapshot.complete || !isCurrent
+            ? 'Completed'
+            : index === 0
+              ? 'Started'
+              : 'InProgress';
+        const createdAt = new Date(cofProgressRun.startedAt + index * cofProgressStepMs);
+        return `<tr data-cof-status-update="${index + 1}"><td>${index + 1}</td><td>${statusDisplay(status)}</td><td class="lh-model-status-description">${escapeHtml(description)}</td><td>${transferTimestamp(createdAt)}</td></tr>`;
+      }).join('');
+      const verifyCofProgressConfig = () => {
+        if (!cofProgressRun || cofProgressRun.validationStatus !== 'pending' || Date.now() - cofProgressRun.startedAt < cofProgressStepMs * 2) return;
+        try {
+          let config;
+          try {
+            config = JSON.parse(cofProgressRun.configText);
+          } catch (error) {
+            throw new Error(lofJsonSyntaxIssue(cofProgressRun.configText,error));
+          }
+          validatePhaseOneCofConfig(config);
+          cofProgressRun.validationStatus = 'valid';
+        } catch (error) {
+          cofProgressRun.validationStatus = 'failed';
+          cofProgressRun.validationError = error instanceof Error ? error.message : 'The CoF configuration file could not be verified.';
+          cofConfigError = {name:cofProgressRun.configName,message:cofProgressRun.validationError};
+          clearInterval(cofProgressRun.timerId);
+          cofProgressRun.timerId = null;
+        }
+      };
+      function updateCofRunProgress() {
+        if (!cofProgressRun) return;
+        verifyCofProgressConfig();
+        if (Date.now() - cofProgressRun.startedAt >= cofRunDurationMs) {
+          clearInterval(cofProgressRun.timerId);
+          cofProgressRun.timerId = null;
+        }
+        if (moduleName === 'cof' && viewName === 'results') {
+          render();
+          requestAnimationFrame(() => {
+            const statusTable = host.querySelector('[data-cof-status-table]');
+            if (statusTable) statusTable.scrollTop = statusTable.scrollHeight;
+          });
+        }
+      }
+      function startCofRun() {
+        if (!cofDataPreparationComplete()) return;
+        if (cofMissingGeneralField()) return;
+        if (planPhase === '1' ? cofConfigUpload.status !== 'valid' : cofMissingConfigScenarios().length) return;
+        if (cofProgressRun?.timerId) clearInterval(cofProgressRun.timerId);
+        cofCheckModalOpen = false;
+        cofConfigError = null;
+        cofProgressRun = {
+          id:'CoF-019',
+          name:cofGeneralValues.name,
+          reason:cofGeneralValues.reason,
+          configName:planPhase === '1' ? cofConfigUpload.name : 'Guided CoF configuration',
+          configText:planPhase === '1' ? cofConfigUpload.text : cofConfigJson(),
+          validationStatus:planPhase === '1' ? 'pending' : 'valid',
+          validationError:'',
+          startedAt:Date.now(),
+          timerId:null
+        };
+        cofProgressRun.timerId = setInterval(updateCofRunProgress,250);
+        viewName = 'results';
+        render();
+        showToast(`CoF-019 started with the ${planPhase === '1' ? 'uploaded JSON configuration' : 'guided configuration'}.`);
+      }
+      const cofPhaseOneProgress = () => {
+        if (!cofProgressRun) return `
+          <div class="lh-data-progress-page">
+            <div class="lh-data-progress-empty">
+              <div><strong>No CoF run is currently in progress.</strong><p>Upload a CoF configuration and start the run to view progress.</p></div>
             </div>
-            <div class="lh-checks">
-              ${check('', 'Validate configuration', `CoF run details and ${planPhase === '1' ? 'uploaded JSON' : 'guided configuration'} passed validation.`, 'Complete')}
-              ${check('', 'Prepare consequence inputs', 'Structures, scenarios, and impact-model inputs loaded.', 'Complete')}
-              ${check('', 'Run consequence models', 'All eight leak and rupture scenarios completed.', 'Complete')}
-              ${check('', 'Publish run history', 'Configuration details and execution status were recorded.', 'Complete')}
-            </div>
-          `)}
+          </div>`;
+        const snapshot = cofRunSnapshot();
+        return `<div class="lh-data-progress-page">
+          <div class="lh-data-progress-run">
+            <aside class="lh-data-progress-summary lh-model-progress-summary">
+              <div class="lh-kicker">Run Summary</div>
+              <div class="lh-kpis">
+                <div class="lh-kpi"><div class="label">Overall progress</div><div class="value" data-cof-overall-progress>${snapshot.overallProgress}%</div><div class="sub">${snapshot.visibleStatusCount} of ${cofProgressSteps.length} status updates</div></div>
+                <div class="lh-kpi"><div class="label">Duration</div><div class="value" data-cof-duration>${cofDurationLabel(snapshot.elapsedMs)}</div><div class="sub">${snapshot.failed ? 'Configuration verification failed' : snapshot.complete ? 'Run completed' : 'Updating by minute'}</div></div>
+                <div class="lh-kpi"><div class="label">Scenarios processed</div><div class="value" data-cof-scenarios>${snapshot.processedScenarios}</div><div class="sub">of ${cofScenarioCount} scenarios</div></div>
+              </div>
+            </aside>
+            <section class="lh-data-progress-workspace">
+              <div class="lh-kicker">CoF Progress</div>
+              <div class="lh-transfer-progress-head">
+                <strong>${escapeHtml(cofProgressRun.name)}</strong>
+                <span class="lh-transfer-progress-meta"><small>${cofProgressRun.id} · Started ${transferTimestamp(new Date(cofProgressRun.startedAt))} · Duration ${cofDurationLabel(snapshot.elapsedMs)}</small></span>
+              </div>
+              <div class="lh-progress" aria-label="${snapshot.overallProgress}% of CoF processing complete"><span style="width:${snapshot.overallProgress}%"></span></div>
+              <div class="lh-table-wrap lh-transfer-progress-table lh-model-status-table" data-cof-status-table><table class="lh-table"><thead><tr><th>#</th><th>${transferColumnHeader('Status code')}</th><th>${transferColumnHeader('Status description')}</th><th>${transferColumnHeader('Date created')}</th></tr></thead><tbody>${cofStatusRows(snapshot)}</tbody></table></div>
+            </section>
+          </div>
+          ${cofConfigErrorModal()}
         </div>`;
+      };
 
       const cofPhaseOneHistoryRows = [
         {id:'CoF-018',name:'2026 Q3 consequence refresh',reason:'Quarterly consequence-model refresh for the active transmission scope.',file:'CoF_Config_2026_Q3.json',date:'09/04/2026, 4:48 PM',durationMinutes:19,user:'Shaki Muttiah',status:'Completed'},
@@ -3327,14 +4387,37 @@
         {id:'CoF-015',name:'Route 58 structure review',reason:'Assess new high-value and impaired-mobility structures near Route 58.',file:'CoF_Route58_Structures.json',date:'08/09/2026, 9:42 AM',durationMinutes:18,user:'Morgan Lee',status:'Completed'},
         {id:'CoF-014',name:'Scenario threshold update',reason:'Apply approved fatality, injury, and property-damage thresholds.',file:'CoF_Thresholds_2026.json',date:'07/31/2026, 3:28 PM',durationMinutes:18,user:'Shaki Muttiah',status:'Completed'},
         {id:'CoF-013',name:'Annual baseline run',reason:'Establish the approved 2026 consequence-model baseline.',file:'CoF_Annual_Baseline_2026.json',date:'07/16/2026, 10:36 AM',durationMinutes:21,user:'Shaki Muttiah',status:'Completed'},
-        {id:'CoF-012',name:'Environmental model test',reason:'Test revised environmental and service-disruption configuration.',file:'CoF_Environmental_Test.json',date:'07/03/2026, 1:19 PM',durationMinutes:8,user:'Morgan Lee',status:'Failed'},
+        {id:'CoF-012',name:'Environmental model test',reason:'Test revised environmental and service-disruption configuration.',file:'CoF_Environmental_Test.json',date:'07/03/2026, 1:19 PM',durationMinutes:8,user:'Morgan Lee',status:'Error'},
         {id:'CoF-011',name:'Spring consequence review',reason:'Scheduled review of all Phase 1 consequence-model inputs.',file:'CoF_Spring_Review_2026.json',date:'06/13/2026, 8:44 AM',durationMinutes:20,user:'Priya Shah',status:'Completed'}
       ];
+
+      const cofHistoryRows = () => {
+        if (!cofProgressRun) return cofPhaseOneHistoryRows;
+        const snapshot = cofRunSnapshot();
+        const status = snapshot.failed ? 'Error' : snapshot.complete ? 'Completed' : 'In Progress';
+        const runDate = new Intl.DateTimeFormat('en-US',{
+          month:'2-digit',
+          day:'2-digit',
+          year:'numeric',
+          hour:'numeric',
+          minute:'2-digit'
+        }).format(new Date(cofProgressRun.startedAt));
+        return [{
+          id:cofProgressRun.id,
+          name:cofProgressRun.name,
+          reason:cofProgressRun.reason,
+          file:cofProgressRun.configName,
+          date:runDate,
+          durationMinutes:status === 'In Progress' ? null : cofDurationMinutes(snapshot.elapsedMs),
+          user:'Shaki Muttiah',
+          status
+        },...cofPhaseOneHistoryRows];
+      };
 
       const cofPhaseOneHistory = () => runHistoryGrid('cof','CoF Run History',[
         ['id','Run ID'],['name','CoF Name'],['reason','Reason for CoF'],['file','Configuration JSON'],
         ['date','Run Date'],['durationMinutes','Duration'],['user','Ran By'],['status','Status']
-      ],cofPhaseOneHistoryRows);
+      ],cofHistoryRows());
 
       const cofRun = () => `
         <div class="lh-screen">
@@ -3885,7 +4968,7 @@
               ? 'Started'
               : 'InProgress';
         const createdAt = new Date(lofProgressRun.startedAt + index * lofProgressStepMs);
-        return `<tr data-lof-status-update="${index + 1}"><td>${index + 1}</td><td>${status}</td><td class="lh-lof-status-description">${escapeHtml(description)}</td><td>${transferTimestamp(createdAt)}</td></tr>`;
+        return `<tr data-lof-status-update="${index + 1}"><td>${index + 1}</td><td>${statusDisplay(status)}</td><td class="lh-model-status-description">${escapeHtml(description)}</td><td>${transferTimestamp(createdAt)}</td></tr>`;
       }).join('');
       const verifyLofProgressConfig = () => {
         if (!lofProgressRun || lofProgressRun.validationStatus !== 'pending' || Date.now() - lofProgressRun.startedAt < lofProgressStepMs * 2) return;
@@ -3954,7 +5037,7 @@
         const snapshot = lofRunSnapshot();
         return `<div class="lh-data-progress-page">
           <div class="lh-data-progress-run">
-            <aside class="lh-data-progress-summary lh-lof-progress-summary">
+            <aside class="lh-data-progress-summary lh-model-progress-summary">
               <div class="lh-kicker">Run Summary</div>
               <div class="lh-kpis">
                 <div class="lh-kpi"><div class="label">Overall progress</div><div class="value" data-lof-overall-progress>${snapshot.overallProgress}%</div><div class="sub">${snapshot.visibleStatusCount} of ${lofProgressSteps.length} status updates</div></div>
@@ -3969,7 +5052,7 @@
                 <span class="lh-transfer-progress-meta"><small>${lofProgressRun.id} · Started ${transferTimestamp(new Date(lofProgressRun.startedAt))} · Duration ${lofDurationLabel(snapshot.elapsedMs)}</small></span>
               </div>
               <div class="lh-progress" aria-label="${snapshot.overallProgress}% of LoF processing complete"><span style="width:${snapshot.overallProgress}%"></span></div>
-              <div class="lh-table-wrap lh-transfer-progress-table lh-lof-status-table" data-lof-status-table><table class="lh-table"><thead><tr><th>#</th><th>${transferColumnHeader('Status code')}</th><th>${transferColumnHeader('Status description')}</th><th>${transferColumnHeader('Date created')}</th></tr></thead><tbody>${lofStatusRows(snapshot)}</tbody></table></div>
+              <div class="lh-table-wrap lh-transfer-progress-table lh-model-status-table" data-lof-status-table><table class="lh-table"><thead><tr><th>#</th><th>${transferColumnHeader('Status code')}</th><th>${transferColumnHeader('Status description')}</th><th>${transferColumnHeader('Date created')}</th></tr></thead><tbody>${lofStatusRows(snapshot)}</tbody></table></div>
             </section>
           </div>
           ${lofConfigErrorModal()}
@@ -4459,7 +5542,26 @@
       };
 
       function showToast(message) {
-        toast.textContent = message;
+        const errorPattern = /\b(complete|required|invalid|failed|failure|error|cannot|blocked|keep at least|select at least|upload a valid)\b/i;
+        const warningPattern = /\b(warn|hold|pending|retry|mismatch)\b/i;
+        const tone = errorPattern.test(message) ? 'error' : warningPattern.test(message) ? 'warning' : 'info';
+        toast.classList.toggle('is-error',tone === 'error');
+        toast.classList.toggle('is-warning',tone === 'warning');
+        toast.replaceChildren();
+        const icon = document.createElement('span');
+        icon.className = 'lh-toast-icon';
+        icon.setAttribute('aria-hidden','true');
+        icon.textContent = tone === 'warning' ? '△' : tone === 'error' ? '!' : 'i';
+        const content = document.createElement('span');
+        content.className = 'lh-toast-message';
+        content.textContent = message;
+        const close = document.createElement('button');
+        close.className = 'lh-toast-close';
+        close.type = 'button';
+        close.setAttribute('aria-label','Dismiss alert');
+        close.textContent = '×';
+        close.addEventListener('click',() => toast.classList.remove('is-visible'));
+        toast.append(icon,content,close);
         toast.classList.add('is-visible');
         clearTimeout(showToast.timer);
         showToast.timer = setTimeout(() => toast.classList.remove('is-visible'), 2300);
@@ -4529,9 +5631,11 @@
         const riskPhaseOneRoute = moduleName === 'risk' && planPhase === '1';
         const riskPhaseTwoRoute = moduleName === 'risk' && planPhase === '2';
         if (!showComparisonUpload && viewName === 'compare') viewName = 'run';
+        root.classList.toggle('lh-data-transfer-route', dataTransferRoute);
         root.classList.toggle('lh-data-view-route', dataViewsRoute);
+        root.classList.toggle('lh-data-history-route', dataHistoryRoute);
         root.classList.toggle('lh-factor-detail-route', factorDetailRoute);
-        root.classList.toggle('lh-data-progress-route', dataProgressRoute || lofProgressRoute);
+        root.classList.toggle('lh-data-progress-route', dataProgressRoute || lofProgressRoute || cofProgressRoute);
         root.querySelectorAll('.lh-actions .lh-button:not(#lh-primary-action)').forEach(button => button.hidden = dataTransferRoute || dataProgressRoute || dataHistoryRoute || lofConfigureRoute || lofProgressRoute || lofHistoryRoute || cofConfigureRoute || cofProgressRoute || cofHistoryRoute || riskPhaseOneRoute || riskPhaseTwoRoute || (lofResultsRoute && button.dataset.pageAction === 'save'));
         primaryAction.hidden = dataTransferRoute || dataProgressRoute || dataHistoryRoute || lofConfigureRoute || lofProgressRoute || lofHistoryRoute || cofConfigureRoute || cofProgressRoute || cofHistoryRoute || riskPhaseOneRoute || riskPhaseTwoRoute;
         globalPhaseButtons.forEach(button => {
@@ -4564,7 +5668,7 @@
         title.textContent = heading;
         subtitle.textContent = pageSubtitle;
         subtitle.hidden = !pageSubtitle;
-        eyebrow.textContent = moduleName === 'data' && viewName === 'compare' ? 'Data Management' : moduleName === 'log' ? 'Model governance · IMF-T-T501 online' : 'Setup';
+        eyebrow.textContent = moduleName === 'data' && viewName === 'compare' ? 'Data Management' : moduleName === 'log' ? 'Model governance · IMF-T-T501 online' : 'Configuration';
         primaryAction.textContent = action;
         host.innerHTML = screenBuilders[moduleName][viewName]();
         preserveModelTermCase(root);
@@ -4703,7 +5807,7 @@
         host.querySelectorAll('[data-run-history-page]').forEach(button => button.addEventListener('click', () => {
           const model = button.dataset.runHistoryModel;
           const state = runHistoryState[model];
-          const rowCount = model === 'lof' ? lofHistoryRows().length : model === 'cof' ? cofPhaseOneHistoryRows.length : riskHistoryRows.length;
+          const rowCount = model === 'lof' ? lofHistoryRows().length : model === 'cof' ? cofHistoryRows().length : riskHistoryRows.length;
           const totalPages = Math.max(1,Math.ceil(rowCount / state.pageSize));
           const target = button.dataset.runHistoryPage;
           state.page = target === 'first' ? 1 : target === 'previous' ? Math.max(1,state.page - 1) : target === 'next' ? Math.min(totalPages,state.page + 1) : target === 'last' ? totalPages : Number(target);
@@ -4761,9 +5865,43 @@
           }
         }));
         host.querySelectorAll('[data-transfer-progress-content]').forEach(progress => progress.addEventListener('click', event => {
+          const menuButton = event.target.closest('[data-transfer-progress-menu]');
+          if (menuButton) {
+            const nextMenu = menuButton.dataset.transferProgressMenu;
+            transferProgressColumnMenu = transferProgressColumnMenu === nextMenu ? '' : nextMenu;
+            transferProgressColumnChooserOpen = false;
+            updateTransferProgress();
+            return;
+          }
+          const sortButton = event.target.closest('[data-transfer-progress-sort]');
+          if (sortButton) {
+            transferProgressSort = {column:transferProgressColumnMenu,direction:sortButton.dataset.transferProgressSort};
+            transferProgressColumnMenu = '';
+            transferProgressColumnChooserOpen = false;
+            updateTransferProgress();
+            return;
+          }
+          if (event.target.closest('[data-transfer-progress-choose-columns]')) {
+            transferProgressColumnChooserOpen = !transferProgressColumnChooserOpen;
+            updateTransferProgress();
+            return;
+          }
           const failedTable = event.target.closest('[data-transfer-failure]');
           if (!failedTable) return;
           selectedTransferFailure = Number(failedTable.dataset.transferFailure);
+          updateTransferProgress();
+        }));
+        host.querySelectorAll('[data-transfer-progress-content]').forEach(progress => progress.addEventListener('change', event => {
+          const input = event.target.closest('[data-transfer-progress-column]');
+          if (!input) return;
+          const visibleColumnCount = transferProgressColumns.filter(([key]) => visibleTransferProgressColumn(key)).length;
+          if (!input.checked && visibleColumnCount === 1) {
+            showToast('Keep at least one transfer progress column visible.');
+            updateTransferProgress();
+            return;
+          }
+          if (input.checked) transferProgressHiddenColumns.delete(input.dataset.transferProgressColumn);
+          else transferProgressHiddenColumns.add(input.dataset.transferProgressColumn);
           updateTransferProgress();
         }));
         host.querySelectorAll('.lh-run-button:not([data-transfer-start])').forEach(el => el.addEventListener('click', () => {
@@ -5043,22 +6181,26 @@
         host.querySelectorAll('[data-cof-config-upload]').forEach(input => input.addEventListener('change', async () => {
           const file = input.files?.[0];
           if (!file) return;
+          cofConfigError = null;
           cofConfigUpload = {name:file.name,size:file.size,status:'reading',error:''};
           if (!file.name.toLowerCase().endsWith('.json')) {
             cofConfigUpload.status = 'invalid';
             cofConfigUpload.error = 'Select a file with a .json extension.';
+            cofConfigError = {name:file.name,message:cofConfigUpload.error};
             render();
             showToast(cofConfigUpload.error);
             return;
           }
           try {
-            JSON.parse(await file.text());
-            cofConfigUpload.status = 'valid';
+            const text = await file.text();
+            cofConfigUpload = {name:file.name,size:file.size,status:'valid',error:'',text};
+            cofConfigError = null;
             render();
-            showToast(`${file.name} is valid JSON and ready for the CoF run.`);
-          } catch {
+            showToast(`${file.name} is a .json file and is ready for the CoF run.`);
+          } catch (error) {
             cofConfigUpload.status = 'invalid';
-            cofConfigUpload.error = 'The selected file is not valid JSON.';
+            cofConfigUpload.error = error instanceof Error ? error.message : 'The selected .json file could not be read.';
+            cofConfigError = {name:file.name,message:cofConfigUpload.error};
             render();
             showToast(cofConfigUpload.error);
           }
@@ -5107,7 +6249,12 @@
           item.classList.toggle('is-invalid', missing);
           item.querySelector('[data-cof-config-scenario]').toggleAttribute('aria-invalid', missing);
         }));
+        host.querySelectorAll('[data-cof-data-preparation]').forEach(button => button.addEventListener('click', startCofDataPreparation));
         host.querySelectorAll('[data-cof-check]').forEach(button => button.addEventListener('click', () => {
+          if (!cofDataPreparationComplete()) {
+            showToast('Complete CoF Data Preparation before starting CoF.');
+            return;
+          }
           cofConfigCheckAttempted = true;
           const missingGeneralField = cofMissingGeneralField();
           const missingUpload = planPhase === '1' && cofConfigUpload.status !== 'valid';
@@ -5122,7 +6269,7 @@
             return;
           }
           if (missingUpload) {
-            showToast('Upload a valid CoF configuration JSON file before starting the run.');
+            showToast('Upload a CoF configuration .json file before starting the run.');
             requestAnimationFrame(() => host.querySelector('[data-cof-config-upload-trigger]')?.focus());
             return;
           }
@@ -5140,16 +6287,21 @@
         host.querySelectorAll('[data-cof-modal-backdrop]').forEach(backdrop => backdrop.addEventListener('click', event => {
           if (event.target === backdrop) closeCofModal();
         }));
-        host.querySelectorAll('[data-cof-start]').forEach(button => button.addEventListener('click', () => {
-          cofCheckModalOpen = false;
-          viewName = 'results';
+        const closeCofConfigErrorModal = () => {
+          cofConfigError = null;
           render();
-          showToast(`COF-018 started with the ${planPhase === '1' ? 'uploaded JSON configuration' : 'guided configuration'}.`);
+          requestAnimationFrame(() => host.querySelector('[data-cof-config-upload-trigger]')?.focus());
+        };
+        host.querySelectorAll('[data-cof-config-error-close]').forEach(button => button.addEventListener('click', closeCofConfigErrorModal));
+        host.querySelectorAll('[data-cof-config-error-backdrop]').forEach(backdrop => backdrop.addEventListener('click', event => {
+          if (event.target === backdrop) closeCofConfigErrorModal();
         }));
-        host.querySelectorAll('[data-lof-modal], [data-lof-config-error-modal], [data-cof-modal]').forEach(modal => modal.addEventListener('keydown', event => {
+        host.querySelectorAll('[data-cof-start]').forEach(button => button.addEventListener('click', startCofRun));
+        host.querySelectorAll('[data-lof-modal], [data-lof-config-error-modal], [data-cof-modal], [data-cof-config-error-modal]').forEach(modal => modal.addEventListener('keydown', event => {
           if (event.key === 'Escape') {
             event.preventDefault();
             if (modal.matches('[data-cof-modal]')) closeCofModal();
+            else if (modal.matches('[data-cof-config-error-modal]')) closeCofConfigErrorModal();
             else if (modal.matches('[data-lof-config-error-modal]')) closeLofConfigErrorModal();
             else closeLofModal();
             return;
@@ -5178,6 +6330,8 @@
         if (openLofConfigErrorModal) requestAnimationFrame(() => openLofConfigErrorModal.querySelector('[data-lof-config-error-close]')?.focus());
         const openCofModal = host.querySelector('[data-cof-modal]');
         if (openCofModal) requestAnimationFrame(() => openCofModal.querySelector('[data-cof-modal-close]')?.focus());
+        const openCofConfigErrorModal = host.querySelector('[data-cof-config-error-modal]');
+        if (openCofConfigErrorModal) requestAnimationFrame(() => openCofConfigErrorModal.querySelector('[data-cof-config-error-close]')?.focus());
         updateUrl();
       }
 
