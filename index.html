@@ -2719,6 +2719,181 @@
     #lh-ops-refinement.lh-data-transfer-route .lh-data-load-table[data-data-load-scope="full"] th:nth-child(3) { width: 29%; }
     #lh-ops-refinement.lh-data-transfer-route .lh-data-load-table[data-data-load-scope="full"] th:nth-child(4) { width: 23%; }
 
+    #lh-ops-refinement.lh-configuration-home-route .lh-page-head {
+      min-height: 142px;
+      padding: 42px 7vw 30px;
+    }
+    #lh-ops-refinement.lh-configuration-home-route .lh-page-head h1 {
+      margin-top: 8px;
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+    #lh-ops-refinement.lh-configuration-home-route .lh-eyebrow {
+      display: block;
+    }
+    #lh-ops-refinement.lh-configuration-home-route .lh-page-tools {
+      align-self: center;
+    }
+    #lh-ops-refinement.lh-configuration-home-route .lh-tabs {
+      min-height: 40px;
+      gap: 12px;
+      padding: 0 7vw;
+      border-top: 0;
+      border-bottom-width: 1px;
+    }
+    #lh-reset-config-progress {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 32px;
+      padding: 6px 8px;
+      border-color: transparent;
+      color: #294977;
+      background: transparent;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    #lh-reset-config-progress:hover {
+      border-color: transparent;
+      color: #18365f;
+      background: #f2f5fa;
+    }
+    #lh-reset-config-progress:disabled {
+      border-color: transparent;
+      color: #a7a9ac;
+      background: transparent;
+    }
+    #lh-reset-config-progress svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.75;
+    }
+    .lh-refinement-trigger.is-home-link::after {
+      display: none;
+    }
+    #lh-ops-refinement.lh-configuration-home-route #lh-screen-host {
+      min-height: calc(100vh - 234px);
+      padding: 16px 7vw 48px;
+      background: var(--lh-bg);
+    }
+    .lh-configuration-card-wrap .lh-data-view-card {
+      height: 54px;
+      padding-right: 42px;
+      padding-left: 44px;
+      box-shadow: none;
+    }
+    .lh-configuration-card-wrap.is-untracked .lh-data-view-card {
+      padding-left: 12px;
+    }
+    .lh-configuration-card-wrap {
+      border-radius: 2px;
+      background: #fff;
+      box-shadow: 0 3px 8px rgba(35, 31, 32, .16);
+    }
+    .lh-configuration-card-wrap:hover,
+    .lh-configuration-card-wrap:focus-within {
+      box-shadow: 0 4px 10px rgba(35, 31, 32, .22);
+    }
+    .lh-configuration-card-wrap .lh-data-view-card:hover,
+    .lh-configuration-card-wrap .lh-data-view-card:focus-visible {
+      box-shadow: none;
+    }
+    .lh-configuration-completion {
+      position: absolute;
+      z-index: 1;
+      top: 17px;
+      left: 12px;
+      display: grid;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      place-items: center;
+      border: 1px solid #bcbec0;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+    }
+    .lh-configuration-completion svg {
+      display: none;
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: #fff;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 2.25;
+    }
+    .lh-configuration-completion[aria-pressed="true"] {
+      border-color: #17823b;
+      background: #17823b;
+    }
+    .lh-configuration-completion[aria-pressed="true"] svg {
+      display: block;
+    }
+    .lh-configuration-card-wrap .lh-data-view-info-button {
+      top: 17px;
+    }
+    .lh-configuration-card-wrap .lh-data-view-info-popover {
+      top: 62px;
+    }
+    .lh-configuration-tab-panel {
+      padding-top: 8px;
+    }
+    .lh-teams-notification-field {
+      padding-top: 16px;
+      border-top: 1px solid #d1d3d4;
+    }
+    .lh-teams-notification-field > .lh-kicker {
+      margin-bottom: 14px;
+    }
+    .lh-teams-notification-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .lh-teams-notification-status {
+      padding: 10px 12px;
+      border: 1px solid #b7d9c7;
+      background: #f4faf7;
+    }
+    .lh-teams-notification-status strong,
+    .lh-teams-notification-status small {
+      display: block;
+    }
+    .lh-teams-notification-status strong {
+      color: #24563a;
+      font-size: 12px;
+    }
+    .lh-teams-notification-status small {
+      margin-top: 3px;
+      color: #66736c;
+      font-size: 10px;
+    }
+    .lh-configuration-update {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      min-height: 30px;
+      padding: 7px 12px;
+      border-top: 1px solid #e2e5e9;
+      color: #737b85;
+      font-size: 9px;
+      line-height: 1.25;
+    }
+    .lh-configuration-update strong {
+      color: #59636f;
+      font-weight: 600;
+    }
+    .lh-configuration-update time {
+      flex: 0 0 auto;
+      color: #737b85;
+    }
     #lh-ops-refinement button:focus-visible,
     #lh-ops-refinement select:focus-visible,
     #lh-ops-refinement input:focus-visible,
@@ -2802,7 +2977,7 @@
       <div class="lh-page-head">
         <div><div class="lh-eyebrow" id="lh-eyebrow">Configuration</div><h1 id="lh-page-title">Data Load</h1><p id="lh-page-subtitle" hidden></p></div>
         <div class="lh-page-tools">
-          <div class="lh-actions"><button class="lh-button" type="button" data-page-action="save" data-toast="View saved for the Operations team.">Save view</button><button class="lh-button" type="button" data-page-action="export" data-toast="Export package prepared with tables, charts, and issue references.">Export</button><button class="lh-button primary" type="button" id="lh-primary-action">Start data transfer</button></div>
+          <div class="lh-actions"><button class="lh-button" type="button" id="lh-reset-config-progress" hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 5.5A6 6 0 1 0 14 9"/><path d="M10.5 5.5h3v-3"/></svg>Reset Checkmarks</button><button class="lh-button" type="button" data-page-action="save" data-toast="View saved for the Operations team.">Save view</button><button class="lh-button" type="button" data-page-action="export" data-toast="Export package prepared with tables, charts, and issue references.">Export</button><button class="lh-button primary" type="button" id="lh-primary-action">Start data transfer</button></div>
         </div>
       </div>
 
@@ -2817,6 +2992,9 @@
         <button class="lh-tab" type="button" data-data-view-section="factors" hidden>Factors</button>
         <button class="lh-tab" type="button" data-data-view-section="lof-refinement" hidden>LoF Refinement</button>
         <button class="lh-tab" type="button" data-data-view-section="cof-refinement" hidden>CoF Refinement</button>
+        <button class="lh-tab" type="button" data-config-section="data" hidden>Data</button>
+        <button class="lh-tab" type="button" data-config-section="risk" hidden>Risk Model</button>
+        <button class="lh-tab" type="button" data-config-section="documentation" hidden>Documentation</button>
       </div>
       <div id="lh-screen-host"></div>
     </main>
@@ -2831,6 +3009,7 @@
       const subtitle = root.querySelector('#lh-page-subtitle');
       const eyebrow = root.querySelector('#lh-eyebrow');
       const primaryAction = root.querySelector('#lh-primary-action');
+      const resetConfigProgress = root.querySelector('#lh-reset-config-progress');
       const viewTabs = root.querySelector('#lh-view-tabs');
       const toast = root.querySelector('#lh-toast');
       const refinementNav = root.querySelector('#lh-refinement-nav');
@@ -2844,7 +3023,7 @@
       const profileOptions = [...root.querySelectorAll('.lh-profile-option')];
       const globalPhaseButtons = [...root.querySelectorAll('[data-global-phase]')];
       const params = new URLSearchParams(location.search);
-      let moduleName = ['data','lof','cof','risk','log'].includes(params.get('module')) ? params.get('module') : 'data';
+      let moduleName = ['config','data','lof','cof','risk','log'].includes(params.get('module')) ? params.get('module') : 'data';
       let viewName = ['run','progress','results','comparison','compare','instructions'].includes(params.get('view')) ? params.get('view') : 'run';
       const requestedDataViewSection = params.get('dataview');
       let dataViewSection = ['loaded-data','risk-results','factors','lof-refinement','cof-refinement'].includes(requestedDataViewSection)
@@ -2856,10 +3035,44 @@
             : 'loaded-data';
       let logView = ['issues','runs','attributes','configurations','thresholds'].includes(params.get('logview')) ? params.get('logview') : 'issues';
       let planPhase = ['1','2','3'].includes(params.get('phase')) ? params.get('phase') : params.get('horizon') === '6' ? '3' : '1';
+      const configurationProgressStorageKey = 'lighthouse-timp-f27q3-configuration-progress';
+      const configurationUpdatesStorageKey = 'lighthouse-timp-f27q3-configuration-updates';
+      const teamsNotificationStorageKey = 'lighthouse-timp-f27q3-teams-notifications';
+      const configurationCurrentUser = 'Shaki Muttiah';
+      const configurationWorkflowKeys = ['data','cof-prep','lof','cof','risk'];
+      const completedConfigurationWorkflows = new Set(
+        (localStorage.getItem(configurationProgressStorageKey) || '')
+          .split(',')
+          .filter(key => configurationWorkflowKeys.includes(key))
+      );
+      const configurationWorkflowUpdates = (() => {
+        try {
+          const stored = JSON.parse(localStorage.getItem(configurationUpdatesStorageKey) || '{}');
+          return Object.fromEntries(Object.entries(stored).filter(([key,value]) =>
+            configurationWorkflowKeys.includes(key) && value && typeof value.user === 'string' && typeof value.updatedAt === 'string'
+          ));
+        } catch {
+          return {};
+        }
+      })();
       let riskExtractModel = dataViewSection === 'cof-refinement' || params.get('extract') === 'cof' ? 'cof' : 'lof';
       let riskExtractSheet = params.get('sheet') || '';
       let riskExtractSearch = '';
       let riskExtractInfoSheet = '';
+      let configurationSection = ['data','risk','documentation'].includes(params.get('configview')) ? params.get('configview') : 'data';
+      let configurationInfoModule = '';
+      let teamsNotificationEditing = '';
+      let teamsNotificationDraft = '';
+      let teamsNotificationSettings = (() => {
+        try {
+          const stored = JSON.parse(localStorage.getItem(teamsNotificationStorageKey) || '{}');
+          return Object.fromEntries(Object.entries(stored).filter(([key,value]) =>
+            ['data','lof','cof','risk'].includes(key) && value && typeof value.url === 'string' && typeof value.updatedAt === 'string'
+          ));
+        } catch {
+          return {};
+        }
+      })();
       let factorViewSearch = '';
       const dataFactorSelection = {lof:''};
       let lofResultView = params.get('resultview') || 'highlights';
@@ -3076,6 +3289,7 @@
                 <div class="lh-field"><span class="lh-field-label">Source</span><div class="lh-input lh-readonly-input ${transferControlState(true)}" aria-readonly="true">Analysis Server · ClientName_ETL</div><span class="lh-help">Fixed source for this environment</span></div>
                 <div class="lh-field"><span class="lh-field-label">Target database</span><div class="lh-input lh-readonly-input ${transferControlState(true)}" aria-readonly="true">lhtimp-clientname-uat · Lighthouse_GDB</div><span class="lh-help">Fixed target for this environment</span></div>
                 <label class="lh-field"><span class="lh-field-label">Reason for transfer</span><input class="lh-input ${transferControlState(Boolean(dataTransferValues.reason.trim()))}" data-transfer-field="reason" value="${escapeHtml(dataTransferValues.reason)}" ${dataTransferValues.checkAttempted && !dataTransferValues.reason.trim() ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the snapshot and run log</span></label>
+                ${planPhase === '2' ? teamsNotificationSection('data') : ''}
               </div>
             </div>
             <div class="lh-data-load-selection">
@@ -3706,6 +3920,7 @@
         <div class="lh-fields">
           <label class="lh-field"><span class="lh-field-label">Model Run Name</span><input class="lh-input" value="MR1"/></label>
           <label class="lh-field"><span class="lh-field-label">Model Run Purpose</span><input class="lh-input" value="Final risk candidate"/></label>
+          ${planPhase === '2' ? teamsNotificationSection('risk') : ''}
         </div>
       `;
       const riskPhaseOneRun = () => `
@@ -4223,6 +4438,7 @@
               <div class="lh-fields">
                 <label class="lh-field"><span class="lh-field-label">CoF Name</span><input class="lh-input ${cofConfigCheckAttempted ? lofConfigValueMissing(cofGeneralValues.name) ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a name for this CoF run" ${cofConfigCheckAttempted && lofConfigValueMissing(cofGeneralValues.name) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Used to identify this CoF run in history</span></label>
                 <label class="lh-field"><span class="lh-field-label">Reason for CoF</span><input class="lh-input ${cofConfigCheckAttempted ? lofConfigValueMissing(cofGeneralValues.reason) ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="reason" value="${escapeHtml(cofGeneralValues.reason)}" placeholder="Enter the reason for this CoF run" ${cofConfigCheckAttempted && lofConfigValueMissing(cofGeneralValues.reason) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
+                ${teamsNotificationSection('cof')}
               </div>
             </div>
             <div class="lh-run-config-upload">
@@ -4899,6 +5115,7 @@
               <div class="lh-fields">
                 <label class="lh-field"><span class="lh-field-label">LoF Name</span><input class="lh-input ${lofGeneralControlState(lofGeneralValues.name)}" data-lof-general="name" value="${escapeHtml(lofGeneralValues.name)}" placeholder="Enter a name for this LoF run" ${lofConfigCheckAttempted && lofConfigValueMissing(lofGeneralValues.name) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Used to identify this LoF run in results and run history</span></label>
                 <label class="lh-field"><span class="lh-field-label">Reason for LoF</span><input class="lh-input ${lofGeneralControlState(lofGeneralValues.reason)}" data-lof-general="reason" value="${escapeHtml(lofGeneralValues.reason)}" placeholder="Enter the reason for this LoF run" ${lofConfigCheckAttempted && lofConfigValueMissing(lofGeneralValues.reason) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
+                ${teamsNotificationSection('lof')}
               </div>
             </div>
             <div class="lh-run-config-upload">
@@ -5526,6 +5743,92 @@
         'scenario-analysis-property-damage':{description:'Scenario analysis for the property damage impact model.'}
       };
 
+      const configurationWorkflowGroups = [
+        ['data','Data',[
+          ['data','Data Load','Prepare and transfer the TIMP source data required by model runs.','data'],
+          ['cof-prep','CoF Data Preparation','Prepare the loaded source data required before a CoF model run.','cof-prep']
+        ]],
+        ['risk','Risk Model',[
+          ['lof','LoF Run','Configure likelihood threats, parameters, and the PHMSA benchmark connection.','lof'],
+          ['cof','CoF Run','Configure consequence scenarios and valuation inputs for TIMP.','cof'],
+          ['risk','Model Run','Combine the configured LoF and CoF outputs into a risk assessment.','risk']
+        ]],
+        ['documentation','Documentation',[
+          ['log','Issues &amp; Run Log','Review run lineage, issues, and configuration-change references.','log'],
+          ['user-guide','User Guide','Open guidance for configuring and running the TIMP refinement workflows.','user-guide'],
+          ['release-notes','Release Notes','Review changes delivered in the current prototype release.','release-notes']
+        ]]
+      ];
+
+      const configurationWorkflowCard = (key, title, description, destination) => {
+        const tracked = configurationWorkflowKeys.includes(key);
+        const completed = completedConfigurationWorkflows.has(key);
+        const infoOpen = configurationInfoModule === key;
+        const update = configurationWorkflowUpdates[key];
+        const updatedDate = update
+          ? new Intl.DateTimeFormat('en-US',{month:'2-digit',day:'2-digit',year:'numeric'}).format(new Date(update.updatedAt))
+          : '—';
+        return `
+          <div class="lh-data-view-card-wrap lh-configuration-card-wrap ${tracked ? '' : 'is-untracked'}">
+            ${tracked ? `<button class="lh-configuration-completion" type="button" data-config-completion="${key}" aria-label="Mark ${title} ${completed ? 'not complete' : 'complete'}" aria-pressed="${completed}">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8 3 3 6-6"/></svg>
+            </button>` : ''}
+            <button class="lh-data-view-card" type="button" data-config-destination="${destination}" title="Open ${title}"><span>${title}</span></button>
+            <button class="lh-data-view-info-button" type="button" data-config-info="${key}" aria-label="About ${title}" aria-expanded="${infoOpen}" aria-controls="lh-config-info-${key}">i</button>
+            ${infoOpen ? `<aside class="lh-data-view-info-popover" id="lh-config-info-${key}" role="dialog" aria-modal="false" aria-labelledby="lh-config-info-title-${key}" data-config-info-popover>
+              <div class="lh-data-view-info-head"><h3 id="lh-config-info-title-${key}">${title}</h3><button class="lh-data-view-info-close" type="button" data-config-info-close="${key}" aria-label="Close ${title} information">×</button></div>
+              <p>${description}</p>
+            </aside>` : ''}
+            ${tracked ? `<div class="lh-configuration-update"><span>Updated by: <strong>${update ? escapeHtml(update.user) : 'Not yet updated'}</strong></span>${update ? `<time datetime="${escapeHtml(update.updatedAt)}">${updatedDate}</time>` : `<span>${updatedDate}</span>`}</div>` : ''}
+          </div>`;
+      };
+
+      const teamsNotificationLabels = {
+        data:'Data Load',
+        lof:'LoF',
+        cof:'CoF',
+        risk:'Risk'
+      };
+
+      const teamsNotificationSection = notificationModule => {
+        const settings = teamsNotificationSettings[notificationModule];
+        const label = teamsNotificationLabels[notificationModule];
+        const editing = teamsNotificationEditing === notificationModule || !settings;
+        if (editing) return `
+          <div class="lh-field lh-teams-notification-field">
+            <div class="lh-kicker">Optional</div>
+            <label class="lh-field-label" for="lh-teams-notification-${notificationModule}">Teams Notifications</label>
+            <input class="lh-input" id="lh-teams-notification-${notificationModule}" type="url" value="${escapeHtml(teamsNotificationEditing === notificationModule ? teamsNotificationDraft : settings?.url || '')}" placeholder="Enter a Teams chat or channel link" autocomplete="off" data-teams-notification-url="${notificationModule}"/>
+            <span class="lh-help">Receives ${label} run progress notifications</span>
+            <div class="lh-teams-notification-actions"><button class="lh-button primary small" type="button" data-teams-notification-save="${notificationModule}">${settings ? 'Save Update' : 'Save Link'}</button>${settings ? `<button class="lh-button small" type="button" data-teams-notification-cancel="${notificationModule}">Cancel</button>` : ''}</div>
+          </div>`;
+        const updatedDate = new Intl.DateTimeFormat('en-US',{month:'2-digit',day:'2-digit',year:'numeric'}).format(new Date(settings.updatedAt));
+        const displayUrl = (() => {
+          try { return `${new URL(settings.url).origin}/••••`; }
+          catch { return 'Saved Teams destination'; }
+        })();
+        return `
+          <div class="lh-field lh-teams-notification-field">
+            <div class="lh-kicker">Optional</div>
+            <span class="lh-field-label">Teams Notifications</span>
+            <div class="lh-teams-notification-status">
+              <span><strong>Notifications connected</strong><small>${escapeHtml(displayUrl)} · Updated by ${configurationCurrentUser} on ${updatedDate}</small></span>
+            </div>
+            <span class="lh-help">Receives ${label} run progress notifications</span>
+            <div class="lh-teams-notification-actions"><button class="lh-button small" type="button" data-teams-notification-edit="${notificationModule}">Update Link</button></div>
+          </div>`;
+      };
+
+      const configurationHome = () => {
+        const [,sectionTitle,sectionWorkflows] = configurationWorkflowGroups.find(([section]) => section === configurationSection);
+        return `
+          <div class="lh-screen lh-data-views-list" aria-label="F27Q3 TIMP configuration workflows">
+            <section class="lh-configuration-tab-panel" aria-label="${sectionTitle}">
+              <div class="lh-data-view-card-grid">${sectionWorkflows.map(workflow => configurationWorkflowCard(...workflow)).join('')}</div>
+            </section>
+          </div>`;
+      };
+
       const dataViewsScreen = () => ['lof-refinement','cof-refinement'].includes(dataViewSection)
         ? riskExtract()
         : dataViewSection === 'risk-results'
@@ -5533,8 +5836,9 @@
           : dataViewSection === 'factors'
             ? factorDataViews()
             : loadedDataViews();
-      const screenBuilders = {data:{run:dataRun,progress:dataTransferProgress,results:dataResults,comparison:dataHistory,compare:dataViewsScreen},lof:{run:lofConfigureOnline,results:lofProgressOnline,comparison:lofDataViewResults,compare:()=>modelComparisonUpload('lof')},cof:{run:cofConfigureOnline,results:cofPhaseOneProgress,comparison:cofPhaseOneHistory,compare:()=>modelComparisonUpload('cof')},risk:{run:riskRun,results:riskProgress,comparison:()=>['1','2'].includes(planPhase) ? riskHistory() : riskResults(),compare:()=>modelComparisonUpload('risk')},log:{run:logIssues,results:logIssues,comparison:logIssues,compare:logIssues}};
+      const screenBuilders = {config:{run:configurationHome},data:{run:dataRun,progress:dataTransferProgress,results:dataResults,comparison:dataHistory,compare:dataViewsScreen},lof:{run:lofConfigureOnline,results:lofProgressOnline,comparison:lofDataViewResults,compare:()=>modelComparisonUpload('lof')},cof:{run:cofConfigureOnline,results:cofPhaseOneProgress,comparison:cofPhaseOneHistory,compare:()=>modelComparisonUpload('cof')},risk:{run:riskRun,results:riskProgress,comparison:()=>['1','2'].includes(planPhase) ? riskHistory() : riskResults(),compare:()=>modelComparisonUpload('risk')},log:{run:logIssues,results:logIssues,comparison:logIssues,compare:logIssues}};
       const copy = {
+        config:{run:['Configuration Tools','','']},
         data:{run:['Data Load','','Check transfer'],progress:['Data Load','',''],results:['Validate the data transfer','Review source-to-target counts and resolve only the tables that failed validation.','Retry failed group'],comparison:['Data Load','',''],compare:['Data Views','Browse loaded data, risk results, factors, and the LoF and CoF refinement tables.','Export data']},
         lof:{run:['LoF Run','',''],results:['LoF Run','','Refresh progress'],comparison:['LoF Run','','Open review findings'],compare:['LoF Run','Use the GitHub PHMSA benchmark with an optional previous-run result for deeper review.','Run comparison']},
         cof:{run:['CoF Run','','Resolve blocker'],results:['CoF Run','Inspect scenario maxima, illustrative PHMSA prototype checks, top segments, and threshold exceptions.','Open 4 issues'],comparison:['CoF Run','Trace consequence changes to structures, buffers, and model configuration; PHMSA values are illustrative pending a real mapping.','Review decision'],compare:['CoF Run','Compare with the prior export and illustrative PHMSA prototype data pending a real benchmark mapping.','Run comparison']},
@@ -5585,6 +5889,7 @@
         url.searchParams.set('module', moduleName);
         url.searchParams.set('view', viewName);
         if (moduleName === 'log') url.searchParams.set('logview', logView); else url.searchParams.delete('logview');
+        if (moduleName === 'config') url.searchParams.set('configview', configurationSection); else url.searchParams.delete('configview');
         url.searchParams.set('phase', planPhase);
         url.searchParams.delete('horizon');
         if (moduleName === 'data' && viewName === 'compare') {
@@ -5606,6 +5911,8 @@
       }
 
       function render() {
+        if (moduleName === 'config' && planPhase !== '2') moduleName = 'data';
+        if (moduleName === 'config') viewName = 'run';
         if (moduleName === 'log') viewName = 'run';
         if (viewName === 'instructions') viewName = 'run';
         if (viewName === 'progress' && moduleName !== 'data') viewName = 'run';
@@ -5631,20 +5938,27 @@
         const cofHistoryRoute = moduleName === 'cof' && viewName === 'comparison';
         const riskPhaseOneRoute = moduleName === 'risk' && planPhase === '1';
         const riskPhaseTwoRoute = moduleName === 'risk' && planPhase === '2';
+        const configurationHomeRoute = moduleName === 'config';
         if (!showComparisonUpload && viewName === 'compare') viewName = 'run';
+        root.classList.toggle('lh-configuration-home-route', configurationHomeRoute);
         root.classList.toggle('lh-data-transfer-route', dataTransferRoute);
         root.classList.toggle('lh-data-view-route', dataViewsRoute);
         root.classList.toggle('lh-data-history-route', dataHistoryRoute);
         root.classList.toggle('lh-factor-detail-route', factorDetailRoute);
         root.classList.toggle('lh-data-progress-route', dataProgressRoute || lofProgressRoute || cofProgressRoute);
-        root.querySelectorAll('.lh-actions .lh-button:not(#lh-primary-action)').forEach(button => button.hidden = dataTransferRoute || dataProgressRoute || dataHistoryRoute || lofConfigureRoute || lofProgressRoute || lofHistoryRoute || cofConfigureRoute || cofProgressRoute || cofHistoryRoute || riskPhaseOneRoute || riskPhaseTwoRoute || (lofResultsRoute && button.dataset.pageAction === 'save'));
-        primaryAction.hidden = dataTransferRoute || dataProgressRoute || dataHistoryRoute || lofConfigureRoute || lofProgressRoute || lofHistoryRoute || cofConfigureRoute || cofProgressRoute || cofHistoryRoute || riskPhaseOneRoute || riskPhaseTwoRoute;
+        root.querySelectorAll('.lh-actions .lh-button:not(#lh-primary-action):not(#lh-reset-config-progress)').forEach(button => button.hidden = configurationHomeRoute || dataTransferRoute || dataProgressRoute || dataHistoryRoute || lofConfigureRoute || lofProgressRoute || lofHistoryRoute || cofConfigureRoute || cofProgressRoute || cofHistoryRoute || riskPhaseOneRoute || riskPhaseTwoRoute || (lofResultsRoute && button.dataset.pageAction === 'save'));
+        resetConfigProgress.hidden = !configurationHomeRoute;
+        resetConfigProgress.disabled = completedConfigurationWorkflows.size === 0;
+        primaryAction.hidden = configurationHomeRoute || dataTransferRoute || dataProgressRoute || dataHistoryRoute || lofConfigureRoute || lofProgressRoute || lofHistoryRoute || cofConfigureRoute || cofProgressRoute || cofHistoryRoute || riskPhaseOneRoute || riskPhaseTwoRoute;
         globalPhaseButtons.forEach(button => {
           const active = button.dataset.globalPhase === planPhase;
           button.classList.toggle('is-active', active);
           button.setAttribute('aria-pressed', String(active));
         });
-        refinementTrigger.classList.toggle('is-active', moduleName !== 'data');
+        refinementTrigger.classList.toggle('is-active', moduleName !== 'data' || configurationHomeRoute);
+        refinementTrigger.classList.toggle('is-home-link', planPhase === '2');
+        refinementTrigger.setAttribute('aria-haspopup', planPhase === '2' ? 'false' : 'menu');
+        refinementTrigger.setAttribute('aria-expanded', planPhase === '2' ? 'false' : refinementTrigger.getAttribute('aria-expanded'));
         dataManagementTrigger.classList.toggle('is-active', moduleName === 'data');
         dataManagementOptions.forEach(option => {
           const active = moduleName === 'data' && (option.dataset.dataDestination === 'views' ? viewName === 'compare' : viewName !== 'compare');
@@ -5657,12 +5971,17 @@
           if (active) btn.setAttribute('aria-current', 'page'); else btn.removeAttribute('aria-current');
         });
         const tabCopy = moduleName === 'data' ? {run:'Configure',progress:'Progress',results:'Validation results',comparison:'History',compare:'Data Views'} : moduleName === 'lof' ? {run:'Configure',results:'Progress',comparison:'History',compare:'Comparison'} : moduleName === 'cof' ? {run:'Configure',results:'Progress',comparison:'History',compare:'Comparison'} : moduleName === 'risk' && ['1','2'].includes(planPhase) ? {run:'Configure',results:'Progress',comparison:'History',compare:'Comparison'} : moduleName === 'risk' ? {run:'Configure & execute',results:'Run progress',comparison:'Outputs & QC',compare:'Comparison'} : {run:'Run',results:'Results',comparison:'Comparison',compare:'Comparison'};
-        root.querySelectorAll('.lh-tab[data-view]').forEach(tab => { tab.textContent = tabCopy[tab.dataset.view] || tab.textContent; tab.hidden = dataViewsRoute || (tab.dataset.view === 'progress' && moduleName !== 'data') || (moduleName === 'data' && ['results','compare'].includes(tab.dataset.view)) || (tab.dataset.view === 'compare' && !showComparisonUpload); tab.classList.toggle('is-active', tab.dataset.view === viewName); tab.disabled = moduleName === 'log'; });
+        root.querySelectorAll('.lh-tab[data-view]').forEach(tab => { tab.textContent = tabCopy[tab.dataset.view] || tab.textContent; tab.hidden = configurationHomeRoute || dataViewsRoute || (tab.dataset.view === 'progress' && moduleName !== 'data') || (moduleName === 'data' && ['results','compare'].includes(tab.dataset.view)) || (tab.dataset.view === 'compare' && !showComparisonUpload); tab.classList.toggle('is-active', tab.dataset.view === viewName); tab.disabled = moduleName === 'log'; });
         root.querySelectorAll('.lh-tab[data-data-view-section]').forEach(tab => {
           const section = tab.dataset.dataViewSection;
           tab.hidden = !dataViewsRoute || (planPhase === '1' && ['lof-refinement','cof-refinement'].includes(section));
           tab.classList.toggle('is-active', tab.dataset.dataViewSection === dataViewSection);
         });
+        root.querySelectorAll('.lh-tab[data-config-section]').forEach(tab => {
+          tab.hidden = !configurationHomeRoute;
+          tab.classList.toggle('is-active', tab.dataset.configSection === configurationSection);
+        });
+        viewTabs.style.display = '';
         viewTabs.style.opacity = moduleName === 'log' ? '.45' : '1';
         const [heading, sub, action] = copy[moduleName][viewName];
         const pageSubtitle = (moduleName === 'cof' && (planPhase === '1' || ['results','comparison'].includes(viewName))) || (moduleName === 'risk' && planPhase === '1') ? '' : sub;
@@ -5683,6 +6002,89 @@
           resultsNav.scrollTop = Math.max(0, activeRect.top - targetTop);
         }
         host.querySelectorAll('[data-toast]').forEach(el => el.addEventListener('click', () => showToast(el.dataset.toast)));
+        host.querySelectorAll('[data-config-destination]').forEach(card => card.addEventListener('click', () => {
+          const destination = card.dataset.configDestination;
+          if (destination === 'user-guide' || destination === 'release-notes') {
+            showToast(`${destination === 'user-guide' ? 'User Guide' : 'Release Notes'} opened.`);
+            return;
+          }
+          moduleName = destination === 'cof-prep' ? 'cof' : destination;
+          viewName = 'run';
+          render();
+          if (destination === 'cof-prep') {
+            requestAnimationFrame(() => host.querySelector('.lh-cof-preparation')?.scrollIntoView({behavior:'smooth',block:'start'}));
+          }
+        }));
+        host.querySelectorAll('[data-config-completion]').forEach(toggle => toggle.addEventListener('click', () => {
+          const key = toggle.dataset.configCompletion;
+          if (completedConfigurationWorkflows.has(key)) completedConfigurationWorkflows.delete(key);
+          else completedConfigurationWorkflows.add(key);
+          configurationWorkflowUpdates[key] = {
+            user:configurationCurrentUser,
+            updatedAt:new Date().toISOString()
+          };
+          localStorage.setItem(configurationProgressStorageKey, [...completedConfigurationWorkflows].join(','));
+          localStorage.setItem(configurationUpdatesStorageKey, JSON.stringify(configurationWorkflowUpdates));
+          render();
+          requestAnimationFrame(() => host.querySelector(`[data-config-completion="${key}"]`)?.focus());
+        }));
+        host.querySelectorAll('[data-config-info]').forEach(toggle => toggle.addEventListener('click', () => {
+          configurationInfoModule = configurationInfoModule === toggle.dataset.configInfo ? '' : toggle.dataset.configInfo;
+          render();
+          if (configurationInfoModule) requestAnimationFrame(() => host.querySelector('[data-config-info-close]')?.focus());
+        }));
+        host.querySelectorAll('[data-config-info-close]').forEach(close => close.addEventListener('click', () => {
+          const module = close.dataset.configInfoClose;
+          configurationInfoModule = '';
+          render();
+          requestAnimationFrame(() => host.querySelector(`[data-config-info="${module}"]`)?.focus());
+        }));
+        host.querySelectorAll('[data-config-info-popover]').forEach(popover => popover.addEventListener('keydown', event => {
+          if (event.key !== 'Escape') return;
+          event.preventDefault();
+          const module = configurationInfoModule;
+          configurationInfoModule = '';
+          render();
+          requestAnimationFrame(() => host.querySelector(`[data-config-info="${module}"]`)?.focus());
+        }));
+        host.querySelectorAll('[data-teams-notification-url]').forEach(input => input.addEventListener('input', () => {
+          teamsNotificationDraft = input.value;
+          input.classList.remove('is-invalid');
+          input.removeAttribute('aria-invalid');
+        }));
+        host.querySelectorAll('[data-teams-notification-save]').forEach(button => button.addEventListener('click', () => {
+          const notificationModule = button.dataset.teamsNotificationSave;
+          const input = host.querySelector('[data-teams-notification-url]');
+          const value = input?.value.trim() || '';
+          let url;
+          try { url = new URL(value); } catch { url = null; }
+          if (!url || url.protocol !== 'https:') {
+            input?.classList.add('is-invalid');
+            input?.setAttribute('aria-invalid','true');
+            showToast('Enter a valid secure Teams link.');
+            input?.focus();
+            return;
+          }
+          teamsNotificationSettings[notificationModule] = {url:value,updatedAt:new Date().toISOString()};
+          teamsNotificationDraft = '';
+          teamsNotificationEditing = '';
+          localStorage.setItem(teamsNotificationStorageKey, JSON.stringify(teamsNotificationSettings));
+          render();
+          showToast(`${teamsNotificationLabels[notificationModule]} Teams notification link saved.`);
+        }));
+        host.querySelectorAll('[data-teams-notification-edit]').forEach(button => button.addEventListener('click', () => {
+          const notificationModule = button.dataset.teamsNotificationEdit;
+          teamsNotificationDraft = teamsNotificationSettings[notificationModule]?.url || '';
+          teamsNotificationEditing = notificationModule;
+          render();
+          requestAnimationFrame(() => host.querySelector('[data-teams-notification-url]')?.focus());
+        }));
+        host.querySelectorAll('[data-teams-notification-cancel]').forEach(button => button.addEventListener('click', () => {
+          teamsNotificationDraft = '';
+          teamsNotificationEditing = '';
+          render();
+          requestAnimationFrame(() => host.querySelector('[data-teams-notification-edit]')?.focus());
+        }));
         host.querySelectorAll('[data-transfer-field]').forEach(field => field.addEventListener('input', () => {
           dataTransferValues[field.dataset.transferField] = field.value;
           dataTransferValues.checked = false;
@@ -6365,9 +6767,17 @@
         event.stopPropagation();
         setDataManagementMenuOpen(false);
         setProfileMenuOpen(false);
+        if (planPhase === '2') {
+          setRefinementMenuOpen(false);
+          moduleName = 'config';
+          viewName = 'run';
+          render();
+          return;
+        }
         setRefinementMenuOpen(!refinementNav.classList.contains('is-open'));
       });
       refinementTrigger.addEventListener('keydown', event => {
+        if (planPhase === '2') return;
         if (!['ArrowDown','ArrowUp','Home','End'].includes(event.key)) return;
         event.preventDefault();
         setRefinementMenuOpen(true);
@@ -6492,6 +6902,11 @@
         render();
       }));
       root.querySelectorAll('.lh-tab[data-view]').forEach(tab => tab.addEventListener('click', () => { if (moduleName !== 'log') { viewName = tab.dataset.view; render(); } }));
+      root.querySelectorAll('[data-config-section]').forEach(tab => tab.addEventListener('click', () => {
+        configurationSection = tab.dataset.configSection;
+        configurationInfoModule = '';
+        render();
+      }));
       root.querySelectorAll('[data-data-view-section]').forEach(tab => tab.addEventListener('click', () => {
         dataViewSection = tab.dataset.dataViewSection;
         if (dataViewSection === 'lof-refinement') riskExtractModel = 'lof';
@@ -6501,6 +6916,17 @@
         render();
       }));
       root.querySelectorAll('[data-toast]').forEach(el => el.addEventListener('click', () => showToast(el.dataset.toast)));
+      resetConfigProgress.addEventListener('click', () => {
+        const updatedAt = new Date().toISOString();
+        completedConfigurationWorkflows.clear();
+        configurationWorkflowKeys.forEach(key => {
+          configurationWorkflowUpdates[key] = {user:configurationCurrentUser,updatedAt};
+        });
+        localStorage.removeItem(configurationProgressStorageKey);
+        localStorage.setItem(configurationUpdatesStorageKey, JSON.stringify(configurationWorkflowUpdates));
+        render();
+        showToast('Configuration checkmarks reset.');
+      });
       primaryAction.addEventListener('click', () => {
         showToast(moduleName === 'log' ? 'New issue form opened.' : moduleName === 'data' && viewName === 'compare' ? dataViewSection === 'loaded-data' ? 'Lighthouse Data Export opened for loaded data.' : dataViewSection === 'risk-results' ? 'Lighthouse Data Export opened for risk results.' : dataViewSection === 'factors' ? 'Lighthouse Data Export opened for factor data.' : riskExtractSheet ? `${currentRiskSheet().name} is ready for sanitized prototype export.` : `Lighthouse Data Export opened for the ${riskExtractModel === 'lof' ? 'LoF' : 'CoF'} Refinement catalog.` : viewName === 'compare' ? moduleName === 'lof' ? 'LoF comparison refreshed using the GitHub PHMSA benchmark and optional previous result.' : moduleName === 'cof' ? 'CoF comparison refreshed using prior output and illustrative PHMSA prototype data pending a real benchmark.' : `${comparisonProfiles[moduleName].name} comparison refreshed using the uploaded previous and PHMSA results.` : moduleName === 'data' && viewName === 'run' ? 'DTL-081 queued for pre-transfer validation.' : moduleName === 'lof' && viewName === 'run' ? `LOF-025 setup validated with the ${lofConfigurationSource()} and PHMSA connection.` : moduleName === 'risk' && viewName === 'run' ? 'RISK-0264-011 submitted through the authenticated Lighthouse session.' : 'Action opened for the current workflow.');
       });
