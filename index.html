@@ -3084,6 +3084,11 @@
       let selectedFactorThreat = 'EXTERNAL_CORROSION';
       let selectedConfigModel = 'EXTERNAL_CORROSION';
       const riskOverrideEnabled = {lof:false,cof:false};
+      const normalizedRunName = value => String(value || '').trim().replace(/\s+/g,' ').toLocaleLowerCase();
+      const historyHasRunName = (name,rows,keys=['name']) => {
+        const normalizedName = normalizedRunName(name);
+        return Boolean(normalizedName) && rows.some(row => keys.some(key => normalizedRunName(row[key]) === normalizedName));
+      };
       const dataTransferValues = {
         name:'',
         reason:'LoF refinement · attribute correction',
@@ -3156,6 +3161,8 @@
       }]));
       let selectedCofConfigScenario = 'RI';
       let riskConfigUpload = {name:'',size:0,status:'',error:''};
+      const riskAssessmentValues = {name:'MR1',purpose:'Final risk candidate'};
+      let riskExecutionAttempted = false;
       const cofScenarioConfigNames = {PLI:'Pinhole · ignition',PLNI:'Pinhole · no ignition',MLI:'Medium leak · ignition',MLNI:'Medium leak · no ignition',LLI:'Large leak · ignition',LLNI:'Large leak · no ignition',RI:'Rupture · ignition',RNI:'Rupture · no ignition'};
       const cofScenarioConfigDefaults = {
         PLI:{impactRadius:'35',fatalityWeight:'0.012',injuryWeight:'0.083',propertyWeight:'0.15'},
@@ -3285,7 +3292,7 @@
             <div class="lh-data-load-config">
               <div class="lh-kicker">Configuration</div>
               <div class="lh-fields">
-                <label class="lh-field"><span class="lh-field-label">Data Load Name</span><input class="lh-input ${transferControlState(Boolean(dataTransferValues.name.trim()))}" data-transfer-field="name" value="${escapeHtml(dataTransferValues.name)}" placeholder="Enter a name for this data load" ${dataTransferValues.checkAttempted && !dataTransferValues.name.trim() ? 'aria-invalid="true"' : ''}/><span class="lh-help">Used to identify this transfer in validation results and run history</span></label>
+                <label class="lh-field"><span class="lh-field-label">Data Load Name</span><input class="lh-input ${transferControlState(Boolean(dataTransferValues.name.trim()) && !dataLoadNameExists(dataTransferValues.name))}" data-transfer-field="name" value="${escapeHtml(dataTransferValues.name)}" placeholder="Enter a unique name for this data load" ${dataTransferValues.checkAttempted && (!dataTransferValues.name.trim() || dataLoadNameExists(dataTransferValues.name)) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in Data Load History</span></label>
                 <div class="lh-field"><span class="lh-field-label">Source</span><div class="lh-input lh-readonly-input ${transferControlState(true)}" aria-readonly="true">Analysis Server · ClientName_ETL</div><span class="lh-help">Fixed source for this environment</span></div>
                 <div class="lh-field"><span class="lh-field-label">Target database</span><div class="lh-input lh-readonly-input ${transferControlState(true)}" aria-readonly="true">lhtimp-clientname-uat · Lighthouse_GDB</div><span class="lh-help">Fixed target for this environment</span></div>
                 <label class="lh-field"><span class="lh-field-label">Reason for transfer</span><input class="lh-input ${transferControlState(Boolean(dataTransferValues.reason.trim()))}" data-transfer-field="reason" value="${escapeHtml(dataTransferValues.reason)}" ${dataTransferValues.checkAttempted && !dataTransferValues.reason.trim() ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the snapshot and run log</span></label>
@@ -3418,6 +3425,14 @@
         if (moduleName === 'data' && viewName === 'progress') updateTransferProgress();
       }
       function startDataTransfer() {
+        if (dataLoadNameExists(dataTransferValues.name)) {
+          dataTransferValues.checkAttempted = true;
+          dataTransferModalOpen = false;
+          render();
+          showToast('This Data Load Name already exists in history. Enter a unique name before starting the transfer.');
+          requestAnimationFrame(() => host.querySelector('[data-transfer-field="name"]')?.focus());
+          return;
+        }
         if (dataTransferRun?.timerId) clearInterval(dataTransferRun.timerId);
         Object.values(cofDataPreparationByPhase).forEach(preparation => {
           if (preparation.timerId) clearInterval(preparation.timerId);
@@ -3513,6 +3528,8 @@
           return {...template,name:`${template.name}${version ? ` V${version + 1}` : '_2026'}`,date:'07/04/2021, 12:00 PM',status:index === 0 ? 'In Progress' : template.status};
         });
       };
+      const dataLoadNameExists = name => historyHasRunName(name,dataHistoryRows())
+        || Boolean(dataTransferRun && normalizedRunName(dataTransferRun.name) === normalizedRunName(name));
       const dataHistoryColumns = [
         ['name','Data Load Name'],['date','Date Created'],['scope','Load Scope'],['tables','Groups/Tables'],
         ['rows','Rows'],['runtime','Runtime'],['user','Ran By'],['status','Status']
@@ -3918,8 +3935,8 @@
 
       const riskAssessmentFields = () => `
         <div class="lh-fields">
-          <label class="lh-field"><span class="lh-field-label">Model Run Name</span><input class="lh-input" value="MR1"/></label>
-          <label class="lh-field"><span class="lh-field-label">Model Run Purpose</span><input class="lh-input" value="Final risk candidate"/></label>
+          <label class="lh-field"><span class="lh-field-label">Model Run Name</span><input class="lh-input ${riskExecutionAttempted ? (!riskAssessmentValues.name.trim() || riskNameExists(riskAssessmentValues.name)) ? 'is-invalid' : 'is-valid' : ''}" value="${escapeHtml(riskAssessmentValues.name)}" placeholder="Enter a unique name for this Model Run" data-risk-assessment="name" ${riskExecutionAttempted && (!riskAssessmentValues.name.trim() || riskNameExists(riskAssessmentValues.name)) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in Model Run History</span></label>
+          <label class="lh-field"><span class="lh-field-label">Model Run Purpose</span><input class="lh-input ${riskExecutionAttempted ? riskAssessmentValues.purpose.trim() ? 'is-valid' : 'is-invalid' : ''}" value="${escapeHtml(riskAssessmentValues.purpose)}" data-risk-assessment="purpose" ${riskExecutionAttempted && !riskAssessmentValues.purpose.trim() ? 'aria-invalid="true"' : ''}/></label>
           ${planPhase === '2' ? teamsNotificationSection('risk') : ''}
         </div>
       `;
@@ -4071,8 +4088,23 @@
         {id:'RISK-003',purpose:'Pressure-system update',lof:'LOF-017',cof:'COF-013',config:'RiskConfig-v24',date:'04/17/2026, 10:27 AM',runtime:'4h 49m',user:'Shaki Muttiah',status:'Completed'},
         {id:'RISK-002',purpose:'Initial 2026 operating scope',lof:'LOF-015',cof:'COF-012',config:'RiskConfig-v22',date:'03/21/2026, 4:51 PM',runtime:'5h 03m',user:'Morgan Lee',status:'Completed'}
       ];
+      const riskNameExists = name => historyHasRunName(name,riskHistoryRows,['id','name']);
+      const recordRiskRun = () => {
+        riskHistoryRows.unshift({
+          id:riskAssessmentValues.name.trim(),
+          name:riskAssessmentValues.name.trim(),
+          purpose:riskAssessmentValues.purpose.trim(),
+          lof:'LOF-024',
+          cof:'COF-019',
+          config:planPhase === '1' ? riskConfigUpload.name : 'Guided configuration',
+          date:new Intl.DateTimeFormat('en-US',{month:'2-digit',day:'2-digit',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date()),
+          runtime:'In progress',
+          user:'Shaki Muttiah',
+          status:'In Progress'
+        });
+      };
       const riskHistory = () => runHistoryGrid('risk','Model Run History',[
-        ['id','Run ID'],['purpose','Run Purpose'],['lof','LoF Run'],['cof','CoF Run'],['config','Configuration'],
+        ['id','Model Run Name'],['purpose','Run Purpose'],['lof','LoF Run'],['cof','CoF Run'],['config','Configuration'],
         ['date','Run Date'],['runtime','Runtime'],['user','Ran By'],['status','Status']
       ],riskHistoryRows);
 
@@ -4246,6 +4278,7 @@
           </div>
         </div>`;
 
+      const cofGeneralFieldInvalid = field => lofConfigValueMissing(cofGeneralValues[field]) || (field === 'name' && cofNameExists(cofGeneralValues.name));
       const cofMissingGeneralField = () => ['name','reason'].find(field => lofConfigValueMissing(cofGeneralValues[field]));
       const cofMissingConfigScenarios = () => Object.entries(cofScenarioConfigValues)
         .filter(([,values]) => Object.values(values).some(lofConfigValueMissing))
@@ -4417,8 +4450,8 @@
             <div class="lh-run-config-info">
               <div class="lh-kicker">Configuration</div>
               <div class="lh-fields">
-                <label class="lh-field"><span class="lh-field-label">CoF Name</span><input class="lh-input ${cofConfigCheckAttempted ? lofConfigValueMissing(cofGeneralValues.name) ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a name for this CoF run" ${cofConfigCheckAttempted && lofConfigValueMissing(cofGeneralValues.name) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Used to identify this CoF run in history</span></label>
-                <label class="lh-field"><span class="lh-field-label">Reason for CoF</span><input class="lh-input ${cofConfigCheckAttempted ? lofConfigValueMissing(cofGeneralValues.reason) ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="reason" value="${escapeHtml(cofGeneralValues.reason)}" placeholder="Enter the reason for this CoF run" ${cofConfigCheckAttempted && lofConfigValueMissing(cofGeneralValues.reason) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
+                <label class="lh-field"><span class="lh-field-label">CoF Name</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('name') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a unique name for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in CoF Run History</span></label>
+                <label class="lh-field"><span class="lh-field-label">Reason for CoF</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('reason') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="reason" value="${escapeHtml(cofGeneralValues.reason)}" placeholder="Enter the reason for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
               </div>
             </div>
             <div class="lh-run-config-upload">
@@ -4436,8 +4469,8 @@
             <div class="lh-run-config-info">
               <div class="lh-kicker">Configuration</div>
               <div class="lh-fields">
-                <label class="lh-field"><span class="lh-field-label">CoF Name</span><input class="lh-input ${cofConfigCheckAttempted ? lofConfigValueMissing(cofGeneralValues.name) ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a name for this CoF run" ${cofConfigCheckAttempted && lofConfigValueMissing(cofGeneralValues.name) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Used to identify this CoF run in history</span></label>
-                <label class="lh-field"><span class="lh-field-label">Reason for CoF</span><input class="lh-input ${cofConfigCheckAttempted ? lofConfigValueMissing(cofGeneralValues.reason) ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="reason" value="${escapeHtml(cofGeneralValues.reason)}" placeholder="Enter the reason for this CoF run" ${cofConfigCheckAttempted && lofConfigValueMissing(cofGeneralValues.reason) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
+                <label class="lh-field"><span class="lh-field-label">CoF Name</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('name') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a unique name for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in CoF Run History</span></label>
+                <label class="lh-field"><span class="lh-field-label">Reason for CoF</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('reason') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="reason" value="${escapeHtml(cofGeneralValues.reason)}" placeholder="Enter the reason for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
                 ${teamsNotificationSection('cof')}
               </div>
             </div>
@@ -4455,8 +4488,8 @@
           ${cofDataPreparationSection()}
           ${card('General Configuration','',`
             <div class="lh-fields">
-              <label class="lh-field lh-field-full"><span class="lh-field-label">CoF Name</span><input class="lh-input ${cofConfigCheckAttempted ? lofConfigValueMissing(cofGeneralValues.name) ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a name for this CoF run" ${cofConfigCheckAttempted && lofConfigValueMissing(cofGeneralValues.name) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Used to identify this CoF run in history</span></label>
-              <label class="lh-field lh-field-full"><span class="lh-field-label">Reason for CoF</span><input class="lh-input ${cofConfigCheckAttempted ? lofConfigValueMissing(cofGeneralValues.reason) ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="reason" value="${escapeHtml(cofGeneralValues.reason)}" placeholder="Enter the reason for this CoF run" ${cofConfigCheckAttempted && lofConfigValueMissing(cofGeneralValues.reason) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
+              <label class="lh-field lh-field-full"><span class="lh-field-label">CoF Name</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('name') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a unique name for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in CoF Run History</span></label>
+              <label class="lh-field lh-field-full"><span class="lh-field-label">Reason for CoF</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('reason') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="reason" value="${escapeHtml(cofGeneralValues.reason)}" placeholder="Enter the reason for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
             </div>
           `)}
           ${card('CoF Scenario Configuration','',`
@@ -4545,6 +4578,14 @@
       function startCofRun() {
         if (!cofDataPreparationComplete()) return;
         if (cofMissingGeneralField()) return;
+        if (cofNameExists(cofGeneralValues.name)) {
+          cofConfigCheckAttempted = true;
+          cofCheckModalOpen = false;
+          render();
+          showToast('This CoF Name already exists in history. Enter a unique name before starting CoF.');
+          requestAnimationFrame(() => host.querySelector('[data-cof-general="name"]')?.focus());
+          return;
+        }
         if (planPhase === '1' ? cofConfigUpload.status !== 'valid' : cofMissingConfigScenarios().length) return;
         if (cofProgressRun?.timerId) clearInterval(cofProgressRun.timerId);
         cofCheckModalOpen = false;
@@ -4630,6 +4671,7 @@
           status
         },...cofPhaseOneHistoryRows];
       };
+      const cofNameExists = name => historyHasRunName(name,cofHistoryRows());
 
       const cofPhaseOneHistory = () => runHistoryGrid('cof','CoF Run History',[
         ['id','Run ID'],['name','CoF Name'],['reason','Reason for CoF'],['file','Configuration JSON'],
@@ -4942,7 +4984,8 @@
           throw new Error('"lof.excavation.simulation_seed" is required and must be a number or numeric string.');
         }
       };
-      const lofGeneralControlState = value => lofConfigCheckAttempted ? lofConfigValueMissing(value) ? 'is-invalid' : 'is-valid' : '';
+      const lofGeneralFieldInvalid = field => lofConfigValueMissing(lofGeneralValues[field]) || (field === 'name' && lofNameExists(lofGeneralValues.name));
+      const lofGeneralControlState = field => lofConfigCheckAttempted ? lofGeneralFieldInvalid(field) ? 'is-invalid' : 'is-valid' : '';
       const lofMissingGeneralField = () => ['name','reason'].find(field => lofConfigValueMissing(lofGeneralValues[field]));
       const lofMissingConfigModels = () => Object.entries(lofConfigModelValues)
         .filter(([,values]) => Object.values(values).some(lofConfigValueMissing))
@@ -5095,8 +5138,8 @@
             <div class="lh-run-config-info">
               <div class="lh-kicker">Configuration</div>
               <div class="lh-fields">
-                <label class="lh-field"><span class="lh-field-label">LoF Name</span><input class="lh-input ${lofGeneralControlState(lofGeneralValues.name)}" data-lof-general="name" value="${escapeHtml(lofGeneralValues.name)}" placeholder="Enter a name for this LoF run" ${lofConfigCheckAttempted && lofConfigValueMissing(lofGeneralValues.name) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Used to identify this LoF run in results and run history</span></label>
-                <label class="lh-field"><span class="lh-field-label">Reason for LoF</span><input class="lh-input ${lofGeneralControlState(lofGeneralValues.reason)}" data-lof-general="reason" value="${escapeHtml(lofGeneralValues.reason)}" placeholder="Enter the reason for this LoF run" ${lofConfigCheckAttempted && lofConfigValueMissing(lofGeneralValues.reason) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
+                <label class="lh-field"><span class="lh-field-label">LoF Name</span><input class="lh-input ${lofGeneralControlState('name')}" data-lof-general="name" value="${escapeHtml(lofGeneralValues.name)}" placeholder="Enter a unique name for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in LoF Run History</span></label>
+                <label class="lh-field"><span class="lh-field-label">Reason for LoF</span><input class="lh-input ${lofGeneralControlState('reason')}" data-lof-general="reason" value="${escapeHtml(lofGeneralValues.reason)}" placeholder="Enter the reason for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
               </div>
             </div>
             <div class="lh-run-config-upload">
@@ -5113,8 +5156,8 @@
             <div class="lh-run-config-info">
               <div class="lh-kicker">Configuration</div>
               <div class="lh-fields">
-                <label class="lh-field"><span class="lh-field-label">LoF Name</span><input class="lh-input ${lofGeneralControlState(lofGeneralValues.name)}" data-lof-general="name" value="${escapeHtml(lofGeneralValues.name)}" placeholder="Enter a name for this LoF run" ${lofConfigCheckAttempted && lofConfigValueMissing(lofGeneralValues.name) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Used to identify this LoF run in results and run history</span></label>
-                <label class="lh-field"><span class="lh-field-label">Reason for LoF</span><input class="lh-input ${lofGeneralControlState(lofGeneralValues.reason)}" data-lof-general="reason" value="${escapeHtml(lofGeneralValues.reason)}" placeholder="Enter the reason for this LoF run" ${lofConfigCheckAttempted && lofConfigValueMissing(lofGeneralValues.reason) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
+                <label class="lh-field"><span class="lh-field-label">LoF Name</span><input class="lh-input ${lofGeneralControlState('name')}" data-lof-general="name" value="${escapeHtml(lofGeneralValues.name)}" placeholder="Enter a unique name for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in LoF Run History</span></label>
+                <label class="lh-field"><span class="lh-field-label">Reason for LoF</span><input class="lh-input ${lofGeneralControlState('reason')}" data-lof-general="reason" value="${escapeHtml(lofGeneralValues.reason)}" placeholder="Enter the reason for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
                 ${teamsNotificationSection('lof')}
               </div>
             </div>
@@ -5132,8 +5175,8 @@
           <div class="lh-grid">
             ${card('General Configuration','',`
               <div class="lh-fields">
-                <label class="lh-field lh-field-full"><span class="lh-field-label">LoF Name</span><input class="lh-input ${lofGeneralControlState(lofGeneralValues.name)}" data-lof-general="name" value="${escapeHtml(lofGeneralValues.name)}" placeholder="Enter a name for this LoF run" ${lofConfigCheckAttempted && lofConfigValueMissing(lofGeneralValues.name) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Used to identify this LoF run in results and run history</span></label>
-                <label class="lh-field lh-field-full"><span class="lh-field-label">Reason for LoF</span><input class="lh-input ${lofGeneralControlState(lofGeneralValues.reason)}" data-lof-general="reason" value="${escapeHtml(lofGeneralValues.reason)}" placeholder="Enter the reason for this LoF run" ${lofConfigCheckAttempted && lofConfigValueMissing(lofGeneralValues.reason) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
+                <label class="lh-field lh-field-full"><span class="lh-field-label">LoF Name</span><input class="lh-input ${lofGeneralControlState('name')}" data-lof-general="name" value="${escapeHtml(lofGeneralValues.name)}" placeholder="Enter a unique name for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in LoF Run History</span></label>
+                <label class="lh-field lh-field-full"><span class="lh-field-label">Reason for LoF</span><input class="lh-input ${lofGeneralControlState('reason')}" data-lof-general="reason" value="${escapeHtml(lofGeneralValues.reason)}" placeholder="Enter the reason for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
               </div>
             `)}
             ${lofFutureSetup()}
@@ -5224,6 +5267,14 @@
       }
       function startLofRun() {
         if (lofMissingGeneralField()) return;
+        if (lofNameExists(lofGeneralValues.name)) {
+          lofConfigCheckAttempted = true;
+          lofCheckModalOpen = false;
+          render();
+          showToast('This LoF Name already exists in history. Enter a unique name before starting LoF.');
+          requestAnimationFrame(() => host.querySelector('[data-lof-general="name"]')?.focus());
+          return;
+        }
         if (planPhase === '1' ? lofConfigUpload.status !== 'valid' : lofMissingConfigModels().length) return;
         if (lofProgressRun?.timerId) clearInterval(lofProgressRun.timerId);
         lofCheckModalOpen = false;
@@ -5505,6 +5556,7 @@
           status
         },...lofPhaseOneHistoryRows];
       };
+      const lofNameExists = name => historyHasRunName(name,lofHistoryRows());
 
       const lofPhaseOneHistory = () => runHistoryGrid('lof','LoF Run History',[
         ['id','Run ID'],['name','LoF Name'],['reason','Reason for LoF'],['file','Configuration JSON'],
@@ -6088,6 +6140,12 @@
         host.querySelectorAll('[data-transfer-field]').forEach(field => field.addEventListener('input', () => {
           dataTransferValues[field.dataset.transferField] = field.value;
           dataTransferValues.checked = false;
+          if (dataTransferValues.checkAttempted) {
+            const invalid = !field.value.trim() || (field.dataset.transferField === 'name' && dataLoadNameExists(field.value));
+            field.classList.toggle('is-invalid', invalid);
+            field.classList.toggle('is-valid', !invalid);
+            if (invalid) field.setAttribute('aria-invalid','true'); else field.removeAttribute('aria-invalid');
+          }
           dataTransferValues.checkAttempted = false;
           dataTransferModalOpen = false;
           host.querySelectorAll('.lh-input.is-valid,.lh-input.is-invalid,.lh-select.is-valid,.lh-select.is-invalid').forEach(control => control.classList.remove('is-valid','is-invalid'));
@@ -6225,13 +6283,19 @@
         host.querySelectorAll('[data-transfer-check]').forEach(button => button.addEventListener('click', () => {
           dataTransferValues.checkAttempted = true;
           const missingField = !dataTransferValues.name.trim() ? 'name' : !dataTransferValues.reason.trim() ? 'reason' : '';
+          const duplicateName = !missingField && dataLoadNameExists(dataTransferValues.name);
           const missingSelection = isPhase3() && ((dataTransferValues.scope === 'groups' && !dataTransferValues.selectedGroups.length) || (dataTransferValues.scope === 'tables' && !dataTransferValues.selectedTables.length));
-          dataTransferValues.checked = !missingField && !missingSelection;
-          dataTransferModalOpen = !missingField && !missingSelection;
+          dataTransferValues.checked = !missingField && !duplicateName && !missingSelection;
+          dataTransferModalOpen = !missingField && !duplicateName && !missingSelection;
           render();
           if (missingField) {
             showToast(`Complete the ${missingField === 'name' ? 'Data Load Name' : 'Reason for transfer'} field outlined in red.`);
             host.querySelector(`[data-transfer-field="${missingField}"]`)?.focus();
+            return;
+          }
+          if (duplicateName) {
+            showToast('This Data Load Name already exists in history. Enter a unique name before checking the transfer.');
+            host.querySelector('[data-transfer-field="name"]')?.focus();
             return;
           }
           if (missingSelection) {
@@ -6433,17 +6497,40 @@
             showToast(riskConfigUpload.error);
           }
         }));
+        host.querySelectorAll('[data-risk-assessment]').forEach(input => input.addEventListener('input', () => {
+          riskAssessmentValues[input.dataset.riskAssessment] = input.value;
+          if (!riskExecutionAttempted) return;
+          const invalid = !input.value.trim() || (input.dataset.riskAssessment === 'name' && riskNameExists(input.value));
+          input.classList.toggle('is-invalid', invalid);
+          input.classList.toggle('is-valid', !invalid);
+          if (invalid) input.setAttribute('aria-invalid','true'); else input.removeAttribute('aria-invalid');
+        }));
+        const validateRiskRunFields = () => {
+          riskExecutionAttempted = true;
+          const missingField = !riskAssessmentValues.name.trim() ? 'name' : !riskAssessmentValues.purpose.trim() ? 'purpose' : '';
+          const duplicateName = !missingField && riskNameExists(riskAssessmentValues.name);
+          if (!missingField && !duplicateName) return true;
+          render();
+          if (duplicateName) showToast('This Model Run Name already exists in history. Enter a unique name before executing the run.');
+          else showToast(`Complete the Model Run ${missingField === 'name' ? 'Name' : 'Purpose'} field outlined in red.`);
+          requestAnimationFrame(() => host.querySelector(`[data-risk-assessment="${duplicateName ? 'name' : missingField}"]`)?.focus());
+          return false;
+        };
         host.querySelectorAll('[data-risk-start]').forEach(button => button.addEventListener('click', () => {
+          if (!validateRiskRunFields()) return;
           if (riskConfigUpload.status !== 'valid') {
             showToast('Upload a valid RiskModelConfig JSON file before starting the run.');
             requestAnimationFrame(() => host.querySelector('[data-risk-config-upload-trigger]')?.focus());
             return;
           }
+          recordRiskRun();
           viewName = 'results';
           render();
           showToast('RISK-0264-011 started with the uploaded RiskModelConfig.');
         }));
         host.querySelectorAll('[data-risk-guided-start]').forEach(button => button.addEventListener('click', () => {
+          if (!validateRiskRunFields()) return;
+          recordRiskRun();
           viewName = 'results';
           render();
           showToast('Model run started.');
@@ -6451,10 +6538,10 @@
         host.querySelectorAll('[data-lof-general]').forEach(el => el.addEventListener('input', () => {
           lofGeneralValues[el.dataset.lofGeneral] = el.value;
           if (!lofConfigCheckAttempted) return;
-          const missing = lofConfigValueMissing(el.value);
-          el.classList.toggle('is-invalid', missing);
-          el.classList.toggle('is-valid', !missing);
-          if (missing) el.setAttribute('aria-invalid','true'); else el.removeAttribute('aria-invalid');
+          const invalid = lofGeneralFieldInvalid(el.dataset.lofGeneral);
+          el.classList.toggle('is-invalid', invalid);
+          el.classList.toggle('is-valid', !invalid);
+          if (invalid) el.setAttribute('aria-invalid','true'); else el.removeAttribute('aria-invalid');
         }));
         host.querySelectorAll('[data-lof-config]').forEach(el => el.addEventListener('input', () => {
           const [section,key] = el.dataset.lofConfig.split('.');
@@ -6530,15 +6617,21 @@
         host.querySelectorAll('[data-lof-check]').forEach(button => button.addEventListener('click', () => {
           lofConfigCheckAttempted = true;
           const missingGeneralField = lofMissingGeneralField();
+          const duplicateName = !missingGeneralField && lofNameExists(lofGeneralValues.name);
           const missingUpload = planPhase === '1' && lofConfigUpload.status !== 'valid';
           const missingModels = planPhase === '1' ? [] : lofMissingConfigModels();
-          lofCheckModalOpen = !missingGeneralField && !missingUpload && missingModels.length === 0;
+          lofCheckModalOpen = !missingGeneralField && !duplicateName && !missingUpload && missingModels.length === 0;
           if (missingModels.length) selectedConfigModel = missingModels[0];
           render();
           if (missingGeneralField) {
             const label = missingGeneralField === 'name' ? 'LoF Name' : 'Reason for LoF';
             showToast(`Complete the ${label} field outlined in red.`);
             requestAnimationFrame(() => host.querySelector(`[data-lof-general="${missingGeneralField}"]`)?.focus());
+            return;
+          }
+          if (duplicateName) {
+            showToast('This LoF Name already exists in history. Enter a unique name before checking the configuration.');
+            requestAnimationFrame(() => host.querySelector('[data-lof-general="name"]')?.focus());
             return;
           }
           if (missingUpload) {
@@ -6573,10 +6666,10 @@
         host.querySelectorAll('[data-cof-general]').forEach(el => el.addEventListener('input', () => {
           cofGeneralValues[el.dataset.cofGeneral] = el.value;
           if (!cofConfigCheckAttempted) return;
-          const missing = lofConfigValueMissing(el.value);
-          el.classList.toggle('is-invalid', missing);
-          el.classList.toggle('is-valid', !missing);
-          if (missing) el.setAttribute('aria-invalid','true'); else el.removeAttribute('aria-invalid');
+          const invalid = cofGeneralFieldInvalid(el.dataset.cofGeneral);
+          el.classList.toggle('is-invalid', invalid);
+          el.classList.toggle('is-valid', !invalid);
+          if (invalid) el.setAttribute('aria-invalid','true'); else el.removeAttribute('aria-invalid');
         }));
         host.querySelectorAll('[data-cof-config-upload-trigger]').forEach(button => button.addEventListener('click', () => {
           host.querySelector('[data-cof-config-upload]')?.click();
@@ -6660,15 +6753,21 @@
           }
           cofConfigCheckAttempted = true;
           const missingGeneralField = cofMissingGeneralField();
+          const duplicateName = !missingGeneralField && cofNameExists(cofGeneralValues.name);
           const missingUpload = planPhase === '1' && cofConfigUpload.status !== 'valid';
           const missingScenarios = planPhase === '1' ? [] : cofMissingConfigScenarios();
-          cofCheckModalOpen = !missingGeneralField && !missingUpload && missingScenarios.length === 0;
+          cofCheckModalOpen = !missingGeneralField && !duplicateName && !missingUpload && missingScenarios.length === 0;
           if (missingScenarios.length) selectedCofConfigScenario = missingScenarios[0];
           render();
           if (missingGeneralField) {
             const label = missingGeneralField === 'name' ? 'CoF Name' : 'Reason for CoF';
             showToast(`Complete the ${label} field outlined in red.`);
             requestAnimationFrame(() => host.querySelector(`[data-cof-general="${missingGeneralField}"]`)?.focus());
+            return;
+          }
+          if (duplicateName) {
+            showToast('This CoF Name already exists in history. Enter a unique name before checking the configuration.');
+            requestAnimationFrame(() => host.querySelector('[data-cof-general="name"]')?.focus());
             return;
           }
           if (missingUpload) {
