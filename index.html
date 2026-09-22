@@ -297,21 +297,21 @@
     .lh-modal-close:hover, .lh-modal-close:focus-visible { background: #ffffff18; outline: 1px solid #fff; }
     .lh-modal-body { padding: 18px; }
     .lh-modal-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 10px 18px; border-top: 1px solid var(--lh-border); background: #f7f8fa; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal]) { width: min(680px, 100%); overflow: hidden; border: 1px solid #d1d3d4; border-radius: 5px; box-shadow: 0 18px 48px rgba(20, 46, 83, .28); }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal]) .lh-modal-head { min-height: 48px; padding: 11px 18px; border-bottom: 1px solid #d1d3d4; color: #231f20; background: #fff; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal]) .lh-modal-head h2 { font-size: 14px; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal]) .lh-modal-close { width: 28px; height: 28px; color: #231f20; font-size: 22px; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal]) .lh-modal-close:hover,
-    .lh-modal:is([data-transfer-modal],[data-lof-modal]) .lh-modal-close:focus-visible { color: var(--lh-navy); background: #f2f3f4; outline: none; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal]) .lh-modal-body { padding: 18px 24px 22px; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal]) .lh-value-row { grid-template-columns: minmax(150px, .8fr) minmax(0, 1fr); gap: 16px; padding: 8px 0; border-bottom-color: #d1d3d4; font-size: 12px; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal]) .lh-value-row > span:first-child { color: #414042; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal]) .lh-value-row > span:last-child { display: none; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal]) .lh-value-row strong { color: #414042; font-weight: 500; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal]) .lh-modal-footer { padding: 10px 18px; border-top-color: #d1d3d4; background: #fff; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal]) .lh-modal-footer .lh-button { min-height: 36px; border-radius: 3px; text-transform: none; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal]) .lh-modal-footer .lh-button.primary { border-color: var(--lh-navy); background: var(--lh-navy); }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal]) .lh-modal-footer .lh-button.primary:hover { border-color: #294977; background: #294977; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) { width: min(680px, 100%); overflow: hidden; border: 1px solid #d1d3d4; border-radius: 5px; box-shadow: 0 18px 48px rgba(20, 46, 83, .28); }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-head { min-height: 48px; padding: 11px 18px; border-bottom: 1px solid #d1d3d4; color: #231f20; background: #fff; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-head h2 { font-size: 14px; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-close { width: 28px; height: 28px; color: #231f20; font-size: 22px; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-close:hover,
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-close:focus-visible { color: var(--lh-navy); background: #f2f3f4; outline: none; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-body { padding: 18px 24px 22px; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-value-row { grid-template-columns: minmax(150px, .8fr) minmax(0, 1fr); gap: 16px; padding: 8px 0; border-bottom-color: #d1d3d4; font-size: 12px; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-value-row > span:first-child { color: #414042; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-value-row > span:last-child { display: none; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-value-row strong { color: #414042; font-weight: 500; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-footer { padding: 10px 18px; border-top-color: #d1d3d4; background: #fff; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-footer .lh-button { min-height: 36px; border-radius: 3px; text-transform: none; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-footer .lh-button.primary { border-color: var(--lh-navy); background: var(--lh-navy); }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-footer .lh-button.primary:hover { border-color: #294977; background: #294977; }
     @media (prefers-reduced-motion: reduce) {
       .lh-results-explorer,
       .lh-results-nav,
@@ -536,6 +536,191 @@
     .lh-map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
     .lh-map-label { position: absolute; left: 10px; top: 10px; padding: 5px 7px; border-radius: 4px; background: #ffffffdd; color: #41536b; font-size: 10px; box-shadow: 0 1px 3px #0001; }
     .lh-map-legend { position: absolute; right: 8px; bottom: 8px; padding: 6px 8px; border-radius: 4px; background: #ffffffeb; color: #526176; font-size: 9px; }
+    .lh-current-state {
+      display: grid;
+      gap: 12px;
+      margin: -16px -32px -24px;
+      background: #f2f3f4;
+    }
+    .lh-current-state-toolbar {
+      display: flex;
+      min-height: 38px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 0 18px;
+      border-bottom: 1px solid #d1d3d4;
+      background: #fff;
+    }
+    .lh-current-state-tabs,
+    .lh-current-state-tools {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+    }
+    .lh-current-state-tab,
+    .lh-current-state-tool {
+      min-height: 38px;
+      padding: 0 13px;
+      border: 0;
+      border-right: 1px solid #e0e2e5;
+      color: #777f89;
+      background: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .lh-current-state-tab.is-active {
+      border-bottom: 2px solid #82acff;
+      color: #5485e6;
+    }
+    .lh-current-state-tool { color: #515c69; font-weight: 500; text-transform: none; }
+    .lh-current-state-dashboard {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(300px, 1fr);
+      gap: 12px;
+      min-height: 690px;
+      padding: 0 12px 12px;
+    }
+    .lh-current-state-charts { display: grid; gap: 12px; align-content: start; }
+    .lh-current-state-panel {
+      overflow: hidden;
+      border: 1px solid #d7dadd;
+      border-radius: 3px;
+      background: #fff;
+      box-shadow: 0 1px 2px rgba(31,43,56,.08);
+    }
+    .lh-current-state-panel-head {
+      display: flex;
+      min-height: 38px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 0 16px;
+      border-bottom: 1px solid #d7dadd;
+    }
+    .lh-current-state-panel-head strong { font-size: 11px; }
+    .lh-current-state-panel-head small { color: #6b7480; font-size: 9px; }
+    .lh-current-state-panel-body { padding: 12px 16px 14px; }
+    .lh-current-state-empty {
+      display: grid;
+      min-height: 210px;
+      place-items: center;
+      padding: 24px;
+      color: #7a838d;
+      text-align: center;
+    }
+    .lh-current-state-empty strong { display: block; color: #4f5964; font-size: 12px; }
+    .lh-current-state-empty p { max-width: 390px; margin: 5px 0 0; font-size: 10px; line-height: 1.45; }
+    .lh-current-state-processing {
+      display: grid;
+      min-height: 620px;
+      place-items: center;
+      padding: 32px;
+      background:
+        linear-gradient(rgba(242,243,244,.9),rgba(242,243,244,.9)),
+        repeating-linear-gradient(135deg,#edf0f2 0,#edf0f2 18px,#e6e9ec 18px,#e6e9ec 36px);
+    }
+    .lh-current-state-processing-card {
+      width: min(384px,100%);
+      padding: 32px;
+      border-radius: 4px;
+      background: #fff;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(31,43,56,.16);
+    }
+    .lh-current-state-processing-card strong {
+      display: block;
+      color: #303a45;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .lh-current-state-processing-card p {
+      margin: 12px 0 0;
+      color: #737c86;
+      font-size: 12px;
+      line-height: 1.65;
+      white-space: pre-line;
+    }
+    .lh-current-state-processing-card .lh-progress { margin-top: 20px; }
+    .lh-route-chart { display: grid; gap: 7px; padding: 6px 0 2px; }
+    .lh-route-chart-row { display: grid; grid-template-columns: 220px minmax(220px,1fr) 52px; gap: 10px; align-items: center; }
+    .lh-route-chart-row > span { overflow: hidden; color: #626a73; font-size: 9px; text-align: right; text-overflow: ellipsis; white-space: nowrap; }
+    .lh-route-stack { display: flex; height: 13px; background: #eef0f2; }
+    .lh-route-stack i { display: block; height: 100%; border-right: 1px solid #fff; }
+    .lh-route-value { color: #7a838d !important; text-align: left !important; }
+    .lh-current-state-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 11px;
+      margin-top: 14px;
+      color: #4e5863;
+      font-size: 8px;
+    }
+    .lh-current-state-legend span { display: inline-flex; align-items: center; gap: 4px; }
+    .lh-current-state-legend i { width: 9px; height: 9px; border-radius: 1px; }
+    .lh-forecast-chart {
+      display: grid;
+      grid-template-columns: 44px minmax(0,1fr);
+      min-height: 245px;
+      padding-top: 12px;
+    }
+    .lh-forecast-axis {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 28px;
+      color: #78818a;
+      font-size: 8px;
+      text-align: right;
+    }
+    .lh-forecast-bars {
+      display: flex;
+      align-items: end;
+      justify-content: space-around;
+      gap: 18px;
+      padding: 0 12px 24px;
+      border-bottom: 1px solid #ccd1d5;
+      background: repeating-linear-gradient(to bottom,#fff 0,#fff 64px,#dde1e4 65px);
+    }
+    .lh-forecast-column { display: flex; width: 52px; height: 205px; flex-direction: column-reverse; justify-content: flex-start; position: relative; }
+    .lh-forecast-column i { display: block; width: 100%; border-top: 1px solid #fff; }
+    .lh-forecast-column small { position: absolute; right: 0; bottom: -18px; left: 0; color: #6e7781; font-size: 8px; text-align: center; }
+    .lh-current-state-map {
+      position: relative;
+      min-height: 690px;
+      overflow: hidden;
+      border: 1px solid #d7dadd;
+      background: #233a2c;
+    }
+    .lh-current-state-map svg { width: 100%; height: 100%; min-height: 690px; display: block; }
+    .lh-map-controls { position: absolute; z-index: 2; display: grid; gap: 1px; }
+    .lh-map-controls.left { top: 12px; left: 12px; }
+    .lh-map-controls.right { top: 12px; right: 12px; }
+    .lh-map-controls button { width: 28px; height: 28px; border: 1px solid #d4d7da; color: #4f5964; background: #fff; font-size: 16px; }
+    .lh-current-state-map-credit { position: absolute; right: 5px; bottom: 3px; color: #d8dedb; font-size: 8px; text-shadow: 0 1px 2px #000; }
+    .lh-current-state-map.is-empty svg { filter: grayscale(.55); opacity: .45; }
+    .lh-current-state-map-empty {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      width: min(280px, calc(100% - 48px));
+      padding: 16px;
+      transform: translate(-50%,-50%);
+      border-radius: 3px;
+      color: #4f5964;
+      background: rgba(255,255,255,.94);
+      text-align: center;
+      box-shadow: 0 3px 16px rgba(20,35,28,.25);
+    }
+    .lh-current-state-map-empty strong { display: block; font-size: 12px; }
+    .lh-current-state-map-empty small { display: block; margin-top: 5px; font-size: 9px; line-height: 1.4; }
+    @media (max-width: 980px) {
+      .lh-current-state-dashboard { grid-template-columns: 1fr; }
+      .lh-current-state-map { min-height: 420px; }
+      .lh-current-state-map svg { min-height: 420px; }
+    }
 
     .lh-log-tabs { display: flex; gap: 5px; flex-wrap: wrap; }
     .lh-log-tab { padding: 6px 10px; border: 1px solid var(--lh-border); border-radius: 6px; color: var(--lh-muted); background: #fff; cursor: pointer; }
@@ -707,7 +892,8 @@
 
     .lh-main-nav > span,
     .lh-refinement-trigger,
-    .lh-data-management-trigger {
+    .lh-data-management-trigger,
+    .lh-risk-management-trigger {
       position: relative;
       display: flex;
       align-items: center;
@@ -725,7 +911,8 @@
 
     .lh-main-nav > span::after,
     .lh-refinement-trigger::after,
-    .lh-data-management-trigger::after {
+    .lh-data-management-trigger::after,
+    .lh-risk-management-trigger::after {
       content: "";
       width: 0;
       height: 0;
@@ -742,7 +929,10 @@
     .lh-refinement-trigger.is-active,
     .lh-data-management-trigger:hover,
     .lh-data-management-trigger.is-active,
-    .lh-data-management-nav.is-open .lh-data-management-trigger {
+    .lh-data-management-nav.is-open .lh-data-management-trigger,
+    .lh-risk-management-trigger:hover,
+    .lh-risk-management-trigger.is-active,
+    .lh-risk-management-nav.is-open .lh-risk-management-trigger {
       color: #fff;
       background: transparent;
       opacity: 1;
@@ -750,13 +940,15 @@
 
     .lh-main-nav > span.is-active,
     .lh-refinement-trigger.is-active,
-    .lh-data-management-trigger.is-active {
+    .lh-data-management-trigger.is-active,
+    .lh-risk-management-trigger.is-active {
       box-shadow: none;
       font-weight: 700;
     }
 
     .lh-refinement-nav,
-    .lh-data-management-nav {
+    .lh-data-management-nav,
+    .lh-risk-management-nav {
       position: relative;
       display: flex;
       align-self: stretch;
@@ -767,7 +959,8 @@
     }
 
     .lh-refinement-menu,
-    .lh-data-management-menu {
+    .lh-data-management-menu,
+    .lh-risk-management-menu {
       position: absolute;
       top: calc(100% - 1px);
       left: 0;
@@ -788,12 +981,18 @@
       display: block;
     }
 
-    .lh-data-management-menu {
+    .lh-risk-management-nav.is-open .lh-risk-management-menu {
+      display: block;
+    }
+
+    .lh-data-management-menu,
+    .lh-risk-management-menu {
       min-width: 182px;
     }
 
     .lh-refinement-option,
-    .lh-data-management-option {
+    .lh-data-management-option,
+    .lh-risk-management-option {
       width: 100%;
       min-height: 38px;
       padding: 9px 16px;
@@ -809,13 +1008,16 @@
     .lh-refinement-option:hover,
     .lh-refinement-option:focus-visible,
     .lh-data-management-option:hover,
-    .lh-data-management-option:focus-visible {
+    .lh-data-management-option:focus-visible,
+    .lh-risk-management-option:hover,
+    .lh-risk-management-option:focus-visible {
       color: var(--lh-blue-dark);
       background: #f4f7fc;
     }
 
     .lh-refinement-option.is-active,
-    .lh-data-management-option.is-active {
+    .lh-data-management-option.is-active,
+    .lh-risk-management-option.is-active {
       border-left-color: var(--lh-blue);
       color: var(--lh-blue-dark);
       background: #ebf1ff;
@@ -1908,6 +2110,28 @@
       line-height: 1;
       cursor: pointer;
     }
+    .lh-current-state-error-alert {
+      top: 116px;
+      right: 24px;
+      bottom: auto;
+      z-index: 45;
+      opacity: 1;
+      pointer-events: auto;
+      transform: none;
+    }
+    .lh-current-state-error-alert .lh-toast-message strong {
+      display: block;
+      color: var(--lh-toast-color);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .lh-current-state-error-alert .lh-toast-message span {
+      display: block;
+      margin-top: 3px;
+      color: var(--lh-toast-color);
+      font-weight: 500;
+    }
 
     @media (max-width: 1100px) {
       .lh-topbar {
@@ -1963,7 +2187,8 @@
         display: none;
       }
 
-      .lh-refinement-trigger {
+      .lh-refinement-trigger,
+      .lh-risk-management-trigger {
         padding: 0 10px;
         font-size: 10px;
       }
@@ -2104,7 +2329,8 @@
     .lh-main-nav { gap: 4px; }
     .lh-main-nav > span,
     .lh-refinement-trigger,
-    .lh-data-management-trigger {
+    .lh-data-management-trigger,
+    .lh-risk-management-trigger {
       min-height: 32px;
       align-self: center;
       padding: 0 12px;
@@ -2117,7 +2343,8 @@
 
     .lh-main-nav > span:hover,
     .lh-refinement-trigger:hover,
-    .lh-data-management-trigger:hover {
+    .lh-data-management-trigger:hover,
+    .lh-risk-management-trigger:hover {
       color: #fff;
       background: rgba(255,255,255,.05);
     }
@@ -2125,7 +2352,9 @@
     .lh-main-nav > span.is-active,
     .lh-refinement-trigger.is-active,
     .lh-data-management-trigger.is-active,
-    .lh-data-management-nav.is-open .lh-data-management-trigger {
+    .lh-data-management-nav.is-open .lh-data-management-trigger,
+    .lh-risk-management-trigger.is-active,
+    .lh-risk-management-nav.is-open .lh-risk-management-trigger {
       color: #fff;
       background: rgba(255,255,255,.1);
       font-weight: 500;
@@ -2153,6 +2382,7 @@
 
     .lh-refinement-menu,
     .lh-data-management-menu,
+    .lh-risk-management-menu,
     .lh-profile-menu {
       padding: 8px 0;
       border: 0;
@@ -2162,6 +2392,7 @@
 
     .lh-refinement-option,
     .lh-data-management-option,
+    .lh-risk-management-option,
     .lh-profile-option {
       min-height: 32px;
       padding: 6px 16px;
@@ -2175,6 +2406,8 @@
     .lh-refinement-option:focus-visible,
     .lh-data-management-option:hover,
     .lh-data-management-option:focus-visible,
+    .lh-risk-management-option:hover,
+    .lh-risk-management-option:focus-visible,
     .lh-profile-option:hover,
     .lh-profile-option:focus-visible {
       color: #231f20;
@@ -2182,7 +2415,8 @@
     }
 
     .lh-refinement-option.is-active,
-    .lh-data-management-option.is-active {
+    .lh-data-management-option.is-active,
+    .lh-risk-management-option.is-active {
       color: #231f20;
       background: #ebf1ff;
       font-weight: 400;
@@ -2937,7 +3171,7 @@
           <button class="lh-refinement-option is-active" type="button" role="menuitem" data-module="data">Data Load</button>
           <button class="lh-refinement-option" type="button" role="menuitem" data-module="lof">LoF Run</button>
           <button class="lh-refinement-option" type="button" role="menuitem" data-module="cof">CoF Run</button>
-          <button class="lh-refinement-option" type="button" role="menuitem" data-module="risk">Model Run</button>
+          <button class="lh-refinement-option" type="button" role="menuitem" data-module="risk">Risk Assessment Run</button>
           <button class="lh-refinement-option" type="button" role="menuitem" data-module="log">Issues &amp; Run Log</button>
         </div>
       </div>
@@ -2948,7 +3182,13 @@
           <button class="lh-data-management-option" type="button" role="menuitem" data-data-destination="export">Data Export</button>
         </div>
       </div>
-      <span>Risk Management</span>
+      <div class="lh-risk-management-nav" id="lh-risk-management-nav">
+        <button class="lh-risk-management-trigger" id="lh-risk-management-trigger" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="lh-risk-management-menu">Risk Management</button>
+        <div class="lh-risk-management-menu" id="lh-risk-management-menu" role="menu" aria-label="Risk Management pages">
+          <button class="lh-risk-management-option" type="button" role="menuitem" data-risk-management-destination="current">Current State</button>
+          <button class="lh-risk-management-option" type="button" role="menuitem" data-risk-management-destination="saved">Saved States</button>
+        </div>
+      </div>
       <span>Regulatory Tools</span>
     </nav>
     <div class="lh-userbar">
@@ -3018,13 +3258,17 @@
       const dataManagementNav = root.querySelector('#lh-data-management-nav');
       const dataManagementTrigger = root.querySelector('#lh-data-management-trigger');
       const dataManagementOptions = [...root.querySelectorAll('.lh-data-management-option[data-data-destination]')];
+      const riskManagementNav = root.querySelector('#lh-risk-management-nav');
+      const riskManagementTrigger = root.querySelector('#lh-risk-management-trigger');
+      const riskManagementOptions = [...root.querySelectorAll('.lh-risk-management-option[data-risk-management-destination]')];
       const profile = root.querySelector('#lh-profile');
       const profileTrigger = root.querySelector('#lh-profile-trigger');
       const profileOptions = [...root.querySelectorAll('.lh-profile-option')];
       const globalPhaseButtons = [...root.querySelectorAll('[data-global-phase]')];
       const params = new URLSearchParams(location.search);
-      let moduleName = ['config','data','lof','cof','risk','log'].includes(params.get('module')) ? params.get('module') : 'data';
+      let moduleName = ['config','data','lof','cof','risk','risk-management','log'].includes(params.get('module')) ? params.get('module') : 'data';
       let viewName = ['run','progress','results','comparison','compare','instructions'].includes(params.get('view')) ? params.get('view') : 'run';
+      let riskManagementView = ['current','saved'].includes(params.get('riskview')) ? params.get('riskview') : 'current';
       const requestedDataViewSection = params.get('dataview');
       let dataViewSection = ['loaded-data','risk-results','factors','lof-refinement','cof-refinement'].includes(requestedDataViewSection)
         ? requestedDataViewSection
@@ -3161,7 +3405,10 @@
       }]));
       let selectedCofConfigScenario = 'RI';
       let riskConfigUpload = {name:'',size:0,status:'',error:''};
-      const riskAssessmentValues = {name:'MR1',purpose:'Final risk candidate'};
+      const riskAssessmentValues = {name:'RA1',purpose:'Final risk candidate',skipStructuresSync:'no'};
+      let riskProgressRun = null;
+      let riskCheckModalOpen = false;
+      let currentStateAlertOpen = moduleName === 'risk-management' && riskManagementView === 'current';
       let riskExecutionAttempted = false;
       const cofScenarioConfigNames = {PLI:'Pinhole · ignition',PLNI:'Pinhole · no ignition',MLI:'Medium leak · ignition',MLNI:'Medium leak · no ignition',LLI:'Large leak · ignition',LLNI:'Large leak · no ignition',RI:'Rupture · ignition',RNI:'Rupture · no ignition'};
       const cofScenarioConfigDefaults = {
@@ -3660,7 +3907,7 @@
           riskSheet('Obs. vs. Exp. (State) 5 yr','5-year analysis',['State','Primary Threat','Observed','Expected','Ruptures','Assessment'],[['MICHIGAN','External Corrosion','4','3.1','1','Within band'],['OHIO','Excavation','2','2.2','0','Within band']],40,'Observed vs expected failures and ruptures'),
           riskSheet('Top 10 Tables','Reporting and comparison',['Rank','Route Alias','Primary Threat','Failure Density','Review Status'],[['1','Route-A','External Corrosion','1.28e-2','Review'],['2','Route-B','Internal Corrosion','1.09e-2','Review']],100,'Top-10 distributions'),
           riskSheet('Top Lines by (Pivot)','Reporting and comparison',['Route Alias','Top Threat','Segment Count','Total Length mi','Failure Frequency'],[['Route-A','External Corrosion','4,812','48.2','1.28e-2'],['Route-B','SCC','3,704','37.7','1.09e-2']],118,'Route distribution'),
-          riskSheet('Model Run Comparison','Reporting and comparison',['Metric','Prior / Offline Run','Current Run','Delta','Review'],[['Expected failures','64.6','65.8','+1.9%','Expected'],['External Corrosion FF','7.39e-4','1.02e-3','+38.0%','Investigate']],42,'Model-run deltas'),
+          riskSheet('Risk Assessment Comparison','Reporting and comparison',['Metric','Prior / Offline Assessment','Current Assessment','Delta','Review'],[['Expected failures','64.6','65.8','+1.9%','Expected'],['External Corrosion FF','7.39e-4','1.02e-3','+38.0%','Investigate']],42,'Risk Assessment deltas'),
           riskSheet('PowerPoint Tables','Reporting and comparison',['Slide Table','Metric','Current Value','Benchmark Value','Status'],[['Executive summary','Threats within band','8 / 10','10 / 10','Review'],['Top route','Route-A failure density','1.28e-2','7.82e-3','Investigate']],24,'Top-10 distributions'),
           riskSheet('StructureData','Structure',['Structure Alias','Route Alias','Type','Occupants','Valuation Band'],[['STR-001','Route-A','Residential','4','Standard'],['STR-002','Route-B','Commercial','18','Elevated']],9513,'Structure distribution'),
           riskSheet('StructureAnalysis','Structure',['Structure Type','Count','Occupant Total','Average Distance ft','Review'],[['Residential','6,482','15,104','412','Ready'],['Impaired mobility','131','2,904','285','Review']],18,'Structure distribution')
@@ -3833,7 +4080,7 @@
                     ${infoOpen ? `<aside class="lh-data-view-info-popover" id="lh-risk-info-${sheet.slug}" role="dialog" aria-modal="false" aria-labelledby="lh-risk-info-title-${sheet.slug}" data-risk-info-popover>
                       <div class="lh-data-view-info-head"><h3 id="lh-risk-info-title-${sheet.slug}">${sheet.name}</h3><button class="lh-data-view-info-close" type="button" data-risk-info-close="${sheet.slug}" aria-label="Close ${sheet.name} information">×</button></div>
                       <p>${guidance.description}</p>
-                      ${guidance.required ? `<div class="lh-data-view-info-requirement"><span>Required for</span><strong>${guidance.required === 'MR 2+' ? 'Model Run 2 and later' : 'Model Run 1 and later'}</strong></div>` : ''}
+                      ${guidance.required ? `<div class="lh-data-view-info-requirement"><span>Required for</span><strong>${guidance.required === 'RA 2+' ? 'Risk Assessment 2 and later' : 'Risk Assessment 1 and later'}</strong></div>` : ''}
                     </aside>` : ''}
                   </div>`;
                 }).join('')}
@@ -3935,11 +4182,25 @@
 
       const riskAssessmentFields = () => `
         <div class="lh-fields">
-          <label class="lh-field"><span class="lh-field-label">Model Run Name</span><input class="lh-input ${riskExecutionAttempted ? (!riskAssessmentValues.name.trim() || riskNameExists(riskAssessmentValues.name)) ? 'is-invalid' : 'is-valid' : ''}" value="${escapeHtml(riskAssessmentValues.name)}" placeholder="Enter a unique name for this Model Run" data-risk-assessment="name" ${riskExecutionAttempted && (!riskAssessmentValues.name.trim() || riskNameExists(riskAssessmentValues.name)) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in Model Run History</span></label>
-          <label class="lh-field"><span class="lh-field-label">Model Run Purpose</span><input class="lh-input ${riskExecutionAttempted ? riskAssessmentValues.purpose.trim() ? 'is-valid' : 'is-invalid' : ''}" value="${escapeHtml(riskAssessmentValues.purpose)}" data-risk-assessment="purpose" ${riskExecutionAttempted && !riskAssessmentValues.purpose.trim() ? 'aria-invalid="true"' : ''}/></label>
+          <label class="lh-field"><span class="lh-field-label">Risk Assessment Name</span><input class="lh-input ${riskExecutionAttempted ? (!riskAssessmentValues.name.trim() || riskNameExists(riskAssessmentValues.name)) ? 'is-invalid' : 'is-valid' : ''}" value="${escapeHtml(riskAssessmentValues.name)}" placeholder="Enter a unique name for this Risk Assessment" data-risk-assessment="name" ${riskExecutionAttempted && (!riskAssessmentValues.name.trim() || riskNameExists(riskAssessmentValues.name)) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in Risk Assessment History</span></label>
+          <label class="lh-field"><span class="lh-field-label">Risk Assessment Purpose</span><input class="lh-input ${riskExecutionAttempted ? riskAssessmentValues.purpose.trim() ? 'is-valid' : 'is-invalid' : ''}" value="${escapeHtml(riskAssessmentValues.purpose)}" data-risk-assessment="purpose" ${riskExecutionAttempted && !riskAssessmentValues.purpose.trim() ? 'aria-invalid="true"' : ''}/></label>
+          <label class="lh-field"><span class="lh-field-label">Skip Structures Sync</span><select class="lh-select" data-risk-skip-structures-sync><option value="no" ${riskAssessmentValues.skipStructuresSync === 'no' ? 'selected' : ''}>No</option><option value="yes" ${riskAssessmentValues.skipStructuresSync === 'yes' ? 'selected' : ''}>Yes</option></select><span class="lh-help">Only skip Structures Sync if you know your ETL changes don't affect structures.</span></label>
           ${planPhase === '2' ? teamsNotificationSection('risk') : ''}
         </div>
       `;
+      const riskCheckModal = () => !riskCheckModalOpen ? '' : `
+        <div class="lh-modal-backdrop" data-risk-modal-backdrop>
+          <section class="lh-modal" role="dialog" aria-modal="true" aria-labelledby="lh-risk-modal-title" data-risk-modal>
+            <header class="lh-modal-head"><h2 id="lh-risk-modal-title">Risk Assessment Check Summary</h2><button class="lh-modal-close" type="button" aria-label="Close Risk Assessment Check Summary" data-risk-modal-close>×</button></header>
+            <div class="lh-modal-body">
+              <div class="lh-value-row"><span>Risk Assessment Name</span><strong>${escapeHtml(riskAssessmentValues.name)}</strong><span></span></div>
+              <div class="lh-value-row"><span>Risk Assessment Purpose</span><strong>${escapeHtml(riskAssessmentValues.purpose)}</strong><span></span></div>
+              <div class="lh-value-row"><span>Skip Structures Sync</span><strong>${riskAssessmentValues.skipStructuresSync === 'yes' ? 'Yes' : 'No'}</strong><span></span></div>
+              <div class="lh-value-row"><span>Configuration</span><strong>${planPhase === '1' ? escapeHtml(riskConfigUpload.name) : 'Guided configuration'}</strong><span></span></div>
+            </div>
+            <footer class="lh-modal-footer"><button class="lh-button" type="button" data-risk-modal-close>Cancel</button><button class="lh-button primary" type="button" data-risk-confirm-start>Start Risk Assessment</button></footer>
+          </section>
+        </div>`;
       const riskPhaseOneRun = () => `
         <div class="lh-screen">
           <section class="lh-run-config-layout lh-risk-config-layout">
@@ -3961,9 +4222,10 @@
                   </div>
                 </div>
               </section>
-              <div class="lh-run-config-action"><button class="lh-button" type="button" data-risk-start>Execute Risk assessment</button></div>
+              <div class="lh-run-config-action"><button class="lh-button" type="button" data-risk-start>Execute Risk Assessment</button></div>
             </div>
           </section>
+          ${riskCheckModal()}
         </div>`;
 
       const riskGuidedRun = () => `
@@ -3975,7 +4237,7 @@
             </div>
             <div class="lh-data-load-selection">
               <div class="lh-grid">
-              ${card('Model Run Configuration','',`
+              ${card('Risk Assessment Configuration','',`
                 <div class="lh-config-section">
                   <div class="lh-config-section-head"><span><strong>Configuration source</strong></span></div>
                   <div class="lh-fields lh-risk-config-sources">
@@ -3996,31 +4258,96 @@
               </div>
             </div>
           </section>
+          ${riskCheckModal()}
         </div>`;
       const riskRun = () => planPhase === '1' ? riskPhaseOneRun() : riskGuidedRun();
 
-      const riskProgress = () => `
-        <div class="lh-screen">
-          <div class="lh-kpis">
-            <div class="lh-kpi"><div class="label">Overall progress</div><div class="value">61%</div><div class="sub">4 of 7 stages complete</div></div>
-            <div class="lh-kpi"><div class="label">Elapsed time</div><div class="value">3h 18m</div><div class="sub">Started 06 Aug · 11:02</div></div>
-            <div class="lh-kpi"><div class="label">Latest heartbeat</div><div class="value">42 sec</div><div class="sub good">Run is actively processing</div></div>
-            <div class="lh-kpi"><div class="label">Estimated completion</div><div class="value">16:24</div><div class="sub">Approximately 2h 04m remaining</div></div>
-          </div>
-          <div class="lh-grid">
-            ${card('Execution progress',planPhase === '1' ? '' : 'Live status replaces repeated GET /api/assessmentRunDetails calls in Swagger.',`
-              <div class="lh-progress-list">
-                <div class="lh-progress-stage"><span class="lh-progress-stage-icon good">✓</span><span><strong>Validate request and resources</strong><small>Required fields, JSON, health checks and generic tables confirmed.</small></span><span>2 min</span></div>
-                <div class="lh-progress-stage"><span class="lh-progress-stage-icon good">✓</span><span><strong>Prepare Risk inputs</strong><small>Accepted data snapshot, LoF and CoF outputs registered.</small></span><span>18 min</span></div>
-                <div class="lh-progress-stage"><span class="lh-progress-stage-icon good">✓</span><span><strong>Execute LoF contribution</strong><small>Accepted LOF-024 output reused; no recalculation required.</small></span><span>4 min</span></div>
-                <div class="lh-progress-stage"><span class="lh-progress-stage-icon good">✓</span><span><strong>Execute CoF contribution</strong><small>Accepted COF-019 scenario outputs reused.</small></span><span>6 min</span></div>
-                <div class="lh-progress-stage"><span class="lh-progress-stage-icon active">5</span><span><strong>Calculate integrated Risk</strong><small>Processing PIPE_RISKINPUT and point-asset generic tables.</small><div class="lh-progress" style="margin-top:7px"><span style="width:68%"></span></div></span><span>68%</span></div>
-                <div class="lh-progress-stage"><span class="lh-progress-stage-icon">6</span><span><strong>Persist and validate results</strong><small>Result counts, completeness and threshold checks.</small></span><span>Queued</span></div>
-                <div class="lh-progress-stage"><span class="lh-progress-stage-icon">7</span><span><strong>Generate PHMSA baseline</strong><small>Runs automatically after successful Risk completion.</small></span><span>Queued</span></div>
+      const riskProgressStepMs = 5000;
+      const riskProgressSteps = [
+        'Validate request and resources',
+        'Prepare Risk inputs',
+        'Execute LoF contribution',
+        'Execute CoF contribution',
+        'Calculate integrated Risk',
+        'Persist and validate results',
+        'Generate PHMSA baseline'
+      ];
+      const riskProgressDurationMs = riskProgressSteps.length * riskProgressStepMs;
+      const riskProgressDurationLabel = elapsedMs => {
+        const totalSeconds = Math.floor(elapsedMs / 1000);
+        return `${Math.floor(totalSeconds / 60)}m ${String(totalSeconds % 60).padStart(2,'0')}s`;
+      };
+      const riskProgressSnapshot = () => {
+        const elapsedMs = riskProgressRun ? Math.min(riskProgressDurationMs,Math.max(0,Date.now() - riskProgressRun.startedAt)) : 0;
+        const complete = Boolean(riskProgressRun) && elapsedMs >= riskProgressDurationMs;
+        return {
+          elapsedMs,
+          complete,
+          overallProgress:complete ? 100 : Math.min(99,Math.floor(elapsedMs / riskProgressDurationMs * 100)),
+          visibleStatusCount:riskProgressRun ? Math.min(riskProgressSteps.length,Math.floor(elapsedMs / riskProgressStepMs) + 1) : 0
+        };
+      };
+      const riskProgressStatusRows = snapshot => riskProgressSteps.slice(0,snapshot.visibleStatusCount).map((description,index) => {
+        const isCurrent = index === snapshot.visibleStatusCount - 1;
+        const status = snapshot.complete || !isCurrent ? 'Completed' : index === 0 ? 'Started' : 'InProgress';
+        const createdAt = new Date(riskProgressRun.startedAt + index * riskProgressStepMs);
+        return `<tr data-risk-status-update="${index + 1}"><td>${index + 1}</td><td class="lh-model-status-description">${escapeHtml(description)}</td><td>${statusDisplay(status)}</td><td>${transferTimestamp(createdAt)}</td></tr>`;
+      }).join('');
+      function updateRiskProgress() {
+        if (!riskProgressRun) return;
+        if (Date.now() - riskProgressRun.startedAt >= riskProgressDurationMs) {
+          clearInterval(riskProgressRun.timerId);
+          riskProgressRun.timerId = null;
+        }
+        if ((moduleName === 'risk' && viewName === 'results') || (moduleName === 'risk-management' && riskManagementView === 'current')) {
+          render();
+          requestAnimationFrame(() => {
+            const statusTable = host.querySelector('[data-risk-status-table]');
+            if (statusTable) statusTable.scrollTop = statusTable.scrollHeight;
+          });
+        }
+      }
+      function startRiskProgress() {
+        if (riskProgressRun?.timerId) clearInterval(riskProgressRun.timerId);
+        riskProgressRun = {
+          id:'RISK-0264-011',
+          name:riskAssessmentValues.name.trim(),
+          purpose:riskAssessmentValues.purpose.trim(),
+          startedAt:Date.now(),
+          timerId:null
+        };
+        riskProgressRun.timerId = setInterval(updateRiskProgress,250);
+      }
+      const riskProgress = () => {
+        if (!riskProgressRun) return `
+          <div class="lh-data-progress-page">
+            <div class="lh-data-progress-empty">
+              <div><strong>No Risk Assessment is currently in progress.</strong><p>Configure and start a Risk Assessment to view progress.</p></div>
+            </div>
+          </div>`;
+        const snapshot = riskProgressSnapshot();
+        return `<div class="lh-data-progress-page">
+          <div class="lh-data-progress-run">
+            <aside class="lh-data-progress-summary lh-model-progress-summary">
+              <div class="lh-kicker">Assessment Summary</div>
+              <div class="lh-kpis">
+                <div class="lh-kpi"><div class="label">Overall progress</div><div class="value" data-risk-overall-progress>${snapshot.overallProgress}%</div><div class="sub">${snapshot.visibleStatusCount} of ${riskProgressSteps.length} status updates</div></div>
+                <div class="lh-kpi"><div class="label">Duration</div><div class="value" data-risk-duration>${riskProgressDurationLabel(snapshot.elapsedMs)}</div><div class="sub">${snapshot.complete ? 'Assessment completed' : 'Assessment is processing'}</div></div>
+                <div class="lh-kpi"><div class="label">Current status</div><div class="value">${snapshot.complete ? 'Complete' : 'Running'}</div><div class="sub">${snapshot.complete ? 'All stages completed' : 'Updates every 5 seconds'}</div></div>
               </div>
-            `)}
+            </aside>
+            <section class="lh-data-progress-workspace">
+              <div class="lh-kicker">Risk Assessment Progress</div>
+              <div class="lh-transfer-progress-head">
+                <strong>${escapeHtml(riskProgressRun.name)}</strong>
+                <span class="lh-transfer-progress-meta"><small>${riskProgressRun.id} · Started ${transferTimestamp(new Date(riskProgressRun.startedAt))} · Duration ${riskProgressDurationLabel(snapshot.elapsedMs)}</small></span>
+              </div>
+              <div class="lh-progress" aria-label="${snapshot.overallProgress}% of Risk Assessment processing complete"><span style="width:${snapshot.overallProgress}%"></span></div>
+              <div class="lh-table-wrap lh-transfer-progress-table lh-model-status-table" data-risk-status-table><table class="lh-table"><thead><tr><th>#</th><th>${modelStatusColumnHeader('Description')}</th><th>${modelStatusColumnHeader('Status')}</th><th>${modelStatusColumnHeader('Date Created')}</th></tr></thead><tbody>${riskProgressStatusRows(snapshot)}</tbody></table></div>
+            </section>
           </div>
         </div>`;
+      };
 
       const riskResults = () => `
         <div class="lh-screen">
@@ -4103,8 +4430,8 @@
           status:'In Progress'
         });
       };
-      const riskHistory = () => runHistoryGrid('risk','Model Run History',[
-        ['id','Model Run Name'],['purpose','Run Purpose'],['lof','LoF Run'],['cof','CoF Run'],['config','Configuration'],
+      const riskHistory = () => runHistoryGrid('risk','Risk Assessment History',[
+        ['id','Risk Assessment Name'],['purpose','Assessment Purpose'],['lof','LoF Run'],['cof','CoF Run'],['config','Configuration'],
         ['date','Run Date'],['runtime','Runtime'],['user','Ran By'],['status','Status']
       ],riskHistoryRows);
 
@@ -4113,7 +4440,7 @@
           <div class="lh-banner warn"><span>⚠</span><span><strong>Candidate LOF-024</strong> uses a PHMSA source window ending in 2024. Refresh is recommended before client acceptance.</span>${pill('2 warnings','warn')}</div>
           <div class="lh-grid cols-2">
             <div class="lh-grid">
-              ${card('Run scope','Replaces the Threat Count, OPID, PHMSA source, and model-run setup sheets.',`
+              ${card('Assessment scope','Replaces the Threat Count, OPID, PHMSA source, and Risk Assessment setup sheets.',`
                 <div class="lh-fields">
                   <label class="lh-field"><span class="lh-field-label">Data snapshot</span><select class="lh-select"><option>DS Overlay · 2026-07-29</option></select><span class="lh-help">118 routes · 2,846.4 transmission mi</span></label>
                   <label class="lh-field"><span class="lh-field-label">Analysis windows</span><select class="lh-select"><option>5-year and 10-year</option></select><span class="lh-help">2019–2024 and 2014–2024</span></label>
@@ -4123,7 +4450,7 @@
                 <div style="height:10px"></div>
                 <div class="lh-pill-row">${pill('24 JANA sub-threats','info')}${pill('9 PHMSA primaries','info')}${pill('3 OPIDs','info')}${pill('4 states','info')}${pill('28,464 mi-yr exposure','info')}${pill('Transmission only','good')}</div>
               `)}
-              ${card('Change set','Every input is linked to the Model Run Log rather than re-entered in multiple sheets.',`
+              ${card('Change set','Every input is linked to the Risk Assessment Log rather than re-entered in multiple sheets.',`
                 <div class="lh-table-wrap"><table class="lh-table"><thead><tr><th>Reference</th><th>Type</th><th>Change</th><th>Impacted model</th><th>Sync</th></tr></thead><tbody>
                   <tr><td class="strong">AC-018</td><td>Attribute</td><td>Outside diameter normalization</td><td>External corrosion</td><td>${pill('In Lighthouse','good')}</td></tr>
                   <tr><td class="strong">CC-011</td><td>Configuration</td><td>Excavation baseline adjustment</td><td>Excavation</td><td>${pill('In Lighthouse','good')}</td></tr>
@@ -4152,7 +4479,7 @@
               ${card('Open run issues','Warnings are visible before compute starts.',`
                 <div class="lh-issue-list">${issue('warn','ISS-031','UNKNOWN threat rows need classification','42 rows · primary threat review cannot be completed until dispositioned.')}${issue('warn','ISS-032','PHMSA comparison refresh due','10-year and 5-year source windows both end in 2024.')}${issue('good','ISS-028','Earth Movement retirement accepted','Model package v24.2 change is linked to CC-012.','View')}</div>
               `)}
-              ${card('Last successful model run','Pulled from the Offline Model Runs log.',`
+              ${card('Last successful Risk Assessment','Pulled from the Offline Risk Assessments log.',`
                 <div class="lh-value-row"><span>Run no.</span><strong>23</strong>${pill('Accepted','good')}</div>
                 <div class="lh-value-row"><span>Reason</span><strong>Configuration refinement</strong><span></span></div>
                 <div class="lh-value-row"><span>DS overlay</span><strong>DS_Overlay_2026_07_21</strong><span></span></div>
@@ -4259,7 +4586,7 @@
             </div>
           </div>
           <div class="lh-grid cols-2-even">
-            ${card('Threat deltas','Model Run Comparison sheet converted into an exception-focused table.',`
+            ${card('Threat deltas','Risk Assessment Comparison sheet converted into an exception-focused table.',`
               <div class="lh-table-wrap"><table class="lh-table"><thead><tr><th>Threat</th><th>Baseline</th><th>Candidate</th><th>Delta</th><th>PHMSA assessment</th></tr></thead><tbody>
                 <tr class="row-bad"><td class="strong">External Corrosion</td><td class="num">8.17×10⁻⁴</td><td class="num">1.01×10⁻³</td><td class="num">+23.7%</td><td>${pill('Outside band','bad')}</td></tr>
                 <tr class="row-warn"><td class="strong">SCC</td><td class="num">2.26×10⁻⁵</td><td class="num">1.31×10⁻⁵</td><td class="num">−42.1%</td><td>${pill('Below band','warn')}</td></tr>
@@ -5412,7 +5739,7 @@
         'observed-expected-state':['Obs. vs. Exp. (State) 10 yr','Obs. vs. Exp. (State) 5 yr'],
         'top-10-tables':['Top 10 Tables'],
         'top-lines-pivot':['Top Lines by (Pivot)'],
-        'model-run-comparison':['Model Run Comparison'],
+        'model-run-comparison':['Risk Assessment Comparison'],
         'powerpoint-tables':['PowerPoint Tables'],
         'structure-data':['StructureData'],
         'structure-analysis':['StructureAnalysis']
@@ -5687,8 +6014,8 @@
           ]
         },
         runs:{
-          label:'Offline Model Runs',
-          columns:['Model Run No.','Date','User','Reason','Attribute Change Reference No.','Configuration Change Reference No.','Linear or Point','Models Affected','DS Overlay Used','Structure Table Used (CoF)','Output Table Name','Output Database','Time to Run'],
+          label:'Offline Risk Assessments',
+          columns:['Risk Assessment No.','Date','User','Reason','Attribute Change Reference No.','Configuration Change Reference No.','Linear or Point','Models Affected','DS Overlay Used','Structure Table Used (CoF)','Output Table Name','Output Database','Time to Run'],
           rows:[
             ['COF-018','31 Jul 2026','Operations','Structure refinement','<button class="lh-button small" data-log-crossref="attributes">AC-021</button>','<button class="lh-button small" data-log-crossref="configurations">CC-014</button>','Linear','CoF','DS_2026_07_29','Structure_v24','CoF_Result_COF018','Delivery','27 min'],
             ['LOF-024','31 Jul 2026','Operations','Configuration refinement','<button class="lh-button small" data-log-crossref="attributes">AC-018</button>','<button class="lh-button small" data-log-crossref="configurations">CC-011</button>','Both','LoF','DS_2026_07_29','—','LoF_Result_LOF024','Delivery','22 min']
@@ -5723,7 +6050,7 @@
       const logIssues = () => `
         <div class="lh-screen">
           <div class="lh-kpis"><div class="lh-kpi"><div class="label">Open issues</div><div class="value">7</div><div class="sub bad">2 blockers · 5 warnings</div></div><div class="lh-kpi"><div class="label">Offline runs</div><div class="value">9</div><div class="sub">5 LoF · 4 CoF</div></div><div class="lh-kpi"><div class="label">Tracked changes</div><div class="value">7</div><div class="sub good">Cross-referenced to runs</div></div><div class="lh-kpi"><div class="label">Threshold sets</div><div class="value">2</div><div class="sub warn">Latest run · RISK-009</div></div></div>
-          <section class="lh-card"><div class="lh-card-head"><div><h3>Operations › Issues &amp; Run Log</h3><p>Representative sanitized Model Run Log workbook views remain separate from the refinement tables and retain cross-reference cues.</p></div></div><div class="lh-log-tabs">${Object.entries(logDefinitions).map(([key,definition]) => `<button class="lh-log-tab ${logView === key ? 'is-active' : ''}" data-logview="${key}">${definition.label}</button>`).join('')}</div><div style="height:10px"></div><div class="lh-banner"><span>↗</span><span><strong>Cross-referenced evidence.</strong> Select linked change or run identifiers in the tables to move between source records.</span>${pill('Sanitized prototype','info')}</div><div style="height:10px"></div><div id="lh-log-content">${logTable()}</div></section>
+          <section class="lh-card"><div class="lh-card-head"><div><h3>Operations › Issues &amp; Assessment Log</h3><p>Representative sanitized Risk Assessment Log workbook views remain separate from the refinement tables and retain cross-reference cues.</p></div></div><div class="lh-log-tabs">${Object.entries(logDefinitions).map(([key,definition]) => `<button class="lh-log-tab ${logView === key ? 'is-active' : ''}" data-logview="${key}">${definition.label}</button>`).join('')}</div><div style="height:10px"></div><div class="lh-banner"><span>↗</span><span><strong>Cross-referenced evidence.</strong> Select linked change or assessment identifiers in the tables to move between source records.</span>${pill('Sanitized prototype','info')}</div><div style="height:10px"></div><div id="lh-log-content">${logTable()}</div></section>
         </div>`;
 
       function logTable() {
@@ -5736,47 +6063,47 @@
           slug:'phmsa-inputs',
           name:'PHMSA Inputs',
           sheets:[
-            {slug:'threat-summary',name:'Threat Summary',description:'Contains primary and subthreat categories.',required:'MR 1+'},
-            {slug:'opid',name:'OPID',description:'Contains PHMSA OPID data including states &amp; exposure. Run the SQL script and paste the results into the table. Fill in the state abbreviation manually.',required:'MR 1+'},
-            {slug:'phmsa-all',name:'PHMSA (All)',description:'PHMSA overall failures for all operators, all states.',required:'MR 1+'},
-            {slug:'phmsa-state',name:'PHMSA (State)',description:'PHMSA state-specific failures for states the operator has assets in. Update states in the script.',required:'MR 1+'},
-            {slug:'phmsa-client',name:'PHMSA (Client)',description:'PHMSA operator-specific failures for the operator OPIDs. Update OPID(s) in the script.',required:'MR 1+'}
+            {slug:'threat-summary',name:'Threat Summary',description:'Contains primary and subthreat categories.',required:'RA 1+'},
+            {slug:'opid',name:'OPID',description:'Contains PHMSA OPID data including states &amp; exposure. Run the SQL script and paste the results into the table. Fill in the state abbreviation manually.',required:'RA 1+'},
+            {slug:'phmsa-all',name:'PHMSA (All)',description:'PHMSA overall failures for all operators, all states.',required:'RA 1+'},
+            {slug:'phmsa-state',name:'PHMSA (State)',description:'PHMSA state-specific failures for states the operator has assets in. Update states in the script.',required:'RA 1+'},
+            {slug:'phmsa-client',name:'PHMSA (Client)',description:'PHMSA operator-specific failures for the operator OPIDs. Update OPID(s) in the script.',required:'RA 1+'}
           ]
         },
         {
           slug:'scope-threat-results',
           name:'Scope &amp; Threat Results',
           sheets:[
-            {slug:'threat-count',name:'(1) Threat Count',description:'Summary of SQL tables (rows of data, years analyzed, etc.).',required:'MR 1+'},
-            {slug:'route-numbers',name:'(2) Route Numbers',description:'List of routes in scope and number of segments in each one. When you paste the SQL output into the table, the table will automatically expand to the number of rows being pasted.',required:'MR 1+'},
-            {slug:'total',name:'Total',description:'Total failures &amp; rates by route name (failures, leaks, ruptures &amp; exposure). When you paste the SQL output into the table, the table and formulas will automatically expand to the number of rows being pasted.',required:'MR 1+'},
-            {slug:'primary-threat',name:'Primary Threat',description:'Primary threat results breakdown by route.',required:'MR 1+'},
-            {slug:'subthreat',name:'SubThreat',description:'Sub threat results breakdown by route.',required:'MR 1+'}
+            {slug:'threat-count',name:'(1) Threat Count',description:'Summary of SQL tables (rows of data, years analyzed, etc.).',required:'RA 1+'},
+            {slug:'route-numbers',name:'(2) Route Numbers',description:'List of routes in scope and number of segments in each one. When you paste the SQL output into the table, the table will automatically expand to the number of rows being pasted.',required:'RA 1+'},
+            {slug:'total',name:'Total',description:'Total failures &amp; rates by route name (failures, leaks, ruptures &amp; exposure). When you paste the SQL output into the table, the table and formulas will automatically expand to the number of rows being pasted.',required:'RA 1+'},
+            {slug:'primary-threat',name:'Primary Threat',description:'Primary threat results breakdown by route.',required:'RA 1+'},
+            {slug:'subthreat',name:'SubThreat',description:'Sub threat results breakdown by route.',required:'RA 1+'}
           ]
         },
         {
           slug:'phmsa-review',
           name:'PHMSA Review',
           sheets:[
-            {slug:'mileage',name:'Mileage',description:'Sheet will populate itself. Contains a mileage comparison between PHMSA and model risk mileage.',required:'MR 1+'},
-            {slug:'primary-threat-review',name:'Primary Threat Review',description:'Aggregated results by threat with PHMSA comparisons.',required:'MR 1+'},
-            {slug:'subthreat-review',name:'SubThreat Review',description:'Aggregated results by subthreat with PHMSA comparisons.',required:'MR 1+'},
-            {slug:'failure-density',name:'Failure Density',description:'Failure density chart by region and compared to PHMSA.',required:'MR 1+'},
-            {slug:'observed-expected-overall',name:'Obs. vs. Exp. (Overall)',description:'Sheet will populate itself. Contains overall observed failures &amp; ruptures with the model risk results (expected failures &amp; ruptures).',required:'MR 1+'},
-            {slug:'observed-expected-client',name:'Obs. vs. Exp. (Client)',description:'Sheet will populate itself. Contains client-specific observed failures &amp; ruptures with the model risk results (expected failures &amp; ruptures).',required:'MR 1+'},
-            {slug:'observed-expected-state',name:'Obs. vs. Exp. (State)',description:'Sheet will populate itself. Contains state-specific observed failures &amp; ruptures with the model risk results (expected failures &amp; ruptures).',required:'MR 1+'}
+            {slug:'mileage',name:'Mileage',description:'Sheet will populate itself. Contains a mileage comparison between PHMSA and model risk mileage.',required:'RA 1+'},
+            {slug:'primary-threat-review',name:'Primary Threat Review',description:'Aggregated results by threat with PHMSA comparisons.',required:'RA 1+'},
+            {slug:'subthreat-review',name:'SubThreat Review',description:'Aggregated results by subthreat with PHMSA comparisons.',required:'RA 1+'},
+            {slug:'failure-density',name:'Failure Density',description:'Failure density chart by region and compared to PHMSA.',required:'RA 1+'},
+            {slug:'observed-expected-overall',name:'Obs. vs. Exp. (Overall)',description:'Sheet will populate itself. Contains overall observed failures &amp; ruptures with the model risk results (expected failures &amp; ruptures).',required:'RA 1+'},
+            {slug:'observed-expected-client',name:'Obs. vs. Exp. (Client)',description:'Sheet will populate itself. Contains client-specific observed failures &amp; ruptures with the model risk results (expected failures &amp; ruptures).',required:'RA 1+'},
+            {slug:'observed-expected-state',name:'Obs. vs. Exp. (State)',description:'Sheet will populate itself. Contains state-specific observed failures &amp; ruptures with the model risk results (expected failures &amp; ruptures).',required:'RA 1+'}
           ]
         },
         {
           slug:'workshop-comparison',
           name:'Workshop &amp; Comparison',
           sheets:[
-            {slug:'top-10-tables',name:'Top 10 Tables',description:'Contains tables to populate the top 10 slides for the Risk Workshop.',required:'MR 1+'},
-            {slug:'top-lines-pivot',name:'Top Lines by (Pivot)',description:'Sheet will populate itself. Contains pivot tables of the 10-year model risk results to populate the Top 10 Tables tab.',required:'MR 1+'},
-            {slug:'model-run-comparison',name:'Model Run Comparison',description:'Contains multiple model run risk results for comparison.',required:'MR 2+'},
-            {slug:'powerpoint-tables',name:'PowerPoint Tables',description:'Contains tables to populate the Comparative Analysis PowerPoint.',required:'MR 2+'},
-            {slug:'structure-data',name:'StructureData',description:'Structure data for model runs being compared.',required:'MR 2+'},
-            {slug:'structure-analysis',name:'Structure Analysis',description:'Sheet will populate itself. Contains graphs to compare how the structure data has changed between multiple model runs.',required:'MR 2+'}
+            {slug:'top-10-tables',name:'Top 10 Tables',description:'Contains tables to populate the top 10 slides for the Risk Workshop.',required:'RA 1+'},
+            {slug:'top-lines-pivot',name:'Top Lines by (Pivot)',description:'Sheet will populate itself. Contains pivot tables of the 10-year model risk results to populate the Top 10 Tables tab.',required:'RA 1+'},
+            {slug:'model-run-comparison',name:'Risk Assessment Comparison',description:'Contains multiple Risk Assessment results for comparison.',required:'RA 2+'},
+            {slug:'powerpoint-tables',name:'PowerPoint Tables',description:'Contains tables to populate the Comparative Analysis PowerPoint.',required:'RA 2+'},
+            {slug:'structure-data',name:'StructureData',description:'Structure data for Risk Assessments being compared.',required:'RA 2+'},
+            {slug:'structure-analysis',name:'Structure Analysis',description:'Sheet will populate itself. Contains graphs to compare how the structure data has changed between multiple Risk Assessments.',required:'RA 2+'}
           ]
         }
       ];
@@ -5797,13 +6124,13 @@
 
       const configurationWorkflowGroups = [
         ['data','Data',[
-          ['data','Data Load','Prepare and transfer the TIMP source data required by model runs.','data'],
-          ['cof-prep','CoF Data Preparation','Prepare the loaded source data required before a CoF model run.','cof-prep']
+          ['data','Data Load','Prepare and transfer the TIMP source data required by Risk Assessments.','data'],
+          ['cof-prep','CoF Data Preparation','Prepare the loaded source data required before a CoF Risk Assessment.','cof-prep']
         ]],
         ['risk','Risk Model',[
           ['lof','LoF Run','Configure likelihood threats, parameters, and the PHMSA benchmark connection.','lof'],
           ['cof','CoF Run','Configure consequence scenarios and valuation inputs for TIMP.','cof'],
-          ['risk','Model Run','Combine the configured LoF and CoF outputs into a risk assessment.','risk']
+          ['risk','Risk Assessment','Combine the configured LoF and CoF outputs into a Risk Assessment.','risk']
         ]],
         ['documentation','Documentation',[
           ['log','Issues &amp; Run Log','Review run lineage, issues, and configuration-change references.','log'],
@@ -5888,14 +6215,103 @@
           : dataViewSection === 'factors'
             ? factorDataViews()
             : loadedDataViews();
-      const screenBuilders = {config:{run:configurationHome},data:{run:dataRun,progress:dataTransferProgress,results:dataResults,comparison:dataHistory,compare:dataViewsScreen},lof:{run:lofConfigureOnline,results:lofProgressOnline,comparison:lofDataViewResults,compare:()=>modelComparisonUpload('lof')},cof:{run:cofConfigureOnline,results:cofPhaseOneProgress,comparison:cofPhaseOneHistory,compare:()=>modelComparisonUpload('cof')},risk:{run:riskRun,results:riskProgress,comparison:()=>['1','2'].includes(planPhase) ? riskHistory() : riskResults(),compare:()=>modelComparisonUpload('risk')},log:{run:logIssues,results:logIssues,comparison:logIssues,compare:logIssues}};
+      const currentStateThreats = [
+        ['External Corrosion','#52aaa9'],
+        ['Internal Corrosion','#75a7f5'],
+        ['Stress Corrosion Cracking','#233d70'],
+        ['Manufacturing Defect','#20a5c9'],
+        ['Welding/Fabrication','#3979bd'],
+        ['Equipment','#59bd91'],
+        ['Third Party/Mechanical Damage','#4b6590'],
+        ['Incorrect Operation Procedure','#d5d9dc'],
+        ['Weather Related and Outside Force','#3d715d']
+      ];
+      const currentStateRoutes = [
+        ['IndustrialCorpSystem Pr-A_CR100',92,[78,6,2,2,5,3,2,1,1]],
+        ['ParkwayCorpSystem Pr-Charlie_CR101',66,[81,3,2,2,3,4,2,2,1]],
+        ['JANACorpSystem Pr-D_CR101',64,[82,3,2,2,3,3,2,2,1]],
+        ['ParkwayCorpSystem Pr-Foxtrot_CR100',51,[86,3,2,2,2,2,1,1,1]],
+        ['ParkwayCorpSystem Pr-Alpha_CR102',47,[83,3,2,2,3,3,2,1,1]],
+        ['CanadaGasCorpSystem Pr-E_CR100',37,[28,1,1,1,65,2,1,1,0]],
+        ['IndustrialCorpSystem Pr-C_CR102',35,[74,2,2,2,14,3,1,1,1]],
+        ['CanadaGasCorpSystem Pr-B_CR101',34,[96,1,1,1,1,0,0,0,0]],
+        ['IndustrialCorpSystem Pr-B_CR101',28,[78,1,2,1,3,3,7,4,1]],
+        ['ParkwayCorpSystem Pr-Bravo_CR100',26,[91,1,1,1,2,2,1,1,0]]
+      ];
+      const currentStateRouteChart = (hasData=true,statusMessage='') => hasData ? `
+        <div class="lh-route-chart">${currentStateRoutes.map(([name,width,shares]) => `<div class="lh-route-chart-row"><span title="${name}">${name}</span><div class="lh-route-stack" style="width:${width}%">${shares.map((share,index) => `<i style="width:${share}%;background:${currentStateThreats[index][1]}"></i>`).join('')}</div><span class="lh-route-value">${Math.round(width * 1760).toLocaleString()}</span></div>`).join('')}</div>
+        <div class="lh-current-state-legend">${currentStateThreats.map(([name,color]) => `<span><i style="background:${color}"></i>${name}</span>`).join('')}</div>` : `<div class="lh-current-state-empty"><div><strong>Risk by route is not available yet.</strong><p>${statusMessage}</p></div></div>`;
+      const currentStateForecast = (hasData=true,statusMessage='') => {
+        if (!hasData) return `<div class="lh-current-state-empty"><div><strong>Risk forecast is not available yet.</strong><p>${statusMessage}</p></div></div>`;
+        const years = ['2026','2027','2028','2029','2030','2031','2032','2033','2034','2035'];
+        return `<div class="lh-forecast-chart"><div class="lh-forecast-axis"><span>1.5E+6</span><span>1.0E+6</span><span>5.0E+5</span><span>0</span></div><div class="lh-forecast-bars">${years.map((year,index) => `<div class="lh-forecast-column">${[4,3,2,1,0].map((threatIndex,stackIndex) => `<i style="height:${stackIndex === 0 ? 12 + index : stackIndex === 1 ? 7 : stackIndex === 2 ? 5 : stackIndex === 3 ? 8 : 88 + index * 6}px;background:${currentStateThreats[threatIndex][1]}"></i>`).join('')}<small>${year}</small></div>`).join('')}</div></div>`;
+      };
+      const currentStateMap = (hasData=true,statusMessage='') => `
+        <div class="lh-current-state-map ${hasData ? '' : 'is-empty'}" aria-label="${hasData ? 'Illustrative geographic Risk Assessment map' : 'Empty geographic Risk Assessment map'}">
+          <div class="lh-map-controls left"><button type="button" aria-label="Zoom in">+</button><button type="button" aria-label="Zoom out">−</button></div>
+          <div class="lh-map-controls right"><button type="button" aria-label="Map legend">≡</button><button type="button" aria-label="Map layers">◇</button></div>
+          <svg viewBox="0 0 460 690" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustrative pipeline network over geographic terrain">
+            <defs>
+              <linearGradient id="lh-terrain" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173426"/><stop offset=".45" stop-color="#496544"/><stop offset=".7" stop-color="#718060"/><stop offset="1" stop-color="#203c32"/></linearGradient>
+              <filter id="lh-map-shadow"><feGaussianBlur stdDeviation="4"/></filter>
+            </defs>
+            <rect width="460" height="690" fill="url(#lh-terrain)"/>
+            <path d="M0 75 Q130 125 210 65 T460 90 M-20 160 Q110 205 250 130 T500 165 M-30 265 Q130 220 265 285 T480 245 M0 380 Q100 315 220 390 T470 350 M-20 500 Q150 435 280 520 T490 470 M10 620 Q170 550 330 630 T500 590" fill="none" stroke="#9da982" stroke-width="22" opacity=".18" filter="url(#lh-map-shadow)"/>
+            <path d="M-10 570 C70 555 100 590 155 545 C215 496 250 520 300 475 C335 443 330 380 365 340 C401 297 410 252 470 220" fill="none" stroke="#295e66" stroke-width="44" opacity=".75"/>
+            ${hasData ? `<path d="M188 590 L208 555 L203 520 L230 485 L224 448 L245 412 L238 380 L260 350 L256 315 L281 280 L275 245 L300 205 L294 168 L315 125" fill="none" stroke="#fff" stroke-width="7" stroke-linejoin="round"/>
+            <path d="M188 590 L208 555 L203 520 L230 485 L224 448 L245 412 L238 380 L260 350 L256 315 L281 280 L275 245 L300 205 L294 168 L315 125" fill="none" stroke="#64d23f" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M224 448 L165 430 L118 452 L78 445 M238 380 L300 395 L352 426 L405 438 M260 350 L220 322 L175 330 M275 245 L337 260 L390 250" fill="none" stroke="#fff" stroke-width="7" stroke-linejoin="round"/>
+            <path d="M224 448 L165 430 L118 452 L78 445 M238 380 L300 395 L352 426 L405 438 M260 350 L220 322 L175 330 M275 245 L337 260 L390 250" fill="none" stroke="#61d23d" stroke-width="4" stroke-linejoin="round"/>
+            <g fill="#f4aa22" stroke="#fff" stroke-width="1.5"><circle cx="207" cy="555" r="3"/><circle cx="229" cy="485" r="3"/><circle cx="166" cy="430" r="3"/><circle cx="238" cy="380" r="3"/><circle cx="301" cy="396" r="3"/><circle cx="257" cy="315" r="3"/><circle cx="276" cy="245" r="3"/><circle cx="295" cy="168" r="3"/></g>` : ''}
+          </svg>
+          ${hasData ? '' : `<div class="lh-current-state-map-empty"><strong>Risk map is not available yet.</strong><small>${statusMessage}</small></div>`}
+          <span class="lh-current-state-map-credit">Illustrative geographic prototype · Risk unit display</span>
+        </div>`;
+      const currentStateScreen = () => {
+        const snapshot = riskProgressSnapshot();
+        const hasData = Boolean(riskProgressRun) && snapshot.complete;
+        const statusMessage = 'Complete a Risk Assessment to populate this dashboard.';
+        const processedSegments = Math.round(8014902 * snapshot.overallProgress / 100);
+        const remainingMinutes = Math.max(1,Math.ceil((riskProgressDurationMs - snapshot.elapsedMs) / 60000));
+        const processingStep = Math.max(0,snapshot.visibleStatusCount - 1);
+        const processingDescription = processingStep < 2
+          ? 'Assessment should begin shortly...'
+          : processingStep >= 6
+          ? 'Publishing results to the map service'
+          : processingStep >= 5
+            ? 'Post processing results'
+            : processingStep >= 2
+              ? 'Running Risk Models'
+              : `Total Segments: ${(8014902).toLocaleString()}\nSegments Processed: ${processedSegments.toLocaleString()}\nEstimated Time Remaining: ${remainingMinutes} minutes`;
+        const processingTitle = processingStep < 2 ? 'Assessment Queued' : processingStep >= 6 ? 'Assessment Populating' : 'Assessment Processing';
+        return `<div class="lh-current-state">
+          <div class="lh-current-state-toolbar">
+            <div class="lh-current-state-tabs"><button class="lh-current-state-tab is-active" type="button">Graphs</button><button class="lh-current-state-tab" type="button" data-toast="Current State data table opened.">Data Table</button><button class="lh-current-state-tool" type="button" data-toast="Current State filters opened.">☷ Filters</button><button class="lh-current-state-tool" type="button" data-toast="What-If Scenarios opened.">◉ What-If Scenarios ▾</button></div>
+            <button class="lh-button" type="button" data-toast="Current Risk state saved." ${hasData ? '' : 'disabled'}>Save State</button>
+          </div>
+          ${riskProgressRun && !hasData ? `<div class="lh-current-state-processing"><section class="lh-current-state-processing-card" role="status" aria-live="polite"><strong>${processingTitle}</strong><p>${processingDescription}</p><div class="lh-progress" aria-label="${snapshot.overallProgress}% of Risk Assessment processing complete"><span style="width:${snapshot.overallProgress}%"></span></div></section></div>` : `
+          <div class="lh-current-state-dashboard">
+            <div class="lh-current-state-charts">
+              <section class="lh-current-state-panel"><header class="lh-current-state-panel-head"><strong>Risk By Route – Top 20</strong><span><small>Sort:</small> <strong>Risk ↓</strong> &nbsp; ⋮</span></header><div class="lh-current-state-panel-body">${currentStateRouteChart(hasData,statusMessage)}</div></section>
+              <section class="lh-current-state-panel"><header class="lh-current-state-panel-head"><strong>Risk Forecast</strong><span><small>By Threat</small> &nbsp; Total &nbsp; ⋮</span></header><div class="lh-current-state-panel-body">${currentStateForecast(hasData,statusMessage)}</div></section>
+            </div>
+            ${currentStateMap(hasData,statusMessage)}
+          </div>
+          ${!riskProgressRun && currentStateAlertOpen ? `<div class="lh-toast is-visible is-error lh-current-state-error-alert" role="alert" aria-live="assertive" aria-atomic="true" data-current-state-alert><span class="lh-toast-icon" aria-hidden="true">!</span><span class="lh-toast-message"><strong>No completed Risk Assessment</strong><span>Complete a Risk Assessment to populate this dashboard.</span></span><button class="lh-toast-close" type="button" aria-label="Dismiss alert" data-current-state-alert-close>×</button></div>` : ''}`}
+        </div>`;
+      };
+      const riskManagementScreen = () => riskManagementView === 'current'
+        ? currentStateScreen()
+        : `<div class="lh-screen" aria-label="Saved States"><div class="lh-data-progress-empty"><div><strong>No saved Risk states.</strong><p>Save a completed Current State to make it available here.</p></div></div></div>`;
+      const screenBuilders = {config:{run:configurationHome},data:{run:dataRun,progress:dataTransferProgress,results:dataResults,comparison:dataHistory,compare:dataViewsScreen},lof:{run:lofConfigureOnline,results:lofProgressOnline,comparison:lofDataViewResults,compare:()=>modelComparisonUpload('lof')},cof:{run:cofConfigureOnline,results:cofPhaseOneProgress,comparison:cofPhaseOneHistory,compare:()=>modelComparisonUpload('cof')},risk:{run:riskRun,results:riskProgress,comparison:()=>['1','2'].includes(planPhase) ? riskHistory() : riskResults(),compare:()=>modelComparisonUpload('risk')},'risk-management':{run:riskManagementScreen},log:{run:logIssues,results:logIssues,comparison:logIssues,compare:logIssues}};
       const copy = {
         config:{run:['Configuration Tools','','']},
         data:{run:['Data Load','','Check transfer'],progress:['Data Load','',''],results:['Validate the data transfer','Review source-to-target counts and resolve only the tables that failed validation.','Retry failed group'],comparison:['Data Load','',''],compare:['Data Views','Browse loaded data, risk results, factors, and the LoF and CoF refinement tables.','Export data']},
         lof:{run:['LoF Run','',''],results:['LoF Run','','Refresh progress'],comparison:['LoF Run','','Open review findings'],compare:['LoF Run','Use the GitHub PHMSA benchmark with an optional previous-run result for deeper review.','Run comparison']},
         cof:{run:['CoF Run','','Resolve blocker'],results:['CoF Run','Inspect scenario maxima, illustrative PHMSA prototype checks, top segments, and threshold exceptions.','Open 4 issues'],comparison:['CoF Run','Trace consequence changes to structures, buffers, and model configuration; PHMSA values are illustrative pending a real mapping.','Review decision'],compare:['CoF Run','Compare with the prior export and illustrative PHMSA prototype data pending a real benchmark mapping.','Run comparison']},
-        risk:{run:['Model Run','','Execute Risk assessment'],results:['Model Run','','Refresh progress'],comparison:['Model Run','','Start QC review'],compare:['Model Run','Upload the previous Risk export and PHMSA baseline to find unusual route and segment movements.','Run comparison']},
-        log:{run:['Issues and model run log','Track issues, model runs, attribute changes, and configuration changes in one audit trail.','Create issue'],results:['Issues and model run log','Track issues, model runs, attribute changes, and configuration changes in one audit trail.','Create issue'],comparison:['Issues and model run log','Track issues, model runs, attribute changes, and configuration changes in one audit trail.','Create issue'],compare:['Issues and model run log','Track issues, model runs, attribute changes, and configuration changes in one audit trail.','Create issue']}
+        risk:{run:['Risk Assessment','','Execute Risk Assessment'],results:['Risk Assessment','','Refresh progress'],comparison:['Risk Assessment','','Start QC review'],compare:['Risk Assessment','Upload the previous Risk export and PHMSA baseline to find unusual route and segment movements.','Run comparison']},
+        'risk-management':{run:[riskManagementView === 'current' ? 'Current State' : 'Saved States','','']},
+        log:{run:['Issues and Risk Assessment log','Track issues, Risk Assessments, attribute changes, and configuration changes in one audit trail.','Create issue'],results:['Issues and Risk Assessment log','Track issues, Risk Assessments, attribute changes, and configuration changes in one audit trail.','Create issue'],comparison:['Issues and Risk Assessment log','Track issues, Risk Assessments, attribute changes, and configuration changes in one audit trail.','Create issue'],compare:['Issues and Risk Assessment log','Track issues, Risk Assessments, attribute changes, and configuration changes in one audit trail.','Create issue']}
       };
 
       function showToast(message) {
@@ -5942,6 +6358,7 @@
         url.searchParams.set('view', viewName);
         if (moduleName === 'log') url.searchParams.set('logview', logView); else url.searchParams.delete('logview');
         if (moduleName === 'config') url.searchParams.set('configview', configurationSection); else url.searchParams.delete('configview');
+        if (moduleName === 'risk-management') url.searchParams.set('riskview', riskManagementView); else url.searchParams.delete('riskview');
         url.searchParams.set('phase', planPhase);
         url.searchParams.delete('horizon');
         if (moduleName === 'data' && viewName === 'compare') {
@@ -5966,6 +6383,7 @@
         if (moduleName === 'config' && planPhase !== '2') moduleName = 'data';
         if (moduleName === 'config') viewName = 'run';
         if (moduleName === 'log') viewName = 'run';
+        if (moduleName === 'risk-management') viewName = 'run';
         if (viewName === 'instructions') viewName = 'run';
         if (viewName === 'progress' && moduleName !== 'data') viewName = 'run';
         if (moduleName === 'data' && viewName === 'results') viewName = 'progress';
@@ -5990,7 +6408,9 @@
         const cofHistoryRoute = moduleName === 'cof' && viewName === 'comparison';
         const riskPhaseOneRoute = moduleName === 'risk' && planPhase === '1';
         const riskPhaseTwoRoute = moduleName === 'risk' && planPhase === '2';
+        const riskProgressRoute = moduleName === 'risk' && viewName === 'results';
         const configurationHomeRoute = moduleName === 'config';
+        const riskManagementRoute = moduleName === 'risk-management';
         if (!showComparisonUpload && viewName === 'compare') viewName = 'run';
         root.classList.toggle('lh-configuration-home-route', configurationHomeRoute);
         root.classList.toggle('lh-data-transfer-route', dataTransferRoute);
@@ -5998,16 +6418,16 @@
         root.classList.toggle('lh-data-history-route', dataHistoryRoute);
         root.classList.toggle('lh-factor-detail-route', factorDetailRoute);
         root.classList.toggle('lh-data-progress-route', dataProgressRoute || lofProgressRoute || cofProgressRoute);
-        root.querySelectorAll('.lh-actions .lh-button:not(#lh-primary-action):not(#lh-reset-config-progress)').forEach(button => button.hidden = configurationHomeRoute || dataTransferRoute || dataProgressRoute || dataHistoryRoute || lofConfigureRoute || lofProgressRoute || lofHistoryRoute || cofConfigureRoute || cofProgressRoute || cofHistoryRoute || riskPhaseOneRoute || riskPhaseTwoRoute || (lofResultsRoute && button.dataset.pageAction === 'save'));
+        root.querySelectorAll('.lh-actions .lh-button:not(#lh-primary-action):not(#lh-reset-config-progress)').forEach(button => button.hidden = configurationHomeRoute || riskManagementRoute || dataTransferRoute || dataProgressRoute || dataHistoryRoute || lofConfigureRoute || lofProgressRoute || lofHistoryRoute || cofConfigureRoute || cofProgressRoute || cofHistoryRoute || riskPhaseOneRoute || riskPhaseTwoRoute || riskProgressRoute || (lofResultsRoute && button.dataset.pageAction === 'save'));
         resetConfigProgress.hidden = !configurationHomeRoute;
         resetConfigProgress.disabled = completedConfigurationWorkflows.size === 0;
-        primaryAction.hidden = configurationHomeRoute || dataTransferRoute || dataProgressRoute || dataHistoryRoute || lofConfigureRoute || lofProgressRoute || lofHistoryRoute || cofConfigureRoute || cofProgressRoute || cofHistoryRoute || riskPhaseOneRoute || riskPhaseTwoRoute;
+        primaryAction.hidden = configurationHomeRoute || riskManagementRoute || dataTransferRoute || dataProgressRoute || dataHistoryRoute || lofConfigureRoute || lofProgressRoute || lofHistoryRoute || cofConfigureRoute || cofProgressRoute || cofHistoryRoute || riskPhaseOneRoute || riskPhaseTwoRoute || riskProgressRoute;
         globalPhaseButtons.forEach(button => {
           const active = button.dataset.globalPhase === planPhase;
           button.classList.toggle('is-active', active);
           button.setAttribute('aria-pressed', String(active));
         });
-        refinementTrigger.classList.toggle('is-active', moduleName !== 'data' || configurationHomeRoute);
+        refinementTrigger.classList.toggle('is-active', moduleName !== 'data' && !riskManagementRoute);
         refinementTrigger.classList.toggle('is-home-link', planPhase === '2');
         refinementTrigger.setAttribute('aria-haspopup', planPhase === '2' ? 'false' : 'menu');
         refinementTrigger.setAttribute('aria-expanded', planPhase === '2' ? 'false' : refinementTrigger.getAttribute('aria-expanded'));
@@ -6017,13 +6437,19 @@
           option.classList.toggle('is-active', active);
           if (active) option.setAttribute('aria-current', 'page'); else option.removeAttribute('aria-current');
         });
+        riskManagementTrigger.classList.toggle('is-active', riskManagementRoute);
+        riskManagementOptions.forEach(option => {
+          const active = riskManagementRoute && option.dataset.riskManagementDestination === riskManagementView;
+          option.classList.toggle('is-active', active);
+          if (active) option.setAttribute('aria-current', 'page'); else option.removeAttribute('aria-current');
+        });
         refinementOptions.forEach(btn => {
           const active = btn.dataset.module === moduleName;
           btn.classList.toggle('is-active', active);
           if (active) btn.setAttribute('aria-current', 'page'); else btn.removeAttribute('aria-current');
         });
         const tabCopy = moduleName === 'data' ? {run:'Configure',progress:'Progress',results:'Validation results',comparison:'History',compare:'Data Views'} : moduleName === 'lof' ? {run:'Configure',results:'Progress',comparison:'History',compare:'Comparison'} : moduleName === 'cof' ? {run:'Configure',results:'Progress',comparison:'History',compare:'Comparison'} : moduleName === 'risk' && ['1','2'].includes(planPhase) ? {run:'Configure',results:'Progress',comparison:'History',compare:'Comparison'} : moduleName === 'risk' ? {run:'Configure & execute',results:'Run progress',comparison:'Outputs & QC',compare:'Comparison'} : {run:'Run',results:'Results',comparison:'Comparison',compare:'Comparison'};
-        root.querySelectorAll('.lh-tab[data-view]').forEach(tab => { tab.textContent = tabCopy[tab.dataset.view] || tab.textContent; tab.hidden = configurationHomeRoute || dataViewsRoute || (tab.dataset.view === 'progress' && moduleName !== 'data') || (moduleName === 'data' && ['results','compare'].includes(tab.dataset.view)) || (tab.dataset.view === 'compare' && !showComparisonUpload); tab.classList.toggle('is-active', tab.dataset.view === viewName); tab.disabled = moduleName === 'log'; });
+        root.querySelectorAll('.lh-tab[data-view]').forEach(tab => { tab.textContent = tabCopy[tab.dataset.view] || tab.textContent; tab.hidden = configurationHomeRoute || riskManagementRoute || dataViewsRoute || (tab.dataset.view === 'progress' && moduleName !== 'data') || (moduleName === 'data' && ['results','compare'].includes(tab.dataset.view)) || (tab.dataset.view === 'compare' && !showComparisonUpload); tab.classList.toggle('is-active', tab.dataset.view === viewName); tab.disabled = moduleName === 'log'; });
         root.querySelectorAll('.lh-tab[data-data-view-section]').forEach(tab => {
           const section = tab.dataset.dataViewSection;
           tab.hidden = !dataViewsRoute || (planPhase === '1' && ['lof-refinement','cof-refinement'].includes(section));
@@ -6035,12 +6461,14 @@
         });
         viewTabs.style.display = '';
         viewTabs.style.opacity = moduleName === 'log' ? '.45' : '1';
-        const [heading, sub, action] = copy[moduleName][viewName];
+        const [heading, sub, action] = riskManagementRoute
+          ? [riskManagementView === 'current' ? 'Current State Risk' : 'Saved States','','']
+          : copy[moduleName][viewName];
         const pageSubtitle = (moduleName === 'cof' && (planPhase === '1' || ['results','comparison'].includes(viewName))) || (moduleName === 'risk' && planPhase === '1') ? '' : sub;
         title.textContent = heading;
         subtitle.textContent = pageSubtitle;
         subtitle.hidden = !pageSubtitle;
-        eyebrow.textContent = moduleName === 'data' && viewName === 'compare' ? 'Data Management' : moduleName === 'log' ? 'Model governance · IMF-T-T501 online' : 'Configuration';
+        eyebrow.textContent = riskManagementRoute ? 'System View' : moduleName === 'data' && viewName === 'compare' ? 'Data Management' : moduleName === 'log' ? 'Model governance · IMF-T-T501 online' : 'Configuration';
         primaryAction.textContent = action;
         host.innerHTML = screenBuilders[moduleName][viewName]();
         preserveModelTermCase(root);
@@ -6489,7 +6917,7 @@
             JSON.parse(await file.text());
             riskConfigUpload.status = 'valid';
             render();
-            showToast(`${file.name} is valid JSON and ready for the Model Run.`);
+            showToast(`${file.name} is valid JSON and ready for the Risk Assessment.`);
           } catch {
             riskConfigUpload.status = 'invalid';
             riskConfigUpload.error = 'The selected file is not valid JSON.';
@@ -6505,14 +6933,17 @@
           input.classList.toggle('is-valid', !invalid);
           if (invalid) input.setAttribute('aria-invalid','true'); else input.removeAttribute('aria-invalid');
         }));
+        host.querySelectorAll('[data-risk-skip-structures-sync]').forEach(select => select.addEventListener('change', () => {
+          riskAssessmentValues.skipStructuresSync = select.value;
+        }));
         const validateRiskRunFields = () => {
           riskExecutionAttempted = true;
           const missingField = !riskAssessmentValues.name.trim() ? 'name' : !riskAssessmentValues.purpose.trim() ? 'purpose' : '';
           const duplicateName = !missingField && riskNameExists(riskAssessmentValues.name);
           if (!missingField && !duplicateName) return true;
           render();
-          if (duplicateName) showToast('This Model Run Name already exists in history. Enter a unique name before executing the run.');
-          else showToast(`Complete the Model Run ${missingField === 'name' ? 'Name' : 'Purpose'} field outlined in red.`);
+          if (duplicateName) showToast('This Risk Assessment Name already exists in history. Enter a unique name before executing the assessment.');
+          else showToast(`Complete the Risk Assessment ${missingField === 'name' ? 'Name' : 'Purpose'} field outlined in red.`);
           requestAnimationFrame(() => host.querySelector(`[data-risk-assessment="${duplicateName ? 'name' : missingField}"]`)?.focus());
           return false;
         };
@@ -6523,18 +6954,36 @@
             requestAnimationFrame(() => host.querySelector('[data-risk-config-upload-trigger]')?.focus());
             return;
           }
-          recordRiskRun();
-          viewName = 'results';
+          riskCheckModalOpen = true;
           render();
-          showToast('RISK-0264-011 started with the uploaded RiskModelConfig.');
         }));
         host.querySelectorAll('[data-risk-guided-start]').forEach(button => button.addEventListener('click', () => {
           if (!validateRiskRunFields()) return;
+          riskCheckModalOpen = true;
+          render();
+        }));
+        const closeRiskModal = () => {
+          riskCheckModalOpen = false;
+          render();
+          requestAnimationFrame(() => host.querySelector(planPhase === '1' ? '[data-risk-start]' : '[data-risk-guided-start]')?.focus());
+        };
+        host.querySelectorAll('[data-risk-modal-close]').forEach(button => button.addEventListener('click', closeRiskModal));
+        host.querySelectorAll('[data-risk-modal-backdrop]').forEach(backdrop => backdrop.addEventListener('click', event => {
+          if (event.target === backdrop) closeRiskModal();
+        }));
+        host.querySelectorAll('[data-risk-confirm-start]').forEach(button => button.addEventListener('click', () => {
+          riskCheckModalOpen = false;
           recordRiskRun();
+          startRiskProgress();
           viewName = 'results';
           render();
-          showToast('Model run started.');
+          showToast(planPhase === '1' ? 'RISK-0264-011 started with the uploaded RiskModelConfig.' : 'Risk Assessment started.');
         }));
+        const closeCurrentStateAlert = () => {
+          currentStateAlertOpen = false;
+          render();
+        };
+        host.querySelectorAll('[data-current-state-alert-close]').forEach(button => button.addEventListener('click', closeCurrentStateAlert));
         host.querySelectorAll('[data-lof-general]').forEach(el => el.addEventListener('input', () => {
           lofGeneralValues[el.dataset.lofGeneral] = el.value;
           if (!lofConfigCheckAttempted) return;
@@ -6799,10 +7248,11 @@
           if (event.target === backdrop) closeCofConfigErrorModal();
         }));
         host.querySelectorAll('[data-cof-start]').forEach(button => button.addEventListener('click', startCofRun));
-        host.querySelectorAll('[data-lof-modal], [data-lof-config-error-modal], [data-cof-modal], [data-cof-config-error-modal]').forEach(modal => modal.addEventListener('keydown', event => {
+        host.querySelectorAll('[data-lof-modal], [data-lof-config-error-modal], [data-cof-modal], [data-cof-config-error-modal], [data-risk-modal]').forEach(modal => modal.addEventListener('keydown', event => {
           if (event.key === 'Escape') {
             event.preventDefault();
-            if (modal.matches('[data-cof-modal]')) closeCofModal();
+            if (modal.matches('[data-risk-modal]')) closeRiskModal();
+            else if (modal.matches('[data-cof-modal]')) closeCofModal();
             else if (modal.matches('[data-cof-config-error-modal]')) closeCofConfigErrorModal();
             else if (modal.matches('[data-lof-config-error-modal]')) closeLofConfigErrorModal();
             else closeLofModal();
@@ -6834,6 +7284,8 @@
         if (openCofModal) requestAnimationFrame(() => openCofModal.querySelector('[data-cof-modal-close]')?.focus());
         const openCofConfigErrorModal = host.querySelector('[data-cof-config-error-modal]');
         if (openCofConfigErrorModal) requestAnimationFrame(() => openCofConfigErrorModal.querySelector('[data-cof-config-error-close]')?.focus());
+        const openRiskModal = host.querySelector('[data-risk-modal]');
+        if (openRiskModal) requestAnimationFrame(() => openRiskModal.querySelector('[data-risk-modal-close]')?.focus());
         updateUrl();
       }
 
@@ -6845,6 +7297,11 @@
       const setDataManagementMenuOpen = (isOpen) => {
         dataManagementNav.classList.toggle('is-open', isOpen);
         dataManagementTrigger.setAttribute('aria-expanded', String(isOpen));
+      };
+
+      const setRiskManagementMenuOpen = (isOpen) => {
+        riskManagementNav.classList.toggle('is-open', isOpen);
+        riskManagementTrigger.setAttribute('aria-expanded', String(isOpen));
       };
 
       const setProfileMenuOpen = (isOpen) => {
@@ -6862,9 +7319,15 @@
         dataManagementOptions[normalized].focus();
       };
 
+      const focusRiskManagementOption = index => {
+        const normalized = (index + riskManagementOptions.length) % riskManagementOptions.length;
+        riskManagementOptions[normalized].focus();
+      };
+
       refinementTrigger.addEventListener('click', event => {
         event.stopPropagation();
         setDataManagementMenuOpen(false);
+        setRiskManagementMenuOpen(false);
         setProfileMenuOpen(false);
         if (planPhase === '2') {
           setRefinementMenuOpen(false);
@@ -6887,6 +7350,7 @@
       dataManagementTrigger.addEventListener('click', event => {
         event.stopPropagation();
         setRefinementMenuOpen(false);
+        setRiskManagementMenuOpen(false);
         setProfileMenuOpen(false);
         setDataManagementMenuOpen(!dataManagementNav.classList.contains('is-open'));
       });
@@ -6897,6 +7361,23 @@
         setDataManagementMenuOpen(true);
         const activeIndex = Math.max(0, dataManagementOptions.findIndex(option => option.hasAttribute('aria-current')));
         focusDataManagementOption(event.key === 'ArrowUp' || event.key === 'End' ? dataManagementOptions.length - 1 : event.key === 'Home' ? 0 : activeIndex);
+      });
+
+      riskManagementTrigger.addEventListener('click', event => {
+        event.stopPropagation();
+        setRefinementMenuOpen(false);
+        setDataManagementMenuOpen(false);
+        setProfileMenuOpen(false);
+        setRiskManagementMenuOpen(!riskManagementNav.classList.contains('is-open'));
+      });
+      riskManagementTrigger.addEventListener('keydown', event => {
+        if (!['ArrowDown','ArrowUp','Home','End'].includes(event.key)) return;
+        event.preventDefault();
+        setRefinementMenuOpen(false);
+        setDataManagementMenuOpen(false);
+        setRiskManagementMenuOpen(true);
+        const activeIndex = Math.max(0, riskManagementOptions.findIndex(option => option.hasAttribute('aria-current')));
+        focusRiskManagementOption(event.key === 'ArrowUp' || event.key === 'End' ? riskManagementOptions.length - 1 : event.key === 'Home' ? 0 : activeIndex);
       });
 
       refinementOptions.forEach((btn,index) => {
@@ -6941,10 +7422,32 @@
         });
       });
 
+      riskManagementOptions.forEach((btn,index) => {
+        btn.addEventListener('click', () => {
+          moduleName = 'risk-management';
+          riskManagementView = btn.dataset.riskManagementDestination;
+          currentStateAlertOpen = riskManagementView === 'current' && !riskProgressRun;
+          viewName = 'run';
+          setRiskManagementMenuOpen(false);
+          render();
+        });
+        btn.addEventListener('keydown', event => {
+          if (event.key === 'Escape') {
+            event.preventDefault();
+            setRiskManagementMenuOpen(false);
+            riskManagementTrigger.focus();
+          } else if (['ArrowDown','ArrowUp','Home','End'].includes(event.key)) {
+            event.preventDefault();
+            focusRiskManagementOption(event.key === 'Home' ? 0 : event.key === 'End' ? riskManagementOptions.length - 1 : index + (event.key === 'ArrowDown' ? 1 : -1));
+          }
+        });
+      });
+
       profileTrigger.addEventListener('click', event => {
         event.stopPropagation();
         setRefinementMenuOpen(false);
         setDataManagementMenuOpen(false);
+        setRiskManagementMenuOpen(false);
         setProfileMenuOpen(!profile.classList.contains('is-open'));
       });
       profileTrigger.addEventListener('keydown', event => {
@@ -6952,6 +7455,7 @@
         event.preventDefault();
         setRefinementMenuOpen(false);
         setDataManagementMenuOpen(false);
+        setRiskManagementMenuOpen(false);
         setProfileMenuOpen(true);
         profileOptions[event.key === 'ArrowUp' || event.key === 'End' ? profileOptions.length - 1 : 0].focus();
       });
@@ -6976,12 +7480,16 @@
       dataManagementNav.addEventListener('focusout', () => setTimeout(() => {
         if (!dataManagementNav.contains(document.activeElement)) setDataManagementMenuOpen(false);
       }));
+      riskManagementNav.addEventListener('focusout', () => setTimeout(() => {
+        if (!riskManagementNav.contains(document.activeElement)) setRiskManagementMenuOpen(false);
+      }));
       profile.addEventListener('focusout', () => setTimeout(() => {
         if (!profile.contains(document.activeElement)) setProfileMenuOpen(false);
       }));
       document.addEventListener('click', event => {
         if (!refinementNav.contains(event.target)) setRefinementMenuOpen(false);
         if (!dataManagementNav.contains(event.target)) setDataManagementMenuOpen(false);
+        if (!riskManagementNav.contains(event.target)) setRiskManagementMenuOpen(false);
         if (!profile.contains(event.target)) setProfileMenuOpen(false);
       });
       document.addEventListener('keydown', event => {
@@ -6991,6 +7499,9 @@
         } else if (event.key === 'Escape' && dataManagementNav.classList.contains('is-open')) {
           setDataManagementMenuOpen(false);
           dataManagementTrigger.focus();
+        } else if (event.key === 'Escape' && riskManagementNav.classList.contains('is-open')) {
+          setRiskManagementMenuOpen(false);
+          riskManagementTrigger.focus();
         } else if (event.key === 'Escape' && profile.classList.contains('is-open')) {
           setProfileMenuOpen(false);
           profileTrigger.focus();
