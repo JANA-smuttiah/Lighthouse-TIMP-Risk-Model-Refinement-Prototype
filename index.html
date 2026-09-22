@@ -612,37 +612,6 @@
     }
     .lh-current-state-empty strong { display: block; color: #4f5964; font-size: 12px; }
     .lh-current-state-empty p { max-width: 390px; margin: 5px 0 0; font-size: 10px; line-height: 1.45; }
-    .lh-current-state-processing {
-      display: grid;
-      min-height: 620px;
-      place-items: center;
-      padding: 32px;
-      background:
-        linear-gradient(rgba(242,243,244,.9),rgba(242,243,244,.9)),
-        repeating-linear-gradient(135deg,#edf0f2 0,#edf0f2 18px,#e6e9ec 18px,#e6e9ec 36px);
-    }
-    .lh-current-state-processing-card {
-      width: min(384px,100%);
-      padding: 32px;
-      border-radius: 4px;
-      background: #fff;
-      text-align: center;
-      box-shadow: 0 8px 24px rgba(31,43,56,.16);
-    }
-    .lh-current-state-processing-card strong {
-      display: block;
-      color: #303a45;
-      font-size: 20px;
-      font-weight: 600;
-    }
-    .lh-current-state-processing-card p {
-      margin: 12px 0 0;
-      color: #737c86;
-      font-size: 12px;
-      line-height: 1.65;
-      white-space: pre-line;
-    }
-    .lh-current-state-processing-card .lh-progress { margin-top: 20px; }
     .lh-route-chart { display: grid; gap: 7px; padding: 6px 0 2px; }
     .lh-route-chart-row { display: grid; grid-template-columns: 220px minmax(220px,1fr) 52px; gap: 10px; align-items: center; }
     .lh-route-chart-row > span { overflow: hidden; color: #626a73; font-size: 9px; text-align: right; text-overflow: ellipsis; white-space: nowrap; }
@@ -3539,10 +3508,10 @@
             <div class="lh-data-load-config">
               <div class="lh-kicker">Configuration</div>
               <div class="lh-fields">
-                <label class="lh-field"><span class="lh-field-label">Data Load Name</span><input class="lh-input ${transferControlState(Boolean(dataTransferValues.name.trim()) && !dataLoadNameExists(dataTransferValues.name))}" data-transfer-field="name" value="${escapeHtml(dataTransferValues.name)}" placeholder="Enter a unique name for this data load" ${dataTransferValues.checkAttempted && (!dataTransferValues.name.trim() || dataLoadNameExists(dataTransferValues.name)) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in Data Load History</span></label>
+                <label class="lh-field"><span class="lh-field-label">Data Load Name</span><input class="lh-input ${transferControlState(Boolean(dataTransferValues.name.trim()) && !dataLoadNameExists(dataTransferValues.name))}" data-transfer-field="name" value="${escapeHtml(dataTransferValues.name)}" placeholder="Enter a unique name for this data load" ${dataTransferValues.checkAttempted && (!dataTransferValues.name.trim() || dataLoadNameExists(dataTransferValues.name)) ? 'aria-invalid="true"' : ''}/></label>
                 <div class="lh-field"><span class="lh-field-label">Source</span><div class="lh-input lh-readonly-input ${transferControlState(true)}" aria-readonly="true">Analysis Server · ClientName_ETL</div><span class="lh-help">Fixed source for this environment</span></div>
                 <div class="lh-field"><span class="lh-field-label">Target database</span><div class="lh-input lh-readonly-input ${transferControlState(true)}" aria-readonly="true">lhtimp-clientname-uat · Lighthouse_GDB</div><span class="lh-help">Fixed target for this environment</span></div>
-                <label class="lh-field"><span class="lh-field-label">Reason for transfer</span><input class="lh-input ${transferControlState(Boolean(dataTransferValues.reason.trim()))}" data-transfer-field="reason" value="${escapeHtml(dataTransferValues.reason)}" ${dataTransferValues.checkAttempted && !dataTransferValues.reason.trim() ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the snapshot and run log</span></label>
+                <label class="lh-field"><span class="lh-field-label">Reason for transfer</span><input class="lh-input ${transferControlState(Boolean(dataTransferValues.reason.trim()))}" data-transfer-field="reason" value="${escapeHtml(dataTransferValues.reason)}" placeholder="Describe why this data load is needed" ${dataTransferValues.checkAttempted && !dataTransferValues.reason.trim() ? 'aria-invalid="true"' : ''}/></label>
                 ${planPhase === '2' ? teamsNotificationSection('data') : ''}
               </div>
             </div>
@@ -4182,8 +4151,8 @@
 
       const riskAssessmentFields = () => `
         <div class="lh-fields">
-          <label class="lh-field"><span class="lh-field-label">Risk Assessment Name</span><input class="lh-input ${riskExecutionAttempted ? (!riskAssessmentValues.name.trim() || riskNameExists(riskAssessmentValues.name)) ? 'is-invalid' : 'is-valid' : ''}" value="${escapeHtml(riskAssessmentValues.name)}" placeholder="Enter a unique name for this Risk Assessment" data-risk-assessment="name" ${riskExecutionAttempted && (!riskAssessmentValues.name.trim() || riskNameExists(riskAssessmentValues.name)) ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in Risk Assessment History</span></label>
-          <label class="lh-field"><span class="lh-field-label">Risk Assessment Purpose</span><input class="lh-input ${riskExecutionAttempted ? riskAssessmentValues.purpose.trim() ? 'is-valid' : 'is-invalid' : ''}" value="${escapeHtml(riskAssessmentValues.purpose)}" data-risk-assessment="purpose" ${riskExecutionAttempted && !riskAssessmentValues.purpose.trim() ? 'aria-invalid="true"' : ''}/></label>
+          <label class="lh-field"><span class="lh-field-label">Risk Assessment Name</span><input class="lh-input ${riskExecutionAttempted ? (!riskAssessmentValues.name.trim() || riskNameExists(riskAssessmentValues.name)) ? 'is-invalid' : 'is-valid' : ''}" value="${escapeHtml(riskAssessmentValues.name)}" placeholder="Enter a unique name for this Risk Assessment" data-risk-assessment="name" ${riskExecutionAttempted && (!riskAssessmentValues.name.trim() || riskNameExists(riskAssessmentValues.name)) ? 'aria-invalid="true"' : ''}/></label>
+          <label class="lh-field"><span class="lh-field-label">Risk Assessment Purpose</span><input class="lh-input ${riskExecutionAttempted ? riskAssessmentValues.purpose.trim() ? 'is-valid' : 'is-invalid' : ''}" value="${escapeHtml(riskAssessmentValues.purpose)}" placeholder="Describe why this Risk Assessment is being run" data-risk-assessment="purpose" ${riskExecutionAttempted && !riskAssessmentValues.purpose.trim() ? 'aria-invalid="true"' : ''}/></label>
           <label class="lh-field"><span class="lh-field-label">Skip Structures Sync</span><select class="lh-select" data-risk-skip-structures-sync><option value="no" ${riskAssessmentValues.skipStructuresSync === 'no' ? 'selected' : ''}>No</option><option value="yes" ${riskAssessmentValues.skipStructuresSync === 'yes' ? 'selected' : ''}>Yes</option></select><span class="lh-help">Only skip Structures Sync if you know your ETL changes don't affect structures.</span></label>
           ${planPhase === '2' ? teamsNotificationSection('risk') : ''}
         </div>
@@ -4777,8 +4746,8 @@
             <div class="lh-run-config-info">
               <div class="lh-kicker">Configuration</div>
               <div class="lh-fields">
-                <label class="lh-field"><span class="lh-field-label">CoF Name</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('name') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a unique name for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in CoF Run History</span></label>
-                <label class="lh-field"><span class="lh-field-label">Reason for CoF</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('reason') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="reason" value="${escapeHtml(cofGeneralValues.reason)}" placeholder="Enter the reason for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
+                <label class="lh-field"><span class="lh-field-label">CoF Name</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('name') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a unique name for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/></label>
+                <label class="lh-field"><span class="lh-field-label">Reason for CoF</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('reason') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="reason" value="${escapeHtml(cofGeneralValues.reason)}" placeholder="Enter the reason for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/></label>
               </div>
             </div>
             <div class="lh-run-config-upload">
@@ -4796,8 +4765,8 @@
             <div class="lh-run-config-info">
               <div class="lh-kicker">Configuration</div>
               <div class="lh-fields">
-                <label class="lh-field"><span class="lh-field-label">CoF Name</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('name') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a unique name for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in CoF Run History</span></label>
-                <label class="lh-field"><span class="lh-field-label">Reason for CoF</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('reason') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="reason" value="${escapeHtml(cofGeneralValues.reason)}" placeholder="Enter the reason for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
+                <label class="lh-field"><span class="lh-field-label">CoF Name</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('name') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a unique name for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/></label>
+                <label class="lh-field"><span class="lh-field-label">Reason for CoF</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('reason') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="reason" value="${escapeHtml(cofGeneralValues.reason)}" placeholder="Enter the reason for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/></label>
                 ${teamsNotificationSection('cof')}
               </div>
             </div>
@@ -4815,8 +4784,8 @@
           ${cofDataPreparationSection()}
           ${card('General Configuration','',`
             <div class="lh-fields">
-              <label class="lh-field lh-field-full"><span class="lh-field-label">CoF Name</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('name') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a unique name for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in CoF Run History</span></label>
-              <label class="lh-field lh-field-full"><span class="lh-field-label">Reason for CoF</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('reason') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="reason" value="${escapeHtml(cofGeneralValues.reason)}" placeholder="Enter the reason for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
+              <label class="lh-field lh-field-full"><span class="lh-field-label">CoF Name</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('name') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a unique name for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/></label>
+              <label class="lh-field lh-field-full"><span class="lh-field-label">Reason for CoF</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('reason') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="reason" value="${escapeHtml(cofGeneralValues.reason)}" placeholder="Enter the reason for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/></label>
             </div>
           `)}
           ${card('CoF Scenario Configuration','',`
@@ -5242,7 +5211,7 @@
             <label class="lh-catalog-search"><input type="search" value="${escapeHtml(factorViewSearch)}" placeholder="Search" aria-label="Search factors" data-factor-view-search/><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 3a6.5 6.5 0 1 0 3.98 11.64L19.85 21 21 19.85l-6.36-6.37A6.5 6.5 0 0 0 9.5 3Zm0 2a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z"/></svg></label>
           </div>
           <section class="lh-data-view-group" data-factor-view-group>
-            <h2 class="lh-data-view-group-title">LoF Factors</h2>
+            <h2 class="lh-data-view-group-title">LoF Models</h2>
             <div class="lh-data-view-card-grid">
               ${definitions.map(item => `<button class="lh-data-view-card" type="button" data-factor-view="lof" data-factor-key="${item.key}" data-factor-view-name="${item.name.toLowerCase()}" title="${item.name}"><span>${item.name}</span></button>`).join('')}
             </div>
@@ -5465,8 +5434,8 @@
             <div class="lh-run-config-info">
               <div class="lh-kicker">Configuration</div>
               <div class="lh-fields">
-                <label class="lh-field"><span class="lh-field-label">LoF Name</span><input class="lh-input ${lofGeneralControlState('name')}" data-lof-general="name" value="${escapeHtml(lofGeneralValues.name)}" placeholder="Enter a unique name for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in LoF Run History</span></label>
-                <label class="lh-field"><span class="lh-field-label">Reason for LoF</span><input class="lh-input ${lofGeneralControlState('reason')}" data-lof-general="reason" value="${escapeHtml(lofGeneralValues.reason)}" placeholder="Enter the reason for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
+                <label class="lh-field"><span class="lh-field-label">LoF Name</span><input class="lh-input ${lofGeneralControlState('name')}" data-lof-general="name" value="${escapeHtml(lofGeneralValues.name)}" placeholder="Enter a unique name for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/></label>
+                <label class="lh-field"><span class="lh-field-label">Reason for LoF</span><input class="lh-input ${lofGeneralControlState('reason')}" data-lof-general="reason" value="${escapeHtml(lofGeneralValues.reason)}" placeholder="Enter the reason for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/></label>
               </div>
             </div>
             <div class="lh-run-config-upload">
@@ -5483,8 +5452,8 @@
             <div class="lh-run-config-info">
               <div class="lh-kicker">Configuration</div>
               <div class="lh-fields">
-                <label class="lh-field"><span class="lh-field-label">LoF Name</span><input class="lh-input ${lofGeneralControlState('name')}" data-lof-general="name" value="${escapeHtml(lofGeneralValues.name)}" placeholder="Enter a unique name for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in LoF Run History</span></label>
-                <label class="lh-field"><span class="lh-field-label">Reason for LoF</span><input class="lh-input ${lofGeneralControlState('reason')}" data-lof-general="reason" value="${escapeHtml(lofGeneralValues.reason)}" placeholder="Enter the reason for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
+                <label class="lh-field"><span class="lh-field-label">LoF Name</span><input class="lh-input ${lofGeneralControlState('name')}" data-lof-general="name" value="${escapeHtml(lofGeneralValues.name)}" placeholder="Enter a unique name for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/></label>
+                <label class="lh-field"><span class="lh-field-label">Reason for LoF</span><input class="lh-input ${lofGeneralControlState('reason')}" data-lof-general="reason" value="${escapeHtml(lofGeneralValues.reason)}" placeholder="Enter the reason for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/></label>
                 ${teamsNotificationSection('lof')}
               </div>
             </div>
@@ -5502,8 +5471,8 @@
           <div class="lh-grid">
             ${card('General Configuration','',`
               <div class="lh-fields">
-                <label class="lh-field lh-field-full"><span class="lh-field-label">LoF Name</span><input class="lh-input ${lofGeneralControlState('name')}" data-lof-general="name" value="${escapeHtml(lofGeneralValues.name)}" placeholder="Enter a unique name for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Must be unique in LoF Run History</span></label>
-                <label class="lh-field lh-field-full"><span class="lh-field-label">Reason for LoF</span><input class="lh-input ${lofGeneralControlState('reason')}" data-lof-general="reason" value="${escapeHtml(lofGeneralValues.reason)}" placeholder="Enter the reason for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/><span class="lh-help">Stored with the configuration and run log</span></label>
+                <label class="lh-field lh-field-full"><span class="lh-field-label">LoF Name</span><input class="lh-input ${lofGeneralControlState('name')}" data-lof-general="name" value="${escapeHtml(lofGeneralValues.name)}" placeholder="Enter a unique name for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/></label>
+                <label class="lh-field lh-field-full"><span class="lh-field-label">Reason for LoF</span><input class="lh-input ${lofGeneralControlState('reason')}" data-lof-general="reason" value="${escapeHtml(lofGeneralValues.reason)}" placeholder="Enter the reason for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/></label>
               </div>
             `)}
             ${lofFutureSetup()}
@@ -6271,25 +6240,13 @@
         const snapshot = riskProgressSnapshot();
         const hasData = Boolean(riskProgressRun) && snapshot.complete;
         const statusMessage = 'Complete a Risk Assessment to populate this dashboard.';
-        const processedSegments = Math.round(8014902 * snapshot.overallProgress / 100);
-        const remainingMinutes = Math.max(1,Math.ceil((riskProgressDurationMs - snapshot.elapsedMs) / 60000));
-        const processingStep = Math.max(0,snapshot.visibleStatusCount - 1);
-        const processingDescription = processingStep < 2
-          ? 'Assessment should begin shortly...'
-          : processingStep >= 6
-          ? 'Publishing results to the map service'
-          : processingStep >= 5
-            ? 'Post processing results'
-            : processingStep >= 2
-              ? 'Running Risk Models'
-              : `Total Segments: ${(8014902).toLocaleString()}\nSegments Processed: ${processedSegments.toLocaleString()}\nEstimated Time Remaining: ${remainingMinutes} minutes`;
-        const processingTitle = processingStep < 2 ? 'Assessment Queued' : processingStep >= 6 ? 'Assessment Populating' : 'Assessment Processing';
+        const alertTitle = riskProgressRun ? 'Risk Assessment In Progress' : 'No completed Risk Assessment';
+        const alertMessage = riskProgressRun ? 'Risk Assessment will populate once completed.' : statusMessage;
         return `<div class="lh-current-state">
           <div class="lh-current-state-toolbar">
             <div class="lh-current-state-tabs"><button class="lh-current-state-tab is-active" type="button">Graphs</button><button class="lh-current-state-tab" type="button" data-toast="Current State data table opened.">Data Table</button><button class="lh-current-state-tool" type="button" data-toast="Current State filters opened.">☷ Filters</button><button class="lh-current-state-tool" type="button" data-toast="What-If Scenarios opened.">◉ What-If Scenarios ▾</button></div>
             <button class="lh-button" type="button" data-toast="Current Risk state saved." ${hasData ? '' : 'disabled'}>Save State</button>
           </div>
-          ${riskProgressRun && !hasData ? `<div class="lh-current-state-processing"><section class="lh-current-state-processing-card" role="status" aria-live="polite"><strong>${processingTitle}</strong><p>${processingDescription}</p><div class="lh-progress" aria-label="${snapshot.overallProgress}% of Risk Assessment processing complete"><span style="width:${snapshot.overallProgress}%"></span></div></section></div>` : `
           <div class="lh-current-state-dashboard">
             <div class="lh-current-state-charts">
               <section class="lh-current-state-panel"><header class="lh-current-state-panel-head"><strong>Risk By Route – Top 20</strong><span><small>Sort:</small> <strong>Risk ↓</strong> &nbsp; ⋮</span></header><div class="lh-current-state-panel-body">${currentStateRouteChart(hasData,statusMessage)}</div></section>
@@ -6297,7 +6254,7 @@
             </div>
             ${currentStateMap(hasData,statusMessage)}
           </div>
-          ${!riskProgressRun && currentStateAlertOpen ? `<div class="lh-toast is-visible is-error lh-current-state-error-alert" role="alert" aria-live="assertive" aria-atomic="true" data-current-state-alert><span class="lh-toast-icon" aria-hidden="true">!</span><span class="lh-toast-message"><strong>No completed Risk Assessment</strong><span>Complete a Risk Assessment to populate this dashboard.</span></span><button class="lh-toast-close" type="button" aria-label="Dismiss alert" data-current-state-alert-close>×</button></div>` : ''}`}
+          ${!hasData && currentStateAlertOpen ? `<div class="lh-toast is-visible is-error lh-current-state-error-alert" role="alert" aria-live="assertive" aria-atomic="true" data-current-state-alert><span class="lh-toast-icon" aria-hidden="true">!</span><span class="lh-toast-message"><strong>${alertTitle}</strong><span>${alertMessage}</span></span><button class="lh-toast-close" type="button" aria-label="Dismiss alert" data-current-state-alert-close>×</button></div>` : ''}
         </div>`;
       };
       const riskManagementScreen = () => riskManagementView === 'current'
@@ -7426,7 +7383,7 @@
         btn.addEventListener('click', () => {
           moduleName = 'risk-management';
           riskManagementView = btn.dataset.riskManagementDestination;
-          currentStateAlertOpen = riskManagementView === 'current' && !riskProgressRun;
+          currentStateAlertOpen = riskManagementView === 'current' && !(riskProgressRun && riskProgressSnapshot().complete);
           viewName = 'run';
           setRiskManagementMenuOpen(false);
           render();
