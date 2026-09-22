@@ -3235,6 +3235,7 @@
       const profileOptions = [...root.querySelectorAll('.lh-profile-option')];
       const globalPhaseButtons = [...root.querySelectorAll('[data-global-phase]')];
       const params = new URLSearchParams(location.search);
+      const isJanaAdmin = params.get('role') !== 'user';
       let moduleName = ['config','data','lof','cof','risk','risk-management','log'].includes(params.get('module')) ? params.get('module') : 'data';
       let viewName = ['run','progress','results','comparison','compare','instructions'].includes(params.get('view')) ? params.get('view') : 'run';
       let riskManagementView = ['current','saved'].includes(params.get('riskview')) ? params.get('riskview') : 'current';
@@ -3627,8 +3628,8 @@
         const currentIndex = dataTransferRun.tables.findIndex(table => table.status === 'in-progress');
         if (currentIndex < 0) return;
         const current = dataTransferRun.tables[currentIndex];
-        current.status = currentIndex === 1 ? 'failed' : 'completed';
-        current.duration = '5 sec';
+        current.status = 'completed';
+        current.duration = '1 sec';
         if (current.status === 'failed') current.error = `Invalid object name 'pipeline.${current.name}'`;
         const next = dataTransferRun.tables[currentIndex + 1];
         if (next) next.status = 'in-progress';
@@ -3639,6 +3640,7 @@
           dataTransferValues.lastTransferRuntime = transferElapsed();
         }
         if (moduleName === 'data' && viewName === 'progress') updateTransferProgress();
+        if (dataTransferRun.finishedAt && moduleName === 'data' && viewName === 'compare') render();
       }
       function startDataTransfer() {
         if (dataLoadNameExists(dataTransferValues.name)) {
@@ -3671,7 +3673,7 @@
           tables:selectedTransferTables.map(([name,group],index) => ({name,group,status:index === 0 ? 'in-progress' : 'not-started',duration:''}))
         };
         selectedTransferFailure = -1;
-        dataTransferRun.timerId = setInterval(advanceDataTransfer,5000);
+        dataTransferRun.timerId = setInterval(advanceDataTransfer,1000);
         viewName = 'progress';
         render();
         showToast(`${dataTransferRun.name} started. Transfer Progress is now tracking ${dataTransferRun.tables.length} tables.`);
@@ -4017,19 +4019,7 @@
         return dataViewCatalog(groups,'loaded data');
       };
 
-      const riskResultDataViews = () => dataViewCatalog([['Risk Assessment',[
-        'Bend Risk Input',
-        'CoF Results',
-        'CoF Segments',
-        'Coupling Risk Input',
-        'Flange Risk Input',
-        'LoF Results',
-        'LoF Segments',
-        'Pipe Risk Input',
-        'Risk Segments',
-        'Sleeve Risk Input',
-        'Valve Risk Input'
-      ]]],'risk results');
+      const riskResultDataViews = groups => dataViewCatalog(groups,'risk results');
 
       const riskExtractList = () => `
         <div class="lh-screen lh-data-views-list">
@@ -4268,7 +4258,7 @@
           clearInterval(riskProgressRun.timerId);
           riskProgressRun.timerId = null;
         }
-        if ((moduleName === 'risk' && viewName === 'results') || (moduleName === 'risk-management' && riskManagementView === 'current')) {
+        if ((moduleName === 'risk' && viewName === 'results') || (moduleName === 'risk-management' && riskManagementView === 'current') || (moduleName === 'data' && viewName === 'compare')) {
           render();
           requestAnimationFrame(() => {
             const statusTable = host.querySelector('[data-risk-status-table]');
@@ -4863,7 +4853,7 @@
           clearInterval(cofProgressRun.timerId);
           cofProgressRun.timerId = null;
         }
-        if (moduleName === 'cof' && viewName === 'results') {
+        if ((moduleName === 'cof' && viewName === 'results') || (moduleName === 'data' && viewName === 'compare')) {
           render();
           requestAnimationFrame(() => {
             const statusTable = host.querySelector('[data-cof-status-table]');
@@ -5553,7 +5543,7 @@
           clearInterval(lofProgressRun.timerId);
           lofProgressRun.timerId = null;
         }
-        if (moduleName === 'lof' && viewName === 'results') {
+        if ((moduleName === 'lof' && viewName === 'results') || (moduleName === 'data' && viewName === 'compare')) {
           render();
           requestAnimationFrame(() => {
             const statusTable = host.querySelector('[data-lof-status-table]');
@@ -6177,13 +6167,50 @@
           </div>`;
       };
 
-      const dataViewsScreen = () => ['lof-refinement','cof-refinement'].includes(dataViewSection)
-        ? riskExtract()
-        : dataViewSection === 'risk-results'
-          ? riskResultDataViews()
-          : dataViewSection === 'factors'
+      const dataViewEmptyState = (title,message) => `
+        <div class="lh-screen">
+          <div class="lh-data-progress-empty">
+            <div><strong>${title}</strong><p>${message}</p></div>
+          </div>
+        </div>`;
+      const dataLoadResultsAvailable = () => Boolean(
+        dataTransferRun?.finishedAt && dataTransferRun.tables.every(table => table.status === 'completed')
+      );
+      const lofResultsAvailable = () => lofRunSnapshot().complete;
+      const cofResultsAvailable = () => cofRunSnapshot().complete;
+      const riskAssessmentResultsAvailable = () => riskProgressSnapshot().complete;
+      const availableRiskResultGroups = () => {
+        const groups = [];
+        const riskAssessmentComplete = riskAssessmentResultsAvailable();
+        if (lofResultsAvailable() || riskAssessmentComplete) groups.push(['LoF Results',['LoF Results','LoF Segments']]);
+        if (cofResultsAvailable() || riskAssessmentComplete) groups.push(['CoF Results',['CoF Results','CoF Segments']]);
+        if (riskAssessmentComplete) groups.push(['Risk Assessment Results',[
+          'Bend Risk Input',
+          'Coupling Risk Input',
+          'Flange Risk Input',
+          'Pipe Risk Input',
+          'Risk Segments',
+          'Sleeve Risk Input',
+          'Valve Risk Input'
+        ]]);
+        return groups;
+      };
+      const dataViewsScreen = () => {
+        if (dataViewSection === 'risk-results') {
+          const groups = availableRiskResultGroups();
+          return groups.length
+            ? riskResultDataViews(groups)
+            : dataViewEmptyState('No risk results available','Complete a LoF, CoF, or Risk Assessment run to view results.');
+        }
+        if (dataViewSection === 'factors') {
+          return lofResultsAvailable()
             ? factorDataViews()
-            : loadedDataViews();
+            : dataViewEmptyState('No LoF run available','Complete a LoF run to view LoF Models.');
+        }
+        return dataLoadResultsAvailable()
+          ? loadedDataViews()
+          : dataViewEmptyState('No data loaded','Complete a Data Load to view loaded data.');
+      };
       const currentStateThreats = [
         ['External Corrosion','#52aaa9'],
         ['Internal Corrosion','#75a7f5'],
@@ -6346,12 +6373,10 @@
         if (moduleName === 'data' && viewName === 'results') viewName = 'progress';
         if (!['highlights',...lofRefinementSheets.map(sheet => sheet.slug)].includes(lofResultView)) lofResultView = 'highlights';
         if (planPhase === '1') lofResultView = 'highlights';
-        if (planPhase === '1' && ['lof-refinement','cof-refinement'].includes(dataViewSection)) dataViewSection = 'loaded-data';
-        if (dataViewSection === 'lof-refinement') riskExtractModel = 'lof';
-        if (dataViewSection === 'cof-refinement') riskExtractModel = 'cof';
+        if (['lof-refinement','cof-refinement'].includes(dataViewSection) || (!isJanaAdmin && dataViewSection === 'factors')) dataViewSection = 'loaded-data';
         const showComparisonUpload = moduleName === 'data' || (['lof','cof','risk'].includes(moduleName) && isPhase3());
         const dataViewsRoute = moduleName === 'data' && viewName === 'compare';
-        const factorDetailRoute = dataViewsRoute && ((dataViewSection === 'factors' && Boolean(dataFactorSelection.lof)) || (planPhase === '2' && ['lof-refinement','cof-refinement'].includes(dataViewSection) && Boolean(riskExtractSheet)));
+        const factorDetailRoute = dataViewsRoute && dataViewSection === 'factors' && Boolean(dataFactorSelection.lof);
         const dataTransferRoute = moduleName === 'data' && viewName === 'run';
         const dataProgressRoute = moduleName === 'data' && viewName === 'progress';
         const dataHistoryRoute = moduleName === 'data' && viewName === 'comparison';
@@ -6409,7 +6434,7 @@
         root.querySelectorAll('.lh-tab[data-view]').forEach(tab => { tab.textContent = tabCopy[tab.dataset.view] || tab.textContent; tab.hidden = configurationHomeRoute || riskManagementRoute || dataViewsRoute || (tab.dataset.view === 'progress' && moduleName !== 'data') || (moduleName === 'data' && ['results','compare'].includes(tab.dataset.view)) || (tab.dataset.view === 'compare' && !showComparisonUpload); tab.classList.toggle('is-active', tab.dataset.view === viewName); tab.disabled = moduleName === 'log'; });
         root.querySelectorAll('.lh-tab[data-data-view-section]').forEach(tab => {
           const section = tab.dataset.dataViewSection;
-          tab.hidden = !dataViewsRoute || (planPhase === '1' && ['lof-refinement','cof-refinement'].includes(section));
+          tab.hidden = !dataViewsRoute || ['lof-refinement','cof-refinement'].includes(section) || (section === 'factors' && !isJanaAdmin);
           tab.classList.toggle('is-active', tab.dataset.dataViewSection === dataViewSection);
         });
         root.querySelectorAll('.lh-tab[data-config-section]').forEach(tab => {
