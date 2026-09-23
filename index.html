@@ -177,6 +177,162 @@
     #lh-ops-refinement .lh-run-config-action .lh-button { min-width: 72px; width: auto; border-color: var(--lh-navy); border-radius: 3px; color: #fff; background: var(--lh-navy); text-transform: none; }
     #lh-ops-refinement .lh-run-config-action .lh-button:hover { border-color: #294977; color: #fff; background: #294977; }
     #lh-ops-refinement .lh-run-config-action .lh-button:disabled { border-color: #a7a9ac; color: #fff; cursor: not-allowed; background: #a7a9ac; }
+    .lh-lof-xd-layout { min-height: calc(100vh - 212px); display: grid; grid-template-columns: minmax(430px, 34.895833%) minmax(0, 65.104167%); background: #fff; }
+    .lh-lof-xd-panel { padding: 24px 5.970149% 54px 18.208955%; background: #f2f3f4; }
+    .lh-lof-xd-panel > .lh-kicker { margin-bottom: 30px; font-size: 12px; font-weight: 500; line-height: 20px; letter-spacing: .03em; }
+    .lh-lof-xd-fields { display: grid; gap: 20px; }
+    .lh-lof-xd-fields .lh-field-label { color: #231f20; font-size: 14px; font-weight: 600; line-height: 20px; }
+    .lh-lof-xd-fields .lh-input { height: 40px; margin-top: 0; border-color: #d1d3d4; border-radius: 2px; background: #fff; font-size: 14px; }
+    .lh-lof-xd-fields .lh-help { margin-top: 6px; color: #8a8d91; font-size: 10px; }
+    .lh-lof-xd-upload-card { margin-top: 20px; padding: 24px; border-radius: 4px; background: #fff; box-shadow: 0 4px 12px rgba(35,31,32,.2); }
+    .lh-lof-xd-upload-title { display: block; margin-bottom: 16px; color: #231f20; font-size: 14px; font-weight: 500; line-height: 17px; letter-spacing: .03em; }
+    .lh-lof-xd-dropzone { width: 100%; min-height: 180px; display: grid; place-items: center; padding: 20px; border: 1px dashed #82acff; border-radius: 2px; color: #58595b; background: #fff; text-align: center; cursor: pointer; }
+    .lh-lof-xd-dropzone:hover,
+    .lh-lof-xd-dropzone:focus-visible { background: #f8faff; outline: 2px solid #c7daff; outline-offset: 1px; }
+    .lh-lof-xd-dropzone.is-valid { border-style: solid; border-color: #14b025; background: #f7fff9; }
+    .lh-lof-xd-dropzone.is-invalid { border-color: #d01f31; background: #fff8f8; }
+    .lh-lof-xd-upload-icon { width: 31px; height: 36px; display: inline-grid; place-items: end center; margin-bottom: 10px; color: #c9cbcd; }
+    .lh-lof-xd-upload-icon svg { width: 31px; height: 36px; fill: none; stroke: currentColor; stroke-width: 2.5; }
+    .lh-lof-xd-dropzone strong { display: block; font-size: 14px; font-weight: 600; line-height: 20px; }
+    .lh-lof-xd-dropzone small { display: block; margin-top: 5px; color: #808285; font-size: 12px; line-height: 15px; letter-spacing: .01em; }
+    .lh-lof-xd-upload-actions { display: flex; justify-content: flex-end; margin-top: 16px; padding-right: 5px; }
+    .lh-lof-xd-file-status { position: relative; min-height: 82px; margin-top: 16px; padding: 17px 38px 15px 24px; border: 1px solid #d1d3d4; border-radius: 2px; background: #fff; }
+    .lh-lof-xd-file-name { display: block; overflow: hidden; color: #231f20; font-size: 12px; font-weight: 400; line-height: 20px; text-overflow: ellipsis; white-space: nowrap; }
+    .lh-lof-xd-file-progress { height: 4px; margin-top: 7px; overflow: hidden; background: #d1d3d4; }
+    .lh-lof-xd-file-progress span { width: 100%; height: 100%; display: block; background: #14b025; }
+    .lh-lof-xd-file-label { display: block; margin-top: 6px; color: #14b025; font-size: 12px; line-height: 20px; }
+    .lh-lof-xd-file-remove { position: absolute; top: 31px; right: 17px; width: 18px; height: 18px; display: grid; place-items: center; padding: 0 0 1px; border: 0; border-radius: 50%; color: #fff; background: #808285; font-size: 13px; font-weight: 600; line-height: 1; cursor: pointer; }
+    .lh-lof-xd-file-remove:hover,
+    .lh-lof-xd-file-remove:focus-visible { background: #58595b; outline: 2px solid #c7daff; outline-offset: 2px; }
+    #lh-ops-refinement .lh-lof-xd-import,
+    #lh-ops-refinement .lh-lof-xd-run { min-height: 40px; border: 0; border-radius: 4px; color: #fff; background: var(--lh-navy); font-size: 14px; font-weight: 600; line-height: 20px; letter-spacing: .02em; text-transform: none; }
+    #lh-ops-refinement .lh-lof-xd-import { min-width: 166px; }
+    #lh-ops-refinement .lh-lof-xd-run { width: 96px; min-width: 96px; padding-right: 16px; padding-left: 16px; }
+    #lh-ops-refinement .lh-lof-xd-import.is-replace { border: 2px solid var(--lh-navy); color: var(--lh-navy); background: #fff; }
+    #lh-ops-refinement .lh-lof-xd-import.is-replace:hover { color: #fff; background: var(--lh-navy); }
+    #lh-ops-refinement .lh-lof-xd-import:disabled,
+    #lh-ops-refinement .lh-lof-xd-run:disabled { color: #8a8d91; cursor: not-allowed; background: #d7d8da; }
+    .lh-lof-xd-run-row { display: flex; justify-content: flex-end; margin-top: 16px; }
+    .lh-lof-xd-spacer { border-left: 1px solid #f4f4f4; background: #fff; }
+    #lh-ops-refinement.lh-lof-xd-route #lh-screen-host { width: 100%; max-width: none; padding: 0; }
+    #lh-ops-refinement.lh-lof-xd-phase-one .lh-page-head,
+    #lh-ops-refinement.lh-lof-xd-phase-one .lh-tabs { padding-right: 6.354167vw; padding-left: 6.354167vw; }
+    #lh-ops-refinement.lh-lof-xd-phase-one .lh-page-head { height: 80px; min-height: 80px; padding-top: 14px; padding-bottom: 14px; }
+    #lh-ops-refinement.lh-lof-xd-phase-one .lh-tabs { height: 40px; min-height: 40px; }
+    #lh-ops-refinement.lh-lof-xd-phase-one.lh-data-progress-route #lh-screen-host { width: 100%; max-width: none; }
+    #lh-ops-refinement.lh-lof-xd-phase-one.lh-data-progress-route .lh-data-progress-page,
+    #lh-ops-refinement.lh-lof-xd-phase-one.lh-data-progress-route .lh-data-progress-run { min-height: calc(100vh - 212px); }
+    #lh-ops-refinement.lh-lof-xd-phase-one.lh-data-progress-route .lh-data-progress-run { grid-template-columns: minmax(430px, 34.895833%) minmax(0, 65.104167%); }
+    #lh-ops-refinement.lh-lof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary { padding: 24px 5.970149% 32px 18.208955%; }
+    #lh-ops-refinement.lh-lof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+    #lh-ops-refinement.lh-lof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi { height: 147px; min-height: 147px; align-self: start; padding: 24px; border-radius: 4px; box-shadow: 0 4px 12px rgba(35,31,32,.2); }
+    #lh-ops-refinement.lh-lof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi:first-child { height: 149px; min-height: 149px; }
+    #lh-ops-refinement.lh-lof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi .label { color: #808285; font-size: 12px; font-weight: 500; line-height: 15px; }
+    #lh-ops-refinement.lh-lof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi .value { margin-top: 16px; color: #808285; font-size: 32px; font-weight: 600; line-height: 40px; }
+    #lh-ops-refinement.lh-lof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi:first-child .value { color: #14b025; }
+    #lh-ops-refinement.lh-lof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi .sub,
+    #lh-ops-refinement.lh-lof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi .sub.good,
+    #lh-ops-refinement.lh-lof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi .sub.bad { margin-top: 16px; color: #808285; font-size: 12px; line-height: 15px; }
+    #lh-ops-refinement.lh-lof-xd-phase-one.lh-data-progress-route .lh-data-progress-workspace { padding: 32px 6.354167vw 32px 2.03125vw; }
+    #lh-ops-refinement.lh-lof-xd-phase-one:not(.lh-data-progress-route):not(.lh-lof-xd-route) #lh-screen-host { width: min(100%, 1676px); padding: 0 0 32px; }
+    #lh-ops-refinement.lh-lof-xd-phase-one:not(.lh-data-progress-route):not(.lh-lof-xd-route) .lh-data-history { gap: 0; }
+    #lh-ops-refinement.lh-lof-xd-phase-one:not(.lh-data-progress-route):not(.lh-lof-xd-route) .lh-data-history-toolbar { min-height: 80px; }
+    #lh-ops-refinement.lh-lof-xd-phase-one:not(.lh-data-progress-route):not(.lh-lof-xd-route) .lh-data-history-page-size { gap: 12px; color: #231f20; font-size: 14px; font-weight: 600; line-height: 20px; }
+    #lh-ops-refinement.lh-lof-xd-phase-one:not(.lh-data-progress-route):not(.lh-lof-xd-route) .lh-data-history-page-size select { width: 71px; height: 40px; padding: 0 16px; border-color: #d1d3d4; border-radius: 2px; color: #231f20; background-color: #fff; font-size: 14px; font-weight: 400; line-height: 20px; }
+    #lh-ops-refinement.lh-lof-xd-phase-one:not(.lh-data-progress-route):not(.lh-lof-xd-route) .lh-data-history-pagination { min-height: 56px; gap: 7px; border-top: 1px solid #d1d3d4; background: #f2f3f4; box-shadow: 0 -4px 12px rgba(35,31,32,.08); }
+    #lh-ops-refinement.lh-lof-xd-phase-one:not(.lh-data-progress-route):not(.lh-lof-xd-route) .lh-data-history-page { width: 24px; min-width: 24px; height: 24px; display: inline-grid; place-items: center; padding: 0; border-radius: 3px; color: #231f20; font-size: 12px; font-weight: 400; line-height: 16px; }
+    #lh-ops-refinement.lh-lof-xd-phase-one:not(.lh-data-progress-route):not(.lh-lof-xd-route) .lh-data-history-page:hover:not(:disabled):not(.is-active) { background: #e4e5e6; }
+    #lh-ops-refinement.lh-lof-xd-phase-one:not(.lh-data-progress-route):not(.lh-lof-xd-route) .lh-data-history-page.is-active { color: #315b9d; background: #cbdcff; font-weight: 500; }
+    #lh-ops-refinement.lh-lof-xd-phase-one:not(.lh-data-progress-route):not(.lh-lof-xd-route) .lh-data-history-page:disabled { color: #d1d3d4; }
+    #lh-ops-refinement.lh-lof-xd-phase-one:not(.lh-data-progress-route):not(.lh-lof-xd-route) .lh-data-history-page svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.75; }
+    .lh-cof-xd-layout { min-height: calc(100vh - 212px); display: grid; grid-template-columns: minmax(430px, 34.895833%) minmax(0, 65.104167%); background: #fff; }
+    .lh-cof-xd-panel { padding: 24px 5.970149% 54px 18.208955%; background: #f2f3f4; }
+    .lh-cof-xd-panel > .lh-kicker { margin-bottom: 30px; font-size: 12px; font-weight: 500; line-height: 20px; letter-spacing: .03em; }
+    .lh-cof-xd-fields { display: grid; gap: 12px; }
+    .lh-cof-xd-fields .lh-field-label { color: #231f20; font-size: 14px; font-weight: 600; line-height: 20px; }
+    .lh-cof-xd-fields .lh-input { height: 40px; margin-top: 0; border-color: #d1d3d4; border-radius: 2px; background: #fff; font-size: 14px; }
+    .lh-cof-xd-fields .lh-help { margin-top: 4px; color: #808285; font-size: 12px; line-height: 16px; }
+    #lh-ops-refinement .lh-cof-xd-preparation,
+    #lh-ops-refinement .lh-cof-xd-preparation:not(.is-running) { margin: 20px 0 20px; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+    .lh-cof-xd-preparation-label { display: flex; min-height: 20px; align-items: center; justify-content: space-between; gap: 12px; color: #231f20; font-size: 14px; font-weight: 600; line-height: 20px; }
+    #lh-ops-refinement .lh-cof-xd-preparation .lh-button { width: 100%; min-height: 40px; margin-top: 8px; padding: 8px 16px; border: 0; border-radius: 2px; color: #fff; background: var(--lh-navy); font-size: 14px; font-weight: 600; line-height: 20px; text-transform: none; }
+    #lh-ops-refinement .lh-cof-xd-preparation .lh-button:hover { background: #294977; }
+    #lh-ops-refinement .lh-cof-xd-preparation .lh-button:disabled { color: #8a8d91; background: #d7d8da; }
+    .lh-cof-xd-preparation-help { display: block; margin-top: 4px; color: #808285; font-size: 12px; font-weight: 400; line-height: 16px; }
+    .lh-cof-xd-preparation .lh-cof-preparation-progress { margin-top: 8px; }
+    .lh-cof-xd-preparation .lh-progress { height: 5px; margin-top: 0; border-radius: 0; background: #d1d3d4; }
+    .lh-cof-xd-preparation .lh-progress span { background: #82acff; }
+    .lh-cof-xd-upload-card { margin-top: 16px; padding: 24px; border-radius: 4px; background: #fff; box-shadow: 0 4px 12px rgba(35,31,32,.2); }
+    .lh-cof-xd-upload-title { display: block; margin-bottom: 16px; color: #231f20; font-size: 14px; font-weight: 500; line-height: 20px; letter-spacing: .03em; }
+    .lh-cof-xd-dropzone { width: 100%; min-height: 180px; display: grid; place-items: center; padding: 20px; border: 1px dashed #82acff; border-radius: 2px; color: #58595b; background: #fff; text-align: center; cursor: pointer; }
+    .lh-cof-xd-dropzone:hover,
+    .lh-cof-xd-dropzone:focus-visible { background: #f8faff; outline: 2px solid #c7daff; outline-offset: 1px; }
+    .lh-cof-xd-dropzone.is-invalid { border-color: #d01f31; background: #fff8f8; }
+    .lh-cof-xd-upload-icon { width: 31px; height: 36px; display: inline-grid; place-items: end center; margin-bottom: 10px; color: #c9cbcd; }
+    .lh-cof-xd-upload-icon svg { width: 31px; height: 36px; fill: none; stroke: currentColor; stroke-width: 2.5; }
+    .lh-cof-xd-dropzone strong { display: block; font-size: 14px; font-weight: 600; line-height: 20px; }
+    .lh-cof-xd-dropzone small { display: block; margin-top: 5px; color: #808285; font-size: 12px; line-height: 15px; letter-spacing: .01em; }
+    .lh-cof-xd-file-status { position: relative; min-height: 82px; margin-top: 16px; padding: 17px 38px 15px 24px; border: 1px solid #d1d3d4; border-radius: 2px; background: #fff; }
+    .lh-cof-xd-file-name { display: block; overflow: hidden; color: #231f20; font-size: 12px; line-height: 20px; text-overflow: ellipsis; white-space: nowrap; }
+    .lh-cof-xd-file-progress { height: 4px; margin-top: 7px; overflow: hidden; background: #d1d3d4; }
+    .lh-cof-xd-file-progress span { width: 100%; height: 100%; display: block; background: #14b025; }
+    .lh-cof-xd-file-label { display: block; margin-top: 6px; color: #14b025; font-size: 12px; line-height: 20px; }
+    .lh-cof-xd-file-remove { position: absolute; top: 31px; right: 17px; width: 18px; height: 18px; display: grid; place-items: center; padding: 0 0 1px; border: 0; border-radius: 50%; color: #fff; background: #808285; font-size: 13px; font-weight: 600; line-height: 1; cursor: pointer; }
+    .lh-cof-xd-file-remove:hover,
+    .lh-cof-xd-file-remove:focus-visible { background: #58595b; outline: 2px solid #c7daff; outline-offset: 2px; }
+    .lh-cof-xd-upload-actions { display: flex; justify-content: flex-end; margin-top: 16px; padding-right: 5px; }
+    #lh-ops-refinement .lh-cof-xd-import { min-width: 166px; min-height: 40px; border: 0; border-radius: 4px; color: #fff; background: var(--lh-navy); font-size: 14px; font-weight: 600; line-height: 20px; text-transform: none; }
+    #lh-ops-refinement .lh-cof-xd-import.is-replace { border: 2px solid var(--lh-navy); color: var(--lh-navy); background: #fff; }
+    #lh-ops-refinement .lh-cof-xd-import.is-replace:hover { color: #fff; background: var(--lh-navy); }
+    #lh-ops-refinement .lh-cof-xd-import:disabled { color: #8a8d91; cursor: not-allowed; background: #d7d8da; }
+    .lh-cof-xd-run-row { display: flex; justify-content: flex-end; margin-top: 16px; }
+    #lh-ops-refinement .lh-cof-xd-run { width: 96px; min-width: 96px; height: 40px; min-height: 40px; padding: 8px 12px; border: 0; border-radius: 4px; color: #fff; background: var(--lh-navy); font-size: 14px; font-weight: 600; line-height: 20px; white-space: nowrap; text-transform: none; }
+    #lh-ops-refinement .lh-cof-xd-run:disabled { color: #8a8d91; cursor: not-allowed; background: #d7d8da; }
+    .lh-cof-xd-run-row .lh-cof-run-requirement { margin-top: 6px; color: #808285; font-size: 12px; line-height: 16px; }
+    .lh-cof-xd-spacer { border-left: 1px solid #f4f4f4; background: #fff; }
+    #lh-ops-refinement.lh-cof-xd-route #lh-screen-host { width: 100%; max-width: none; padding: 0; }
+    #lh-ops-refinement.lh-cof-xd-phase-one .lh-page-head,
+    #lh-ops-refinement.lh-cof-xd-phase-one .lh-tabs { padding-right: 6.354167vw; padding-left: 6.354167vw; }
+    #lh-ops-refinement.lh-cof-xd-phase-one .lh-page-head { height: 80px; min-height: 80px; padding-top: 14px; padding-bottom: 14px; }
+    #lh-ops-refinement.lh-cof-xd-phase-one .lh-tabs { height: 40px; min-height: 40px; }
+    #lh-ops-refinement.lh-cof-xd-phase-one.lh-data-progress-route #lh-screen-host { width: 100%; max-width: none; }
+    #lh-ops-refinement.lh-cof-xd-phase-one.lh-data-progress-route .lh-data-progress-page,
+    #lh-ops-refinement.lh-cof-xd-phase-one.lh-data-progress-route .lh-data-progress-run { min-height: calc(100vh - 212px); }
+    #lh-ops-refinement.lh-cof-xd-phase-one.lh-data-progress-route .lh-data-progress-run { grid-template-columns: minmax(430px, 34.895833%) minmax(0, 65.104167%); }
+    #lh-ops-refinement.lh-cof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary { padding: 24px 5.970149% 32px 18.208955%; }
+    #lh-ops-refinement.lh-cof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+    #lh-ops-refinement.lh-cof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi { height: 147px; min-height: 147px; align-self: start; padding: 24px; border-radius: 4px; box-shadow: 0 4px 12px rgba(35,31,32,.2); }
+    #lh-ops-refinement.lh-cof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi:first-child { height: 149px; min-height: 149px; }
+    #lh-ops-refinement.lh-cof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi .label { color: #808285; font-size: 12px; font-weight: 500; line-height: 15px; }
+    #lh-ops-refinement.lh-cof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi .value { margin-top: 16px; color: #808285; font-size: 32px; font-weight: 600; line-height: 40px; }
+    #lh-ops-refinement.lh-cof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi:first-child .value { color: #14b025; }
+    #lh-ops-refinement.lh-cof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi .sub,
+    #lh-ops-refinement.lh-cof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi .sub.good,
+    #lh-ops-refinement.lh-cof-xd-phase-one.lh-data-progress-route .lh-data-progress-summary .lh-kpi .sub.bad { margin-top: 16px; color: #808285; font-size: 12px; line-height: 15px; }
+    #lh-ops-refinement.lh-cof-xd-phase-one.lh-data-progress-route .lh-data-progress-workspace { padding: 32px 6.354167vw 32px 2.03125vw; }
+    #lh-ops-refinement.lh-cof-xd-phase-one:not(.lh-data-progress-route):not(.lh-cof-xd-route) #lh-screen-host { width: min(100%, 1676px); padding: 0 0 32px; }
+    #lh-ops-refinement.lh-cof-xd-phase-one:not(.lh-data-progress-route):not(.lh-cof-xd-route) .lh-data-history { gap: 0; }
+    #lh-ops-refinement.lh-cof-xd-phase-one:not(.lh-data-progress-route):not(.lh-cof-xd-route) .lh-data-history-toolbar { min-height: 80px; }
+    #lh-ops-refinement.lh-cof-xd-phase-one:not(.lh-data-progress-route):not(.lh-cof-xd-route) .lh-data-history-page-size { gap: 12px; color: #231f20; font-size: 14px; font-weight: 600; line-height: 20px; }
+    #lh-ops-refinement.lh-cof-xd-phase-one:not(.lh-data-progress-route):not(.lh-cof-xd-route) .lh-data-history-page-size select { width: 71px; height: 40px; padding: 0 16px; border-color: #d1d3d4; border-radius: 2px; color: #231f20; background-color: #fff; font-size: 14px; font-weight: 400; line-height: 20px; }
+    #lh-ops-refinement.lh-cof-xd-phase-one:not(.lh-data-progress-route):not(.lh-cof-xd-route) .lh-data-history-pagination { min-height: 56px; gap: 7px; border-top: 1px solid #d1d3d4; background: #f2f3f4; box-shadow: 0 -4px 12px rgba(35,31,32,.08); }
+    #lh-ops-refinement.lh-cof-xd-phase-one:not(.lh-data-progress-route):not(.lh-cof-xd-route) .lh-data-history-page { width: 24px; min-width: 24px; height: 24px; display: inline-grid; place-items: center; padding: 0; border-radius: 3px; color: #231f20; font-size: 12px; font-weight: 400; line-height: 16px; }
+    #lh-ops-refinement.lh-cof-xd-phase-one:not(.lh-data-progress-route):not(.lh-cof-xd-route) .lh-data-history-page:hover:not(:disabled):not(.is-active) { background: #e4e5e6; }
+    #lh-ops-refinement.lh-cof-xd-phase-one:not(.lh-data-progress-route):not(.lh-cof-xd-route) .lh-data-history-page.is-active { color: #315b9d; background: #cbdcff; font-weight: 500; }
+    #lh-ops-refinement.lh-cof-xd-phase-one:not(.lh-data-progress-route):not(.lh-cof-xd-route) .lh-data-history-page:disabled { color: #d1d3d4; }
+    #lh-ops-refinement.lh-cof-xd-phase-one:not(.lh-data-progress-route):not(.lh-cof-xd-route) .lh-data-history-page svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.75; }
+    @media (max-width: 760px) {
+      .lh-lof-xd-layout { grid-template-columns: 1fr; }
+      .lh-lof-xd-panel { padding: 18px 24px 36px; }
+      .lh-lof-xd-spacer { display: none; }
+      #lh-ops-refinement.lh-lof-xd-phase-one .lh-page-head,
+      #lh-ops-refinement.lh-lof-xd-phase-one .lh-tabs { padding-right: 24px; padding-left: 24px; }
+      .lh-cof-xd-layout { grid-template-columns: 1fr; }
+      .lh-cof-xd-panel { padding: 18px 24px 36px; }
+      .lh-cof-xd-spacer { display: none; }
+      #lh-ops-refinement.lh-cof-xd-phase-one .lh-page-head,
+      #lh-ops-refinement.lh-cof-xd-phase-one .lh-tabs { padding-right: 24px; padding-left: 24px; }
+    }
     .lh-cof-preparation { margin-bottom: 14px; }
     .lh-cof-preparation:not(.is-running) { padding-bottom: 0; }
     .lh-cof-preparation:not(.is-running) .lh-card-head { margin-bottom: 0; border-bottom: 0; }
@@ -297,21 +453,21 @@
     .lh-modal-close:hover, .lh-modal-close:focus-visible { background: #ffffff18; outline: 1px solid #fff; }
     .lh-modal-body { padding: 18px; }
     .lh-modal-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 10px 18px; border-top: 1px solid var(--lh-border); background: #f7f8fa; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) { width: min(680px, 100%); overflow: hidden; border: 1px solid #d1d3d4; border-radius: 5px; box-shadow: 0 18px 48px rgba(20, 46, 83, .28); }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-head { min-height: 48px; padding: 11px 18px; border-bottom: 1px solid #d1d3d4; color: #231f20; background: #fff; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-head h2 { font-size: 14px; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-close { width: 28px; height: 28px; color: #231f20; font-size: 22px; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-close:hover,
-    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-close:focus-visible { color: var(--lh-navy); background: #f2f3f4; outline: none; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-body { padding: 18px 24px 22px; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-value-row { grid-template-columns: minmax(150px, .8fr) minmax(0, 1fr); gap: 16px; padding: 8px 0; border-bottom-color: #d1d3d4; font-size: 12px; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-value-row > span:first-child { color: #414042; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-value-row > span:last-child { display: none; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-value-row strong { color: #414042; font-weight: 500; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-footer { padding: 10px 18px; border-top-color: #d1d3d4; background: #fff; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-footer .lh-button { min-height: 36px; border-radius: 3px; text-transform: none; }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-footer .lh-button.primary { border-color: var(--lh-navy); background: var(--lh-navy); }
-    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-risk-modal]) .lh-modal-footer .lh-button.primary:hover { border-color: #294977; background: #294977; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-cof-modal],[data-risk-modal]) { width: min(680px, 100%); overflow: hidden; border: 1px solid #d1d3d4; border-radius: 5px; box-shadow: 0 18px 48px rgba(20, 46, 83, .28); }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-cof-modal],[data-risk-modal]) .lh-modal-head { min-height: 48px; padding: 11px 18px; border-bottom: 1px solid #d1d3d4; color: #231f20; background: #fff; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-cof-modal],[data-risk-modal]) .lh-modal-head h2 { font-size: 14px; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-cof-modal],[data-risk-modal]) .lh-modal-close { width: 28px; height: 28px; color: #231f20; font-size: 22px; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-cof-modal],[data-risk-modal]) .lh-modal-close:hover,
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-cof-modal],[data-risk-modal]) .lh-modal-close:focus-visible { color: var(--lh-navy); background: #f2f3f4; outline: none; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-cof-modal],[data-risk-modal]) .lh-modal-body { padding: 18px 24px 22px; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-cof-modal],[data-risk-modal]) .lh-value-row { grid-template-columns: minmax(150px, .8fr) minmax(0, 1fr); gap: 16px; padding: 8px 0; border-bottom-color: #d1d3d4; font-size: 12px; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-cof-modal],[data-risk-modal]) .lh-value-row > span:first-child { color: #414042; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-cof-modal],[data-risk-modal]) .lh-value-row > span:last-child { display: none; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-cof-modal],[data-risk-modal]) .lh-value-row strong { color: #414042; font-weight: 500; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-cof-modal],[data-risk-modal]) .lh-modal-footer { padding: 10px 18px; border-top-color: #d1d3d4; background: #fff; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-cof-modal],[data-risk-modal]) .lh-modal-footer .lh-button { min-height: 36px; border-radius: 3px; text-transform: none; }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-cof-modal],[data-risk-modal]) .lh-modal-footer .lh-button.primary { border-color: var(--lh-navy); background: var(--lh-navy); }
+    .lh-modal:is([data-transfer-modal],[data-lof-modal],[data-cof-modal],[data-risk-modal]) .lh-modal-footer .lh-button.primary:hover { border-color: #294977; background: #294977; }
     @media (prefers-reduced-motion: reduce) {
       .lh-results-explorer,
       .lh-results-nav,
@@ -2328,6 +2484,12 @@
       background: rgba(255,255,255,.1);
       font-weight: 500;
     }
+    .lh-main-nav > span.is-active:not(:hover),
+    .lh-refinement-nav:not(.is-open) .lh-refinement-trigger.is-active:not(:hover),
+    .lh-data-management-nav:not(.is-open) .lh-data-management-trigger.is-active:not(:hover),
+    .lh-risk-management-nav:not(.is-open) .lh-risk-management-trigger.is-active:not(:hover) {
+      background: transparent;
+    }
 
     .lh-scope-button,
     .lh-profile-trigger {
@@ -2780,6 +2942,159 @@
       background: transparent;
     }
     #lh-ops-refinement .lh-modal[data-transfer-modal] .lh-modal-footer [data-transfer-modal-close]:hover {
+      border-color: transparent;
+      color: #1f355e;
+      background: #f2f3f4;
+    }
+    #lh-ops-refinement .lh-modal[data-lof-modal].lh-lof-run-summary-compact {
+      width: min(494px, calc(100vw - 48px));
+      height: 248px;
+      border: 0;
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(35,31,32,.2);
+      opacity: 1;
+    }
+    #lh-ops-refinement .lh-modal[data-lof-modal].lh-lof-run-summary-compact .lh-modal-head {
+      min-height: 48px;
+      padding: 0 24px;
+    }
+    #lh-ops-refinement .lh-modal[data-lof-modal].lh-lof-run-summary-compact .lh-modal-head h2 {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 24px;
+    }
+    #lh-ops-refinement .lh-modal[data-lof-modal].lh-lof-run-summary-compact .lh-modal-close {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      color: transparent;
+      font-size: 0;
+    }
+    #lh-ops-refinement .lh-modal[data-lof-modal].lh-lof-run-summary-compact .lh-modal-close::before,
+    #lh-ops-refinement .lh-modal[data-lof-modal].lh-lof-run-summary-compact .lh-modal-close::after {
+      position: absolute;
+      top: 19px;
+      left: 11px;
+      width: 18px;
+      height: 2px;
+      border-radius: 1px;
+      background: #231f20;
+      content: "";
+    }
+    #lh-ops-refinement .lh-modal[data-lof-modal].lh-lof-run-summary-compact .lh-modal-close::before { transform: rotate(45deg); }
+    #lh-ops-refinement .lh-modal[data-lof-modal].lh-lof-run-summary-compact .lh-modal-close::after { transform: rotate(-45deg); }
+    #lh-ops-refinement .lh-modal[data-lof-modal].lh-lof-run-summary-compact .lh-modal-body {
+      height: 152px;
+      padding: 12px 24px;
+    }
+    #lh-ops-refinement .lh-modal[data-lof-modal].lh-lof-run-summary-compact .lh-value-row {
+      grid-template-columns: minmax(180px, .8fr) minmax(0, 1.2fr);
+      min-height: 40px;
+      padding: 8px 6px;
+      color: #231f20;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    #lh-ops-refinement .lh-modal[data-lof-modal].lh-lof-run-summary-compact .lh-value-row > span:first-child {
+      color: #231f20;
+      font-weight: 500;
+    }
+    #lh-ops-refinement .lh-modal[data-lof-modal].lh-lof-run-summary-compact .lh-value-row strong {
+      color: #58595b;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    #lh-ops-refinement .lh-modal[data-lof-modal].lh-lof-run-summary-compact .lh-modal-footer {
+      height: 48px;
+      padding: 4px 16px;
+    }
+    #lh-ops-refinement .lh-modal[data-lof-modal].lh-lof-run-summary-compact .lh-modal-footer [data-lof-modal-close] {
+      min-height: 40px;
+      padding: 8px 16px;
+      border-color: transparent;
+      color: #1f355e;
+      background: transparent;
+    }
+    #lh-ops-refinement .lh-modal[data-lof-modal].lh-lof-run-summary-compact .lh-modal-footer [data-lof-modal-close]:hover {
+      border-color: transparent;
+      color: #1f355e;
+      background: #f2f3f4;
+    }
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact {
+      width: min(494px, calc(100vw - 48px));
+      height: 248px;
+      border: 0;
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(35,31,32,.2);
+      opacity: 1;
+    }
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact .lh-modal-head {
+      min-height: 48px;
+      padding: 0 24px;
+    }
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact .lh-modal-head h2 {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 24px;
+    }
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact .lh-modal-close {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      color: transparent;
+      font-size: 0;
+    }
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact .lh-modal-close::before,
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact .lh-modal-close::after {
+      position: absolute;
+      top: 19px;
+      left: 11px;
+      width: 18px;
+      height: 2px;
+      border-radius: 1px;
+      background: #231f20;
+      content: "";
+    }
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact .lh-modal-close::before { transform: rotate(45deg); }
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact .lh-modal-close::after { transform: rotate(-45deg); }
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact .lh-modal-body {
+      height: 152px;
+      padding: 12px 24px;
+    }
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact .lh-modal-section-title { display: none; }
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact .lh-value-row {
+      grid-template-columns: minmax(180px, .8fr) minmax(0, 1.2fr);
+      min-height: 40px;
+      padding: 8px 6px;
+      color: #231f20;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact .lh-value-row > span:first-child {
+      color: #231f20;
+      font-weight: 500;
+    }
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact .lh-value-row strong {
+      color: #58595b;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact .lh-modal-footer {
+      height: 48px;
+      padding: 4px 16px;
+    }
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact .lh-modal-footer [data-cof-modal-close] {
+      min-height: 40px;
+      padding: 8px 16px;
+      border-color: transparent;
+      color: #1f355e;
+      background: transparent;
+    }
+    #lh-ops-refinement .lh-modal[data-cof-modal].lh-cof-run-summary-compact .lh-modal-footer [data-cof-modal-close]:hover {
       border-color: transparent;
       color: #1f355e;
       background: #f2f3f4;
@@ -3795,9 +4110,18 @@
             ${dataHistoryPagination(totalPages)}
           </div>`;
       };
-      const historyPageItems = totalPages => totalPages <= 5
-        ? Array.from({length:totalPages},(_,index) => index + 1)
-        : [1,2,3,4,5,'…',totalPages];
+      const historyPageItems = (totalPages,currentPage = 1) => {
+        if (totalPages <= 7) return Array.from({length:totalPages},(_,index) => index + 1);
+        if (currentPage <= 4) return [1,2,3,4,5,'…',totalPages];
+        if (currentPage >= totalPages - 3) return [1,'…',...Array.from({length:5},(_,index) => totalPages - 4 + index)];
+        return [1,'…',currentPage - 1,currentPage,currentPage + 1,'…',totalPages];
+      };
+      const historyPagerIcon = direction => ({
+        first:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3v10M12 3.5 7.5 8l4.5 4.5"/></svg>',
+        previous:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10.5 3.5 6 8l4.5 4.5"/></svg>',
+        next:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3.5 10 8l-4.5 4.5"/></svg>',
+        last:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 3.5 4.5 4.5L4 12.5M13 3v10"/></svg>'
+      })[direction];
       const formatDurationMinutes = minutes => {
         if (minutes === null || minutes === undefined) return '--';
         const wholeMinutes = Math.max(0,Math.round(Number(minutes)));
@@ -3827,11 +4151,11 @@
           return `<th><div class="lh-data-load-head-cell"><span>${label}${sortIndicator}</span><button class="lh-data-load-menu-trigger" type="button" data-run-history-menu="${key}" data-run-history-model="${model}" aria-label="Open ${label} column menu" aria-expanded="${open}"><span class="lh-data-load-menu-dots" aria-hidden="true"><i></i><i></i><i></i></span></button></div>${open ? `<div class="lh-data-load-column-menu" role="menu">${menuContent()}</div>` : ''}</th>`;
         }).join('');
         const pagination = `<nav class="lh-data-history-pagination" aria-label="${title} pages">
-          <button class="lh-data-history-page" type="button" data-run-history-page="first" data-run-history-model="${model}" ${state.page === 1 ? 'disabled' : ''} aria-label="First page">|‹</button>
-          <button class="lh-data-history-page" type="button" data-run-history-page="previous" data-run-history-model="${model}" ${state.page === 1 ? 'disabled' : ''} aria-label="Previous page">‹</button>
-          ${historyPageItems(totalPages).map(item => item === '…' ? '<span class="lh-data-history-page">…</span>' : `<button class="lh-data-history-page ${state.page === item ? 'is-active' : ''}" type="button" data-run-history-page="${item}" data-run-history-model="${model}" aria-current="${state.page === item ? 'page' : 'false'}">${item}</button>`).join('')}
-          <button class="lh-data-history-page" type="button" data-run-history-page="next" data-run-history-model="${model}" ${state.page === totalPages ? 'disabled' : ''} aria-label="Next page">›</button>
-          <button class="lh-data-history-page" type="button" data-run-history-page="last" data-run-history-model="${model}" ${state.page === totalPages ? 'disabled' : ''} aria-label="Last page">›|</button>
+          <button class="lh-data-history-page" type="button" data-run-history-page="first" data-run-history-model="${model}" ${state.page === 1 ? 'disabled' : ''} aria-label="First page">${historyPagerIcon('first')}</button>
+          <button class="lh-data-history-page" type="button" data-run-history-page="previous" data-run-history-model="${model}" ${state.page === 1 ? 'disabled' : ''} aria-label="Previous page">${historyPagerIcon('previous')}</button>
+          ${historyPageItems(totalPages,state.page).map(item => item === '…' ? '<span class="lh-data-history-page">…</span>' : `<button class="lh-data-history-page ${state.page === item ? 'is-active' : ''}" type="button" data-run-history-page="${item}" data-run-history-model="${model}" aria-current="${state.page === item ? 'page' : 'false'}">${item}</button>`).join('')}
+          <button class="lh-data-history-page" type="button" data-run-history-page="next" data-run-history-model="${model}" ${state.page === totalPages ? 'disabled' : ''} aria-label="Next page">${historyPagerIcon('next')}</button>
+          <button class="lh-data-history-page" type="button" data-run-history-page="last" data-run-history-model="${model}" ${state.page === totalPages ? 'disabled' : ''} aria-label="Last page">${historyPagerIcon('last')}</button>
         </nav>`;
         return `<div class="lh-data-history">
           <div class="lh-data-history-toolbar">
@@ -4649,8 +4973,8 @@
 
       const cofPhaseOneCheckModal = () => !cofCheckModalOpen ? '' : `
         <div class="lh-modal-backdrop" data-cof-modal-backdrop>
-          <section class="lh-modal" role="dialog" aria-modal="true" aria-labelledby="lh-cof-modal-title" data-cof-modal>
-            <header class="lh-modal-head"><h2 id="lh-cof-modal-title">CoF Check Summary</h2><button class="lh-modal-close" type="button" aria-label="Close CoF Check Summary" data-cof-modal-close>×</button></header>
+          <section class="lh-modal ${planPhase === '1' ? 'lh-cof-run-summary-compact' : ''}" role="dialog" aria-modal="true" aria-labelledby="lh-cof-modal-title" data-cof-modal>
+            <header class="lh-modal-head"><h2 id="lh-cof-modal-title">CoF Run Summary</h2><button class="lh-modal-close" type="button" aria-label="Close CoF Run Summary" data-cof-modal-close>×</button></header>
             <div class="lh-modal-body">
               <section class="lh-modal-summary-section">
                 <h3 class="lh-modal-section-title">Configuration</h3>
@@ -4703,13 +5027,22 @@
         render();
         showToast('CoF Data Preparation started. CoF will be available when preparation completes.');
       }
-      const cofDataPreparationSection = () => {
+      const cofDataPreparationSection = (xdStyle = false) => {
         const dataLoadComplete = cofDataLoadComplete();
         const {preparation,progress} = cofDataPreparationSnapshot();
         const inProgress = preparation.status === 'in-progress';
         const complete = preparation.status === 'completed';
         const actionLabel = complete ? 'Rerun Data Preparation' : inProgress ? 'Preparing Data…' : 'Start Data Preparation';
-        return `<section class="lh-card lh-cof-preparation ${inProgress ? 'is-running' : ''}">
+        if (xdStyle) return `<section class="lh-cof-preparation lh-cof-xd-preparation ${inProgress ? 'is-running' : ''}">
+          <div class="lh-cof-xd-preparation-label">
+            <span>CoF Data Preparation:</span>
+            ${inProgress ? `<span>${progress}%</span>` : complete ? '<span>Complete</span>' : ''}
+          </div>
+          ${inProgress || complete ? `<div class="lh-cof-preparation-progress"><div class="lh-progress" aria-label="${complete ? 'CoF Data Preparation complete' : `${progress}% of CoF Data Preparation complete`}"><span style="width:${complete ? 100 : progress}%"></span></div></div>` : ''}
+          <button class="lh-button" type="button" data-cof-data-preparation ${!dataLoadComplete || inProgress ? 'disabled' : ''}>${inProgress ? 'Start Data Preparation' : actionLabel}</button>
+          <small class="lh-cof-xd-preparation-help">Please ensure LRS &amp; DS has ran before running data preparation</small>
+        </section>`;
+        return `<section class="lh-card lh-cof-preparation ${xdStyle ? 'lh-cof-xd-preparation' : ''} ${inProgress ? 'is-running' : ''}">
           <div class="lh-card-head">
             <div><h3>CoF Data Preparation</h3><p>Please ensure LRS &amp; DS has ran before running data preparation.</p></div>
             <button class="lh-button" type="button" data-cof-data-preparation ${!dataLoadComplete || inProgress ? 'disabled' : ''}>${actionLabel}</button>
@@ -4717,7 +5050,21 @@
           ${inProgress ? `<div class="lh-cof-preparation-progress"><small>${progress}% complete</small><div class="lh-progress" aria-label="${progress}% of CoF Data Preparation complete"><span style="width:${progress}%"></span></div></div>` : ''}
         </section>`;
       };
-      const cofRunRequirement = () => cofDataPreparationComplete() ? '' : '<small class="lh-cof-run-requirement">Data Prepartion Missing</small>';
+      const cofRunRequirement = () => cofDataPreparationComplete() ? '' : '<small class="lh-cof-run-requirement">Data Preparation Missing</small>';
+      const cofPhaseOneXdUpload = () => `
+        <section class="lh-cof-xd-upload-card">
+          <strong class="lh-cof-xd-upload-title">Upload Configuration File</strong>
+          <button class="lh-cof-xd-dropzone ${cofConfigCheckAttempted && cofConfigUpload.status !== 'valid' ? 'is-invalid' : ''}" type="button" data-cof-config-upload-trigger>
+            <span>
+              <span class="lh-cof-xd-upload-icon" aria-hidden="true"><svg viewBox="0 0 32 38"><path d="M6 1.5h13l7 7v27H6z"/><path d="M19 1.5v8h7M16 29V16m0 0-5 5m5-5 5 5"/></svg></span>
+              <strong>Select file(s) to upload</strong>
+              <small>${cofConfigUpload.error ? escapeHtml(cofConfigUpload.error) : 'Click to Browse or drag and drop here'}</small>
+            </span>
+          </button>
+          <input class="lh-file-input" type="file" accept=".json,application/json" data-cof-config-upload/>
+          ${cofConfigUpload.status === 'valid' ? `<div class="lh-cof-xd-file-status"><span class="lh-cof-xd-file-name">${escapeHtml(cofConfigUpload.name)}</span><div class="lh-cof-xd-file-progress" aria-label="Upload complete"><span></span></div><span class="lh-cof-xd-file-label">Uploaded</span><button class="lh-cof-xd-file-remove" type="button" data-cof-config-remove aria-label="Remove ${escapeHtml(cofConfigUpload.name)}">×</button></div>` : ''}
+          <div class="lh-cof-xd-upload-actions"><button class="lh-button lh-cof-xd-import ${cofConfigUpload.status === 'valid' ? 'is-replace' : ''}" type="button" data-cof-config-upload-trigger ${cofConfigUpload.status === 'valid' ? '' : 'disabled'}>${cofConfigUpload.status === 'valid' ? 'Replace JSON File' : 'Import JSON File'}</button></div>
+        </section>`;
       const cofConfigErrorModal = () => !cofConfigError ? '' : `
         <div class="lh-modal-backdrop" data-cof-config-error-backdrop>
           <section class="lh-modal" role="alertdialog" aria-modal="true" aria-labelledby="lh-cof-config-error-title" aria-describedby="lh-cof-config-error-message" data-cof-config-error-modal>
@@ -4730,22 +5077,18 @@
         </div>`;
 
       const cofConfigureOnline = () => planPhase === '1' ? `
-        <div class="lh-screen">
-          ${cofDataPreparationSection()}
-          <section class="lh-run-config-layout lh-cof-config-layout">
-            <div class="lh-run-config-info">
-              <div class="lh-kicker">Configuration</div>
-              <div class="lh-fields">
-                <label class="lh-field"><span class="lh-field-label">CoF Name</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('name') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a unique name for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/></label>
-                <label class="lh-field"><span class="lh-field-label">Reason for CoF</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('reason') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="reason" value="${escapeHtml(cofGeneralValues.reason)}" placeholder="Enter the reason for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/></label>
-              </div>
+        <div class="lh-cof-xd-layout">
+          <section class="lh-cof-xd-panel">
+            <div class="lh-kicker">CONFIGURATION</div>
+            ${cofDataPreparationSection(true)}
+            <div class="lh-cof-xd-fields">
+              <label class="lh-field"><span class="lh-field-label">CoF Name:</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('name') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="name" value="${escapeHtml(cofGeneralValues.name)}" placeholder="Enter a unique name for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/></label>
+              <label class="lh-field"><span class="lh-field-label">Reason For CoF:</span><input class="lh-input ${cofConfigCheckAttempted ? cofGeneralFieldInvalid('reason') ? 'is-invalid' : 'is-valid' : ''}" data-cof-general="reason" value="${escapeHtml(cofGeneralValues.reason)}" placeholder="Enter the reason for this CoF run" ${cofConfigCheckAttempted && cofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/></label>
             </div>
-            <div class="lh-run-config-upload">
-              <div class="lh-kicker">Configuration File</div>
-              ${cofPhaseOneConfigUpload()}
-              <div class="lh-run-config-action"><div><button class="lh-button" type="button" data-cof-check ${cofDataPreparationComplete() ? '' : 'disabled'}>Run CoF</button>${cofRunRequirement()}</div></div>
-            </div>
+            ${cofPhaseOneXdUpload()}
+            <div class="lh-cof-xd-run-row"><button class="lh-button lh-cof-xd-run" type="button" data-cof-check ${cofDataPreparationComplete() ? '' : 'disabled'}>Run CoF</button></div>
           </section>
+          <div class="lh-cof-xd-spacer" aria-hidden="true"></div>
           ${cofPhaseOneCheckModal()}
           ${cofConfigErrorModal()}
         </div>` : planPhase === '2' ? `
@@ -4814,7 +5157,10 @@
         };
       };
       const cofDurationMinutes = elapsedMs => Math.max(0,Math.round(elapsedMs / 60000));
-      const cofDurationLabel = elapsedMs => formatDurationMinutes(cofDurationMinutes(elapsedMs));
+      const cofDurationLabel = elapsedMs => {
+        const totalMinutes = cofDurationMinutes(elapsedMs);
+        return `${Math.floor(totalMinutes / 60)}H ${String(totalMinutes % 60).padStart(2,'0')}M`;
+      };
       const cofStatusRows = snapshot => cofProgressSteps.slice(0,snapshot.visibleStatusCount).map((description,index) => {
         const isCurrent = index === snapshot.visibleStatusCount - 1;
         const status = snapshot.failed && index === 2
@@ -5377,8 +5723,8 @@
 
       const lofCheckModal = () => !lofCheckModalOpen ? '' : `
         <div class="lh-modal-backdrop" data-lof-modal-backdrop>
-          <section class="lh-modal" role="dialog" aria-modal="true" aria-labelledby="lh-lof-modal-title" data-lof-modal>
-            <header class="lh-modal-head"><h2 id="lh-lof-modal-title">LoF Check Summary</h2><button class="lh-modal-close" type="button" aria-label="Close LoF Check Summary" data-lof-modal-close>×</button></header>
+          <section class="lh-modal ${planPhase === '1' ? 'lh-lof-run-summary-compact' : ''}" role="dialog" aria-modal="true" aria-labelledby="lh-lof-modal-title" data-lof-modal>
+            <header class="lh-modal-head"><h2 id="lh-lof-modal-title">LoF Run Summary</h2><button class="lh-modal-close" type="button" aria-label="Close LoF Run Summary" data-lof-modal-close>×</button></header>
             <div class="lh-modal-body">
               ${lofCheckSummary()}
             </div>
@@ -5419,21 +5765,29 @@
         </section>`;
 
       const lofConfigureOnline = () => planPhase === '1' ? `
-        <div class="lh-screen">
-          <section class="lh-run-config-layout">
-            <div class="lh-run-config-info">
-              <div class="lh-kicker">Configuration</div>
-              <div class="lh-fields">
-                <label class="lh-field"><span class="lh-field-label">LoF Name</span><input class="lh-input ${lofGeneralControlState('name')}" data-lof-general="name" value="${escapeHtml(lofGeneralValues.name)}" placeholder="Enter a unique name for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/></label>
-                <label class="lh-field"><span class="lh-field-label">Reason for LoF</span><input class="lh-input ${lofGeneralControlState('reason')}" data-lof-general="reason" value="${escapeHtml(lofGeneralValues.reason)}" placeholder="Enter the reason for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/></label>
-              </div>
+        <div class="lh-lof-xd-layout">
+          <section class="lh-lof-xd-panel">
+            <div class="lh-kicker">CONFIGURATION</div>
+            <div class="lh-lof-xd-fields">
+              <label class="lh-field"><span class="lh-field-label">LoF Name:</span><input class="lh-input ${lofGeneralControlState('name')}" data-lof-general="name" value="${escapeHtml(lofGeneralValues.name)}" placeholder="Enter a unique name for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('name') ? 'aria-invalid="true"' : ''}/></label>
+              <label class="lh-field"><span class="lh-field-label">Reason For LoF:</span><input class="lh-input ${lofGeneralControlState('reason')}" data-lof-general="reason" value="${escapeHtml(lofGeneralValues.reason)}" placeholder="Enter the reason for this LoF run" ${lofConfigCheckAttempted && lofGeneralFieldInvalid('reason') ? 'aria-invalid="true"' : ''}/></label>
             </div>
-            <div class="lh-run-config-upload">
-              <div class="lh-kicker">Configuration File</div>
-              ${lofPhaseOneConfigUpload()}
-              <div class="lh-run-config-action"><button class="lh-button" type="button" data-lof-check>Run LoF</button></div>
-            </div>
+            <section class="lh-lof-xd-upload-card">
+              <strong class="lh-lof-xd-upload-title">Upload Configuration File</strong>
+              <button class="lh-lof-xd-dropzone ${lofConfigCheckAttempted && lofConfigUpload.status !== 'valid' ? 'is-invalid' : ''}" type="button" data-lof-config-upload-trigger>
+                <span>
+                  <span class="lh-lof-xd-upload-icon" aria-hidden="true"><svg viewBox="0 0 32 38"><path d="M6 1.5h13l7 7v27H6z"/><path d="M19 1.5v8h7M16 29V16m0 0-5 5m5-5 5 5"/></svg></span>
+                  <strong>Select file(s) to upload</strong>
+                  <small>${lofConfigUpload.error ? escapeHtml(lofConfigUpload.error) : 'Click to Browse or drag and drop here'}</small>
+                </span>
+              </button>
+              <input class="lh-file-input" type="file" accept=".json,application/json" data-lof-config-upload/>
+              ${lofConfigUpload.status === 'valid' ? `<div class="lh-lof-xd-file-status"><span class="lh-lof-xd-file-name">${escapeHtml(lofConfigUpload.name)}</span><div class="lh-lof-xd-file-progress" aria-label="Upload complete"><span></span></div><span class="lh-lof-xd-file-label">Uploaded</span><button class="lh-lof-xd-file-remove" type="button" data-lof-config-remove aria-label="Remove ${escapeHtml(lofConfigUpload.name)}">×</button></div>` : ''}
+              <div class="lh-lof-xd-upload-actions"><button class="lh-button lh-lof-xd-import ${lofConfigUpload.status === 'valid' ? 'is-replace' : ''}" type="button" data-lof-config-upload-trigger ${lofConfigUpload.status === 'valid' ? '' : 'disabled'}>${lofConfigUpload.status === 'valid' ? 'Replace JSON File' : 'Import JSON File'}</button></div>
+            </section>
+            <div class="lh-lof-xd-run-row"><button class="lh-button lh-lof-xd-run" type="button" data-lof-check ${lofGeneralValues.name.trim() && lofGeneralValues.reason.trim() && lofConfigUpload.status === 'valid' ? '' : 'disabled'}>Run LoF</button></div>
           </section>
+          <div class="lh-lof-xd-spacer" aria-hidden="true"></div>
           ${lofCheckModal()}
           ${lofConfigErrorModal()}
         </div>` : planPhase === '2' ? `
@@ -5503,7 +5857,10 @@
         };
       };
       const lofDurationMinutes = elapsedMs => Math.max(0,Math.round(elapsedMs / 60000));
-      const lofDurationLabel = elapsedMs => formatDurationMinutes(lofDurationMinutes(elapsedMs));
+      const lofDurationLabel = elapsedMs => {
+        const totalMinutes = lofDurationMinutes(elapsedMs);
+        return `${Math.floor(totalMinutes / 60)}H ${String(totalMinutes % 60).padStart(2,'0')}M`;
+      };
       const lofSegmentsLabel = segments => segments >= 1000000 ? `${(segments / 1000000).toFixed(1)}M` : segments.toLocaleString();
       const lofStatusRows = snapshot => lofProgressSteps.slice(0,snapshot.visibleStatusCount).map((description,index) => {
         const isCurrent = index === snapshot.visibleStatusCount - 1;
@@ -5809,15 +6166,73 @@
           `).join('')}
         </aside>`;
 
+      const lofHistoryUsers = [
+        'Amina Kennedy',
+        'Anjaly Baby',
+        'Ankur Kumar',
+        'Berton Quon',
+        'Ciro Daniele',
+        'Deep Brahmbhatt',
+        'Denis Seifert',
+        'Eric Ni',
+        'Gonzalo Iriart',
+        'Irakli Tsaishvili',
+        'Jose Lopez',
+        'Katrina Phe',
+        'Lauren Romita',
+        'Luis Nishimura',
+        'Mamatha Johny Thevara',
+        'Manush Patel',
+        'Mariia Lisovska',
+        'Mateo Poletti',
+        'Oyinkan Ogundalu',
+        'Rachit Kaul',
+        'Santiago Passone',
+        'Sebastian Villareal',
+        'Shaki Muttiah',
+        'Sharath Putta',
+        'Simranjit Sahni',
+        'Sujan Srisivapalan',
+        'Sunny Li',
+        'Victor Pham',
+        'Vivek Patel',
+        'Vivek Thomas',
+        'Yana Slabetska',
+        'Youssef Msaadi',
+        'Yunfeng He'
+      ];
       const lofPhaseOneHistoryRows = [
         {id:'LoF-025',name:'2026 Q3 TIMP refresh',reason:'Quarterly threat model refresh for the active transmission scope.',file:'LoF_Config_2026_Q3.json',date:'09/04/2026, 4:42 PM',durationMinutes:14,user:'Shaki Muttiah',status:'Completed'},
-        {id:'LoF-024',name:'ILI reassessment',reason:'Recalculate LoF after the latest ILI inspection data load.',file:'LoF_ILI_Reassessment_v4.json',date:'08/28/2026, 10:18 AM',durationMinutes:16,user:'Shaki Muttiah',status:'Completed'},
-        {id:'LoF-023',name:'External corrosion review',reason:'Validate corrosion susceptibility following CP remediation.',file:'LoF_External_Corrosion_v7.json',date:'08/19/2026, 2:31 PM',durationMinutes:16,user:'Morgan Lee',status:'Completed'},
-        {id:'LoF-022',name:'Route 58 change review',reason:'Assess new construction activity and route-specific threat changes.',file:'LoF_Route58_Change.json',date:'08/07/2026, 9:06 AM',durationMinutes:14,user:'Shaki Muttiah',status:'Completed'},
-        {id:'LoF-021',name:'Flood susceptibility update',reason:'Apply revised flood-zone and water-crossing configuration.',file:'LoF_Flood_2026_v2.json',date:'07/29/2026, 3:14 PM',durationMinutes:13,user:'Priya Shah',status:'Completed'},
-        {id:'LoF-020',name:'Annual baseline run',reason:'Establish the approved 2026 baseline for risk-model refinement.',file:'LoF_Annual_Baseline_2026.json',date:'07/15/2026, 11:25 AM',durationMinutes:17,user:'Shaki Muttiah',status:'Completed'},
-        {id:'LoF-019',name:'Excavation calibration',reason:'Test updated excavation inspection and damage-prevention factors.',file:'LoF_Excavation_Calibration.json',date:'07/02/2026, 1:48 PM',durationMinutes:8,user:'Morgan Lee',status:'Error'},
-        {id:'LoF-018',name:'Spring threat review',reason:'Scheduled review of all Phase 1 threat-model inputs.',file:'LoF_Spring_Review_2026.json',date:'06/12/2026, 8:52 AM',durationMinutes:14,user:'Priya Shah',status:'Completed'}
+        {id:'LoF-024',name:'ILI reassessment',reason:'Recalculate LoF after the latest ILI inspection data load.',file:'LoF_ILI_Reassessment_v4.json',date:'08/28/2026, 10:18 AM',durationMinutes:16,user:'Mamatha Johny Thevara',status:'Completed'},
+        {id:'LoF-023',name:'External corrosion review',reason:'Validate corrosion susceptibility following CP remediation.',file:'LoF_External_Corrosion_v7.json',date:'08/19/2026, 2:31 PM',durationMinutes:16,user:'Luis Nishimura',status:'Completed'},
+        {id:'LoF-022',name:'Route 58 change review',reason:'Assess new construction activity and route-specific threat changes.',file:'LoF_Route58_Change.json',date:'08/07/2026, 9:06 AM',durationMinutes:14,user:'Gonzalo Iriart',status:'Completed'},
+        {id:'LoF-021',name:'Flood susceptibility update',reason:'Apply revised flood-zone and water-crossing configuration.',file:'LoF_Flood_2026_v2.json',date:'07/29/2026, 3:14 PM',durationMinutes:13,user:'Mariia Lisovska',status:'Completed'},
+        {id:'LoF-020',name:'Annual baseline run',reason:'Establish the approved 2026 baseline for risk-model refinement.',file:'LoF_Annual_Baseline_2026.json',date:'07/15/2026, 11:25 AM',durationMinutes:17,user:'Santiago Passone',status:'Completed'},
+        {id:'LoF-019',name:'Excavation calibration',reason:'Test updated excavation inspection and damage-prevention factors.',file:'LoF_Excavation_Calibration.json',date:'07/02/2026, 1:48 PM',durationMinutes:8,user:'Sujan Srisivapalan',status:'Error'},
+        {id:'LoF-018',name:'Spring threat review',reason:'Scheduled review of all Phase 1 threat-model inputs.',file:'LoF_Spring_Review_2026.json',date:'06/12/2026, 8:52 AM',durationMinutes:14,user:'Yana Slabetska',status:'Completed'},
+        ...Array.from({length:172},(_,index) => {
+          const sequence = 172 - index;
+          const runDate = new Date(2026,4,31 - index);
+          const themes = [
+            ['Corrosion susceptibility review','Validate updated corrosion and cathodic-protection model inputs.','Corrosion_Review'],
+            ['ILI inspection reassessment','Recalculate threat scores after the latest inline inspection updates.','ILI_Reassessment'],
+            ['Excavation activity update','Apply revised excavation activity and damage-prevention inputs.','Excavation_Update'],
+            ['Weather threat calibration','Review weather exposure and geohazard susceptibility factors.','Weather_Calibration'],
+            ['Transmission segment refresh','Refresh active transmission segment threat-model configuration.','Segment_Refresh'],
+            ['Annual integrity baseline','Establish the approved annual integrity-management baseline.','Integrity_Baseline']
+          ];
+          const [name,reason,file] = themes[index % themes.length];
+          return {
+            id:`LoF-M${String(sequence).padStart(3,'0')}`,
+            name,
+            reason,
+            file:`LoF_${file}_${runDate.getFullYear()}_${String(runDate.getMonth() + 1).padStart(2,'0')}.json`,
+            date:new Intl.DateTimeFormat('en-US',{month:'2-digit',day:'2-digit',year:'numeric',hour:'numeric',minute:'2-digit'}).format(runDate),
+            durationMinutes:9 + (index % 12),
+            user:lofHistoryUsers[index % lofHistoryUsers.length],
+            status:index % 29 === 0 ? 'Error' : 'Completed'
+          };
+        })
       ];
 
       const lofHistoryRows = () => {
@@ -6400,6 +6815,10 @@
         root.classList.toggle('lh-data-history-route', dataHistoryRoute);
         root.classList.toggle('lh-factor-detail-route', factorDetailRoute);
         root.classList.toggle('lh-data-progress-route', dataProgressRoute || lofProgressRoute || cofProgressRoute);
+        root.classList.toggle('lh-lof-xd-route', lofConfigureRoute && planPhase === '1');
+        root.classList.toggle('lh-lof-xd-phase-one', moduleName === 'lof' && planPhase === '1');
+        root.classList.toggle('lh-cof-xd-route', cofConfigureRoute && planPhase === '1');
+        root.classList.toggle('lh-cof-xd-phase-one', cofPhaseOneRoute);
         root.querySelectorAll('.lh-actions .lh-button:not(#lh-primary-action):not(#lh-reset-config-progress)').forEach(button => button.hidden = configurationHomeRoute || riskManagementRoute || dataTransferRoute || dataProgressRoute || dataHistoryRoute || lofConfigureRoute || lofProgressRoute || lofHistoryRoute || cofConfigureRoute || cofProgressRoute || cofHistoryRoute || riskPhaseOneRoute || riskPhaseTwoRoute || riskProgressRoute || (lofResultsRoute && button.dataset.pageAction === 'save'));
         resetConfigProgress.hidden = !configurationHomeRoute;
         resetConfigProgress.disabled = completedConfigurationWorkflows.size === 0;
@@ -6968,6 +7387,8 @@
         host.querySelectorAll('[data-current-state-alert-close]').forEach(button => button.addEventListener('click', closeCurrentStateAlert));
         host.querySelectorAll('[data-lof-general]').forEach(el => el.addEventListener('input', () => {
           lofGeneralValues[el.dataset.lofGeneral] = el.value;
+          const runButton = host.querySelector('.lh-lof-xd-run');
+          if (runButton) runButton.disabled = !lofGeneralValues.name.trim() || !lofGeneralValues.reason.trim() || lofConfigUpload.status !== 'valid';
           if (!lofConfigCheckAttempted) return;
           const invalid = lofGeneralFieldInvalid(el.dataset.lofGeneral);
           el.classList.toggle('is-invalid', invalid);
@@ -6991,8 +7412,13 @@
         host.querySelectorAll('[data-lof-config-upload-trigger]').forEach(button => button.addEventListener('click', () => {
           host.querySelector('[data-lof-config-upload]')?.click();
         }));
-        host.querySelectorAll('[data-lof-config-upload]').forEach(input => input.addEventListener('change', async () => {
-          const file = input.files?.[0];
+        host.querySelectorAll('[data-lof-config-remove]').forEach(button => button.addEventListener('click', () => {
+          lofConfigUpload = {name:'',size:0,status:'',error:''};
+          lofConfigCheckAttempted = false;
+          render();
+          requestAnimationFrame(() => host.querySelector('.lh-lof-xd-dropzone')?.focus());
+        }));
+        const readLofConfigFile = async file => {
           if (!file) return;
           lofConfigError = null;
           lofConfigUpload = {name:file.name,size:file.size,status:'reading',error:''};
@@ -7017,7 +7443,18 @@
             render();
             showToast(lofConfigUpload.error);
           }
-        }));
+        };
+        host.querySelectorAll('[data-lof-config-upload]').forEach(input => input.addEventListener('change', () => readLofConfigFile(input.files?.[0])));
+        host.querySelectorAll('.lh-lof-xd-dropzone').forEach(dropzone => {
+          dropzone.addEventListener('dragover', event => {
+            event.preventDefault();
+            if (event.dataTransfer) event.dataTransfer.dropEffect = 'copy';
+          });
+          dropzone.addEventListener('drop', event => {
+            event.preventDefault();
+            readLofConfigFile(event.dataTransfer?.files?.[0]);
+          });
+        });
         host.querySelectorAll('[data-lof-guided-config-upload-trigger]').forEach(button => button.addEventListener('click', () => {
           host.querySelector('[data-lof-guided-config-upload]')?.click();
         }));
@@ -7104,6 +7541,12 @@
         }));
         host.querySelectorAll('[data-cof-config-upload-trigger]').forEach(button => button.addEventListener('click', () => {
           host.querySelector('[data-cof-config-upload]')?.click();
+        }));
+        host.querySelectorAll('[data-cof-config-remove]').forEach(button => button.addEventListener('click', () => {
+          cofConfigUpload = {name:'',size:0,status:'',error:''};
+          cofConfigCheckAttempted = false;
+          render();
+          requestAnimationFrame(() => host.querySelector('.lh-cof-xd-dropzone')?.focus());
         }));
         host.querySelectorAll('[data-cof-config-upload]').forEach(input => input.addEventListener('change', async () => {
           const file = input.files?.[0];
